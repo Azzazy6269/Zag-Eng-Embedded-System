@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double R,area;
+    scanf("%lf",&R);
+    area=R*R*((double)(22)/7);
+    printf("%lf\n",area);
+    return 0;
+}
+
+
