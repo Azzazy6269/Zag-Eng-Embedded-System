@@ -15,8 +15,6 @@ int main() {
             printf("%c\n",ch - 'a' + 'A');
         } else if (ch >= 'A' && ch <= 'Z') {
             printf("%c\n",ch - 'A' + 'a');
-        } else {
-            printf("%c\n",ch);
         }
     }
 
