@@ -40,7 +40,7 @@ int main() {
                        waleed.salary + waleed.bonus - waleed.deductions +
                        amr.salary + amr.bonus - amr.deductions;
 
-    printf("Total value supplied by the finance team: %.2f\n", totalValue);
+    printf("Total value needed: %.2f\n", totalValue);
 
     return 0;
 }
