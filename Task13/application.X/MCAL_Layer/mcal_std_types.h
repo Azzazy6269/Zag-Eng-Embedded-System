@@ -38,6 +38,7 @@ typedef uint8           Std_ReturnType ;
 #define E_OK           (Std_ReturnType)0x01
 #define E_NOT_OK       (Std_ReturnType)0x00
 
+#define _XTAL_FREQ 3000000UL
 /* Section : MACRO Functions Declerations */
 /* Section : Function Declerations */
 #endif	/* MCAL_STD_TYPES_H */

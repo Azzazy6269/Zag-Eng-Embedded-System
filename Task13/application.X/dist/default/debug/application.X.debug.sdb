@@ -3,17 +3,17 @@
 [d edition pro ]
 [d chip 18F4620 ]
 [d frameptr 4065 ]
-"35 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
+"37 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
 [e E2498 . `uc
 GPIO_DIRECTION_OUTPUT 0
 GPIO_DIRECTION_INPUT 1
 ]
-"64
+"70
 [e E2494 . `uc
 GPIO_LOW 0
 GPIO_HIGH 1
 ]
-"141
+"155
 [e E2512 . `uc
 PORTA_INDEX 0
 PORTB_INDEX 1
@@ -49,6 +49,8 @@ GPIO_HIGH 1
 ]
 "45
 [v _main main `(i  1 e 2 0 ]
+"63
+[v _application_intialize application_intialize `(v  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\float.c
@@ -73,15 +75,11 @@ GPIO_HIGH 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"22 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
+"24 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
-"47
-[v _gpio_pin_get_direction_status gpio_pin_get_direction_status `(uc  1 e 1 0 ]
-"64
+"70
 [v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
-"89
-[v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
-"121
+"133
 [v _gpio_pin_intialize gpio_pin_intialize `(uc  1 e 1 0 ]
 [s S39 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
@@ -94,14 +92,8 @@ GPIO_HIGH 1
 [v _led_2 led_2 `S39  1 e 1 0 ]
 "27
 [v _led_3 led_3 `S39  1 e 1 0 ]
-"34
-[v _btn_1 btn_1 `S39  1 e 1 0 ]
 "41
 [v _ret ret `uc  1 e 1 0 ]
-"42
-[v _led_1_st led_1_st `E2819  1 e 1 0 ]
-"43
-[v _btn1_status btn1_status `E2815  1 e 1 0 ]
 "52 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
 [v _PORTA PORTA `VEuc  1 e 1 @3968 ]
 "189
@@ -141,78 +133,53 @@ GPIO_HIGH 1
 "45 E:\Zag Eng Embedded\MPlab\application.X\application.c
 [v _main main `(i  1 e 2 0 ]
 {
-"70
+"62
 } 0
-"89 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
-[v _gpio_pin_read_logic gpio_pin_read_logic `(uc  1 e 1 0 ]
+"63
+[v _application_intialize application_intialize `(v  1 e 1 0 ]
 {
-"90
-[v gpio_pin_read_logic@ret ret `uc  1 a 1 6 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"89
-[v gpio_pin_read_logic@_pin_config _pin_config `*.30CS39  1 p 1 0 ]
-[v gpio_pin_read_logic@logic logic `*.30E2494  1 p 1 1 ]
-"97
+"71
 } 0
-"121
+"133 E:\Zag Eng Embedded\MPlab\application.X\MCAL_Layer/GPIO/hal_gpio.c
 [v _gpio_pin_intialize gpio_pin_intialize `(uc  1 e 1 0 ]
 {
-"122
+"134
 [v gpio_pin_intialize@ret ret `uc  1 a 1 10 ]
 [s S39 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"121
+"133
 [v gpio_pin_intialize@_pin_config _pin_config `*.30CS39  1 p 1 8 ]
-"132
+"144
 } 0
-"64
+"70
 [v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
 {
-"65
+"71
 [v gpio_pin_write_logic@ret ret `uc  1 a 1 7 ]
 [s S39 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"64
+"70
 [v gpio_pin_write_logic@_pin_config _pin_config `*.30CS39  1 p 1 0 ]
 [v gpio_pin_write_logic@logic logic `E2494  1 p 1 1 ]
-"80
+"86
 } 0
-"22
+"24
 [v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
 {
-"23
-[v gpio_pin_direction_intialize@ret ret `uc  1 a 1 7 ]
+"25
+[v gpio_pin_direction_intialize@ret ret `uc  1 a 1 6 ]
 [s S39 . 1 `uc 1 port 1 0 :3:0 
 `uc 1 pin 1 0 :3:3 
 `uc 1 direction 1 0 :1:6 
 `uc 1 logic 1 0 :1:7 
 ]
-"22
-[v gpio_pin_direction_intialize@_pin_config _pin_config `*.39CS39  1 p 2 0 ]
-"38
-} 0
-"47
-[v _gpio_pin_get_direction_status gpio_pin_get_direction_status `(uc  1 e 1 0 ]
-{
-"48
-[v gpio_pin_get_direction_status@ret ret `uc  1 a 1 6 ]
-[s S39 . 1 `uc 1 port 1 0 :3:0 
-`uc 1 pin 1 0 :3:3 
-`uc 1 direction 1 0 :1:6 
-`uc 1 logic 1 0 :1:7 
-]
-"47
-[v gpio_pin_get_direction_status@_pin_config _pin_config `*.30CS39  1 p 1 0 ]
-[v gpio_pin_get_direction_status@direction_status direction_status `*.30E2498  1 p 1 1 ]
-"55
+"24
+[v gpio_pin_direction_intialize@_pin_config _pin_config `*.30CS39  1 p 1 0 ]
+"40
 } 0

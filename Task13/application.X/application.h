@@ -22,6 +22,7 @@
 
 
 /* Section : Function Declerations */
+void application_intialize();
 
 #endif	/* APPLICATION_H */
 

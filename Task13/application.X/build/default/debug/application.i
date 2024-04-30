@@ -4711,7 +4711,7 @@ Std_ReturnType gpio_pin_toggle_logic(const pin_config_t *_pin_config );
 Std_ReturnType gpio_pin_intialize(const pin_config_t *_pin_config );
 
 Std_ReturnType gpio_port_direction_intialize(port_index_t port,uint8 direction);
-Std_ReturnType gpio_port_direction_status(port_index_t port ,uint8 *direction_status );
+Std_ReturnType gpio_port_get_direction_status(port_index_t port ,uint8 *direction_status );
 Std_ReturnType gpio_port_write_logic(port_index_t port ,uint8 logic);
 Std_ReturnType gpio_port_read_logic(port_index_t port ,uint8 *logic);
 Std_ReturnType gpio_port_toggle_logic(port_index_t port );
@@ -4720,6 +4720,8 @@ Std_ReturnType gpio_port_toggle_logic(port_index_t port );
 
 # 1 "./MCAL_Layer/device_config.h" 1
 # 13 "./application.h" 2
+# 25 "./application.h"
+void application_intialize();
 # 10 "application.c" 2
 
 
@@ -4754,12 +4756,27 @@ pin_config_t btn_1 ={
 
 Std_ReturnType ret = (Std_ReturnType)0x00 ;
 direction_t led_1_st ;
-logic_t btn1_status;
+
 
 int main() {
 
+    application_intialize();
 
+    while(1){
+    ret = gpio_pin_write_logic(&led_3,GPIO_LOW);
+    ret = gpio_pin_write_logic(&led_1,GPIO_HIGH);
+    _delay((unsigned long)((60000)*(3000000UL/4000.0)));
+    ret = gpio_pin_write_logic(&led_1,GPIO_LOW);
+    ret = gpio_pin_write_logic(&led_2,GPIO_HIGH);
+    _delay((unsigned long)((10000)*(3000000UL/4000.0)));
+    ret = gpio_pin_write_logic(&led_2,GPIO_LOW);
+    ret = gpio_pin_write_logic(&led_3,GPIO_HIGH);
+    _delay((unsigned long)((60000)*(3000000UL/4000.0)));
+    }
 
+    return (0);
+}
+void application_intialize(){
     ret = gpio_pin_intialize(&led_1);
     ret = gpio_pin_intialize(&led_2);
     ret = gpio_pin_intialize(&led_3);
@@ -4767,18 +4784,4 @@ int main() {
 
 
 
-
-
-    while(1){
-    ret = gpio_pin_write_logic(&led_1,GPIO_HIGH);
-    _delay((unsigned long)((60000)*(_XTAL_FREQ/4000.0)));
-    ret = gpio_pin_write_logic(&led_1,GPIO_LOW);
-    ret = gpio_pin_write_logic(&led_2,GPIO_HIGH);
-    _delay((unsigned long)((10000)*(_XTAL_FREQ/4000.0)));
-    ret = gpio_pin_write_logic(&led_2,GPIO_LOW);
-    ret = gpio_pin_write_logic(&led_3,GPIO_HIGH);
-    _delay((unsigned long)((60000)*(_XTAL_FREQ/4000.0)));
-    }
-
-    return (0);
 }
