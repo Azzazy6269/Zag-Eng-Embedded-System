@@ -1,0 +1,281 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4620 ]
+[d frameptr 4065 ]
+"20 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/led/led.c
+[e E2498 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"48
+[e E2494 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"43 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[e E2494 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"37 E:\Zfast\Task7\L298 Dual motor module\application.X\MCAL_Layer/GPIO/hal_gpio.c
+[e E2498 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"70
+[e E2494 . `uc
+GPIO_LOW 0
+GPIO_HIGH 1
+]
+"155
+[e E2512 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+"13 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[e E2833 . `uc
+PORTA_INDEX 0
+PORTB_INDEX 1
+PORTC_INDEX 2
+PORTD_INDEX 3
+PORTE_INDEX 4
+]
+[e E2823 . `uc
+GPIO_PIN0 0
+GPIO_PIN1 1
+GPIO_PIN2 2
+GPIO_PIN3 3
+GPIO_PIN4 4
+GPIO_PIN5 5
+GPIO_PIN6 6
+GPIO_PIN7 7
+]
+[e E2819 . `uc
+GPIO_DIRECTION_OUTPUT 0
+GPIO_DIRECTION_INPUT 1
+]
+"36
+[v _main main `(i  1 e 2 0 ]
+"51
+[v _application_intialize application_intialize `(v  1 e 1 0 ]
+"56
+[v _Go_Forward Go_Forward `(v  1 e 1 0 ]
+"60
+[v _Go_Backward Go_Backward `(v  1 e 1 0 ]
+"64
+[v _Turn_Right Turn_Right `(v  1 e 1 0 ]
+"68
+[v _Turn_Left Turn_Left `(v  1 e 1 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"19 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[v _dc_motor_intialize dc_motor_intialize `(uc  1 e 1 0 ]
+"38
+[v _dc_motor_turn_right dc_motor_turn_right `(uc  1 e 1 0 ]
+"56
+[v _dc_motor_turn_left dc_motor_turn_left `(uc  1 e 1 0 ]
+"74
+[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
+"24 E:\Zfast\Task7\L298 Dual motor module\application.X\MCAL_Layer/GPIO/hal_gpio.c
+[v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
+"70
+[v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
+"115
+[v _gpio_pin_toggle_logic gpio_pin_toggle_logic `(uc  1 e 1 0 ]
+"133
+[v _gpio_pin_intialize gpio_pin_intialize `(uc  1 e 1 0 ]
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"13 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[s S125 . 2 `[2]S28 1 dc_motor_pin 2 0 ]
+[v _dc_motor_1 dc_motor_1 `S125  1 e 2 0 ]
+"23
+[v _dc_motor_2 dc_motor_2 `S125  1 e 2 0 ]
+"34
+[v _ret ret `uc  1 e 1 0 ]
+"52 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4620.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"189
+[v _PORTB PORTB `VEuc  1 e 1 @3969 ]
+"360
+[v _PORTC PORTC `VEuc  1 e 1 @3970 ]
+"535
+[v _PORTD PORTD `VEuc  1 e 1 @3971 ]
+"677
+[v _PORTE PORTE `VEuc  1 e 1 @3972 ]
+"880
+[v _LATA LATA `VEuc  1 e 1 @3977 ]
+"992
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"1104
+[v _LATC LATC `VEuc  1 e 1 @3979 ]
+"1216
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"1328
+[v _LATE LATE `VEuc  1 e 1 @3981 ]
+"1380
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"1602
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"1824
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"2046
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"2268
+[v _TRISE TRISE `VEuc  1 e 1 @3990 ]
+"10 E:\Zfast\Task7\L298 Dual motor module\application.X\MCAL_Layer/GPIO/hal_gpio.c
+[v _tris_registers tris_registers `[5]*.39VEuc  1 e 10 0 ]
+"12
+[v _lat_registers lat_registers `[5]*.39VEuc  1 e 10 0 ]
+"14
+[v _port_registers port_registers `[5]*.39VEuc  1 e 10 0 ]
+"36 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[v _main main `(i  1 e 2 0 ]
+{
+"50
+} 0
+"51
+[v _application_intialize application_intialize `(v  1 e 1 0 ]
+{
+"54
+} 0
+"19 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[v _dc_motor_intialize dc_motor_intialize `(uc  1 e 1 0 ]
+{
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+[s S125 . 2 `[2]S28 1 dc_motor_pin 2 0 ]
+[v dc_motor_intialize@_dc_motor _dc_motor `*.30CS125  1 p 1 11 ]
+"29
+} 0
+"133 E:\Zfast\Task7\L298 Dual motor module\application.X\MCAL_Layer/GPIO/hal_gpio.c
+[v _gpio_pin_intialize gpio_pin_intialize `(uc  1 e 1 0 ]
+{
+"134
+[v gpio_pin_intialize@ret ret `uc  1 a 1 10 ]
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"133
+[v gpio_pin_intialize@_pin_config _pin_config `*.30CS28  1 p 1 8 ]
+"144
+} 0
+"24
+[v _gpio_pin_direction_intialize gpio_pin_direction_intialize `(uc  1 e 1 0 ]
+{
+"25
+[v gpio_pin_direction_intialize@ret ret `uc  1 a 1 6 ]
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"24
+[v gpio_pin_direction_intialize@_pin_config _pin_config `*.30CS28  1 p 1 0 ]
+"40
+} 0
+"64 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[v _Turn_Right Turn_Right `(v  1 e 1 0 ]
+{
+"67
+} 0
+"68
+[v _Turn_Left Turn_Left `(v  1 e 1 0 ]
+{
+"71
+} 0
+"74 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[v _dc_motor_stop dc_motor_stop `(uc  1 e 1 0 ]
+{
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+[s S125 . 2 `[2]S28 1 dc_motor_pin 2 0 ]
+[v dc_motor_stop@_dc_motor _dc_motor `*.30CS125  1 p 1 8 ]
+"83
+} 0
+"56 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[v _Go_Forward Go_Forward `(v  1 e 1 0 ]
+{
+"59
+} 0
+"38 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[v _dc_motor_turn_right dc_motor_turn_right `(uc  1 e 1 0 ]
+{
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+[s S125 . 2 `[2]S28 1 dc_motor_pin 2 0 ]
+[v dc_motor_turn_right@_dc_motor _dc_motor `*.30CS125  1 p 1 8 ]
+"47
+} 0
+"60 E:\Zfast\Task7\L298 Dual motor module\application.X\application.c
+[v _Go_Backward Go_Backward `(v  1 e 1 0 ]
+{
+"63
+} 0
+"56 E:\Zfast\Task7\L298 Dual motor module\application.X\ECU_Layer/DC_motor/DC_motor.c
+[v _dc_motor_turn_left dc_motor_turn_left `(uc  1 e 1 0 ]
+{
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+[s S125 . 2 `[2]S28 1 dc_motor_pin 2 0 ]
+[v dc_motor_turn_left@_dc_motor _dc_motor `*.30CS125  1 p 1 8 ]
+"65
+} 0
+"70 E:\Zfast\Task7\L298 Dual motor module\application.X\MCAL_Layer/GPIO/hal_gpio.c
+[v _gpio_pin_write_logic gpio_pin_write_logic `(uc  1 e 1 0 ]
+{
+"71
+[v gpio_pin_write_logic@ret ret `uc  1 a 1 7 ]
+[s S28 . 1 `uc 1 port 1 0 :3:0 
+`uc 1 pin 1 0 :3:3 
+`uc 1 direction 1 0 :1:6 
+`uc 1 logic 1 0 :1:7 
+]
+"70
+[v gpio_pin_write_logic@_pin_config _pin_config `*.30CS28  1 p 1 0 ]
+[v gpio_pin_write_logic@logic logic `E2494  1 p 1 1 ]
+"86
+} 0
