@@ -1,0 +1,1387 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Thu May 09 21:41:46 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4620
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	nvCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     7                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     8                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    10                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    11                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    14                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    15                           	psect	text4,global,reloc=2,class=CODE,delta=1,group=1
+    16                           	psect	text5,global,reloc=2,class=CODE,delta=1,group=1
+    17                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+    18                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    19                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    20                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    21   000000                     
+    22                           ; Generated 17/10/2023 GMT
+    23                           ; 
+    24                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    25                           ; All rights reserved.
+    26                           ; 
+    27                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    28                           ; 
+    29                           ; Redistribution and use in source and binary forms, with or without modification, are
+    30                           ; permitted provided that the following conditions are met:
+    31                           ; 
+    32                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    33                           ;        conditions and the following disclaimer.
+    34                           ; 
+    35                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    36                           ;        of conditions and the following disclaimer in the documentation and/or other
+    37                           ;        materials provided with the distribution. Publication is not required when
+    38                           ;        this file is used in an embedded application.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC18F4620 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56   000000                     
+    57                           	psect	idataCOMRAM
+    58   0012A6                     __pidataCOMRAM:
+    59                           	callstack 0
+    60                           
+    61                           ;initializer for _port_registers
+    62   0012A6  80                 	db	128
+    63   0012A7  0F                 	db	15
+    64   0012A8  81                 	db	129
+    65   0012A9  0F                 	db	15
+    66   0012AA  82                 	db	130
+    67   0012AB  0F                 	db	15
+    68   0012AC  83                 	db	131
+    69   0012AD  0F                 	db	15
+    70   0012AE  84                 	db	132
+    71   0012AF  0F                 	db	15
+    72                           
+    73                           ;initializer for _lat_registers
+    74   0012B0  89                 	db	137
+    75   0012B1  0F                 	db	15
+    76   0012B2  8A                 	db	138
+    77   0012B3  0F                 	db	15
+    78   0012B4  8B                 	db	139
+    79   0012B5  0F                 	db	15
+    80   0012B6  8C                 	db	140
+    81   0012B7  0F                 	db	15
+    82   0012B8  8D                 	db	141
+    83   0012B9  0F                 	db	15
+    84                           
+    85                           ;initializer for _tris_registers
+    86   0012BA  92                 	db	146
+    87   0012BB  0F                 	db	15
+    88   0012BC  93                 	db	147
+    89   0012BD  0F                 	db	15
+    90   0012BE  94                 	db	148
+    91   0012BF  0F                 	db	15
+    92   0012C0  95                 	db	149
+    93   0012C1  0F                 	db	15
+    94   0012C2  96                 	db	150
+    95   0012C3  0F                 	db	15
+    96                           
+    97                           	psect	nvCOMRAM
+    98   000035                     __pnvCOMRAM:
+    99                           	callstack 0
+   100   000035                     _number_bcd:
+   101                           	callstack 0
+   102   000035                     	ds	1
+   103   000036                     _ret:
+   104                           	callstack 0
+   105   000036                     	ds	1
+   106   000000                     _PORTE	set	3972
+   107   000000                     _PORTD	set	3971
+   108   000000                     _PORTC	set	3970
+   109   000000                     _PORTB	set	3969
+   110   000000                     _PORTA	set	3968
+   111   000000                     _LATA	set	3977
+   112   000000                     _TRISA	set	3986
+   113   000000                     _TRISE	set	3990
+   114   000000                     _TRISD	set	3989
+   115   000000                     _TRISC	set	3988
+   116   000000                     _TRISB	set	3987
+   117   000000                     _LATE	set	3981
+   118   000000                     _LATD	set	3980
+   119   000000                     _LATC	set	3979
+   120   000000                     _LATB	set	3978
+   121                           
+   122                           ; #config settings
+   123                           
+   124                           	psect	cinit
+   125   001270                     __pcinit:
+   126                           	callstack 0
+   127   001270                     start_initialization:
+   128                           	callstack 0
+   129   001270                     __initialization:
+   130                           	callstack 0
+   131                           
+   132                           ; Initialize objects allocated to COMRAM (30 bytes)
+   133                           ; load TBLPTR registers with __pidataCOMRAM
+   134   001270  0EA6               	movlw	low __pidataCOMRAM
+   135   001272  6EF6               	movwf	tblptrl,c
+   136   001274  0E12               	movlw	high __pidataCOMRAM
+   137   001276  6EF7               	movwf	tblptrh,c
+   138   001278  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   139   00127A  6EF8               	movwf	tblptru,c
+   140   00127C  EE00  F001         	lfsr	0,__pdataCOMRAM
+   141   001280  EE10 F01E          	lfsr	1,30
+   142   001284                     copy_data0:
+   143   001284  0009               	tblrd		*+
+   144   001286  CFF5 FFEE          	movff	tablat,postinc0
+   145   00128A  50E5               	movf	postdec1,w,c
+   146   00128C  50E1               	movf	fsr1l,w,c
+   147   00128E  E1FA               	bnz	copy_data0
+   148                           
+   149                           ; Clear objects allocated to COMRAM (12 bytes)
+   150   001290  EE00  F01F         	lfsr	0,__pbssCOMRAM
+   151   001294  0E0C               	movlw	12
+   152   001296                     clear_0:
+   153   001296  6AEE               	clrf	postinc0,c
+   154   001298  06E8               	decf	wreg,f,c
+   155   00129A  E1FD               	bnz	clear_0
+   156   00129C                     end_of_initialization:
+   157                           	callstack 0
+   158   00129C                     __end_of__initialization:
+   159                           	callstack 0
+   160   00129C  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   161   00129E  6EF8               	movwf	tblptru,c
+   162   0012A0  0100               	movlb	0
+   163   0012A2  EFBB  F008         	goto	_main	;jump to C main() function
+   164                           
+   165                           	psect	bssCOMRAM
+   166   00001F                     __pbssCOMRAM:
+   167                           	callstack 0
+   168   00001F                     	ds	1
+   169   000020                     	ds	1
+   170   000021                     _tens:
+   171                           	callstack 0
+   172   000021                     	ds	1
+   173   000022                     _ones:
+   174                           	callstack 0
+   175   000022                     	ds	1
+   176   000023                     _number:
+   177                           	callstack 0
+   178   000023                     	ds	1
+   179   000024                     relay_turn_off@F2578:
+   180                           	callstack 0
+   181   000024                     	ds	1
+   182   000025                     relay_turn_on@F2573:
+   183                           	callstack 0
+   184   000025                     	ds	1
+   185   000026                     relay_intialize@F2568:
+   186                           	callstack 0
+   187   000026                     	ds	1
+   188   000027                     led_turn_toggle@F2589:
+   189                           	callstack 0
+   190   000027                     	ds	1
+   191   000028                     led_turn_off@F2584:
+   192                           	callstack 0
+   193   000028                     	ds	1
+   194   000029                     led_turn_on@F2579:
+   195                           	callstack 0
+   196   000029                     	ds	1
+   197   00002A                     led_intialize@F2574:
+   198                           	callstack 0
+   199   00002A                     	ds	1
+   200                           
+   201                           	psect	dataCOMRAM
+   202   000001                     __pdataCOMRAM:
+   203                           	callstack 0
+   204   000001                     _port_registers:
+   205                           	callstack 0
+   206   000001                     	ds	10
+   207   00000B                     _lat_registers:
+   208                           	callstack 0
+   209   00000B                     	ds	10
+   210   000015                     _tris_registers:
+   211                           	callstack 0
+   212   000015                     	ds	10
+   213                           
+   214                           	psect	cstackCOMRAM
+   215   00002B                     __pcstackCOMRAM:
+   216                           	callstack 0
+   217   00002B                     ?___awdiv:
+   218                           	callstack 0
+   219   00002B                     ?___awmod:
+   220                           	callstack 0
+   221   00002B                     gpio_port_direction_intialize@direction:
+   222                           	callstack 0
+   223   00002B                     gpio_port_write_logic@logic:
+   224                           	callstack 0
+   225   00002B                     ___awdiv@dividend:
+   226                           	callstack 0
+   227   00002B                     ___awmod@dividend:
+   228                           	callstack 0
+   229                           
+   230                           ; 2 bytes @ 0x0
+   231   00002B                     	ds	1
+   232   00002C                     ??_gpio_port_direction_intialize:
+   233   00002C                     ??_gpio_port_write_logic:
+   234                           
+   235                           ; 1 bytes @ 0x1
+   236   00002C                     	ds	1
+   237   00002D                     ___awdiv@divisor:
+   238                           	callstack 0
+   239   00002D                     ___awmod@divisor:
+   240                           	callstack 0
+   241                           
+   242                           ; 2 bytes @ 0x2
+   243   00002D                     	ds	1
+   244   00002E                     gpio_port_direction_intialize@ret:
+   245                           	callstack 0
+   246   00002E                     gpio_port_write_logic@ret:
+   247                           	callstack 0
+   248                           
+   249                           ; 1 bytes @ 0x3
+   250   00002E                     	ds	1
+   251   00002F                     gpio_port_direction_intialize@port:
+   252                           	callstack 0
+   253   00002F                     gpio_port_write_logic@port:
+   254                           	callstack 0
+   255   00002F                     ___awdiv@counter:
+   256                           	callstack 0
+   257   00002F                     ___awmod@counter:
+   258                           	callstack 0
+   259                           
+   260                           ; 1 bytes @ 0x4
+   261   00002F                     	ds	1
+   262   000030                     ___awdiv@sign:
+   263                           	callstack 0
+   264   000030                     ___awmod@sign:
+   265                           	callstack 0
+   266                           
+   267                           ; 1 bytes @ 0x5
+   268   000030                     	ds	1
+   269   000031                     ___awdiv@quotient:
+   270                           	callstack 0
+   271                           
+   272                           ; 2 bytes @ 0x6
+   273   000031                     	ds	2
+   274   000033                     ??_main:
+   275                           
+   276                           ; 1 bytes @ 0x8
+   277   000033                     	ds	2
+   278                           
+   279 ;;
+   280 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   281 ;;
+   282 ;; *************** function _main *****************
+   283 ;; Defined at:
+   284 ;;		line 17 in file "application.c"
+   285 ;; Parameters:    Size  Location     Type
+   286 ;;		None
+   287 ;; Auto vars:     Size  Location     Type
+   288 ;;		None
+   289 ;; Return value:  Size  Location     Type
+   290 ;;                  2  222[None  ] int 
+   291 ;; Registers used:
+   292 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   293 ;; Tracked objects:
+   294 ;;		On entry : 0/0
+   295 ;;		On exit  : 0/0
+   296 ;;		Unchanged: 0/0
+   297 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   298 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   299 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   300 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   301 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   302 ;;Total ram usage:        2 bytes
+   303 ;; Hardware stack levels required when called: 2
+   304 ;; This function calls:
+   305 ;;		___awdiv
+   306 ;;		___awmod
+   307 ;;		_application_intialize
+   308 ;;		_gpio_port_write_logic
+   309 ;; This function is called by:
+   310 ;;		Startup code after reset
+   311 ;; This function uses a non-reentrant model
+   312 ;;
+   313                           
+   314                           	psect	text0
+   315   001176                     __ptext0:
+   316                           	callstack 0
+   317   001176                     _main:
+   318                           	callstack 29
+   319   001176                     
+   320                           ;application.c: 18:     application_intialize();
+   321   001176  EC62  F009         	call	_application_intialize	;wreg free
+   322   00117A                     l1474:
+   323                           
+   324                           ;application.c: 20:         number_bcd = (((uint8 )number%10)|(((uint8)number/10)<<4));
+   325   00117A  C023  F02B         	movff	_number,___awdiv@dividend
+   326   00117E  6A2C               	clrf	(___awdiv@dividend+1)^0,c
+   327   001180  0E00               	movlw	0
+   328   001182  6E2E               	movwf	(___awdiv@divisor+1)^0,c
+   329   001184  0E0A               	movlw	10
+   330   001186  6E2D               	movwf	___awdiv@divisor^0,c
+   331   001188  EC01  F008         	call	___awdiv	;wreg free
+   332   00118C  C02B  F033         	movff	?___awdiv,??_main
+   333   001190  C02C  F034         	movff	?___awdiv+1,??_main+1
+   334   001194  3A33               	swapf	??_main^0,f,c
+   335   001196  0EF0               	movlw	240
+   336   001198  1633               	andwf	??_main^0,f,c
+   337   00119A  C023  F02B         	movff	_number,___awmod@dividend
+   338   00119E  6A2C               	clrf	(___awmod@dividend+1)^0,c
+   339   0011A0  0E00               	movlw	0
+   340   0011A2  6E2E               	movwf	(___awmod@divisor+1)^0,c
+   341   0011A4  0E0A               	movlw	10
+   342   0011A6  6E2D               	movwf	___awmod@divisor^0,c
+   343   0011A8  EC63  F008         	call	___awmod	;wreg free
+   344   0011AC  502B               	movf	?___awmod^0,w,c
+   345   0011AE  1033               	iorwf	??_main^0,w,c
+   346   0011B0  6E35               	movwf	_number_bcd^0,c
+   347   0011B2                     
+   348                           ;application.c: 21:         ret = gpio_port_write_logic(PORTC_INDEX,number_bcd);
+   349   0011B2  C035  F02B         	movff	_number_bcd,gpio_port_write_logic@logic
+   350   0011B6  0E02               	movlw	2
+   351   0011B8  ECF6  F008         	call	_gpio_port_write_logic
+   352   0011BC  6E36               	movwf	_ret^0,c
+   353   0011BE                     
+   354                           ;application.c: 22:         number++;
+   355   0011BE  2A23               	incf	_number^0,f,c
+   356   0011C0                     
+   357                           ;application.c: 23:         _delay((unsigned long)((100)*((uint64)3200000/4000.0)));
+   358   0011C0  0E68               	movlw	104
+   359   0011C2  6E33               	movwf	??_main^0,c
+   360   0011C4  0EE4               	movlw	228
+   361   0011C6                     u837:
+   362   0011C6  2EE8               	decfsz	wreg,f,c
+   363   0011C8  D7FE               	bra	u837
+   364   0011CA  2E33               	decfsz	??_main^0,f,c
+   365   0011CC  D7FC               	bra	u837
+   366   0011CE  D000               	nop2	
+   367   0011D0                     
+   368                           ;application.c: 24:         if(number>99){
+   369   0011D0  0E63               	movlw	99
+   370   0011D2  6423               	cpfsgt	_number^0,c
+   371   0011D4  EFEE  F008         	goto	u821
+   372   0011D8  EFF0  F008         	goto	u820
+   373   0011DC                     u821:
+   374   0011DC  EFBD  F008         	goto	l1474
+   375   0011E0                     u820:
+   376   0011E0                     
+   377                           ;application.c: 25:             number =0;
+   378   0011E0  0E00               	movlw	0
+   379   0011E2  6E23               	movwf	_number^0,c
+   380   0011E4  EFBD  F008         	goto	l1474
+   381   0011E8  EF00  F000         	goto	start
+   382   0011EC                     __end_of_main:
+   383                           	callstack 0
+   384                           
+   385 ;; *************** function _gpio_port_write_logic *****************
+   386 ;; Defined at:
+   387 ;;		line 191 in file "MCAL_Layer/GPIO/hal_gpio.c"
+   388 ;; Parameters:    Size  Location     Type
+   389 ;;  port            1    wreg     enum E2512
+   390 ;;  logic           1    0[COMRAM] unsigned char 
+   391 ;; Auto vars:     Size  Location     Type
+   392 ;;  port            1    4[COMRAM] enum E2512
+   393 ;;  ret             1    3[COMRAM] unsigned char 
+   394 ;; Return value:  Size  Location     Type
+   395 ;;                  1    wreg      unsigned char 
+   396 ;; Registers used:
+   397 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   398 ;; Tracked objects:
+   399 ;;		On entry : 0/0
+   400 ;;		On exit  : 0/0
+   401 ;;		Unchanged: 0/0
+   402 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   403 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   404 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   405 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   406 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   407 ;;Total ram usage:        5 bytes
+   408 ;; Hardware stack levels used: 1
+   409 ;; This function calls:
+   410 ;;		Nothing
+   411 ;; This function is called by:
+   412 ;;		_main
+   413 ;; This function uses a non-reentrant model
+   414 ;;
+   415                           
+   416                           	psect	text1
+   417   0011EC                     __ptext1:
+   418                           	callstack 0
+   419   0011EC                     _gpio_port_write_logic:
+   420                           	callstack 30
+   421                           
+   422                           ;incstack = 0
+   423                           ;gpio_port_write_logic@port stored from wreg
+   424   0011EC  6E2F               	movwf	gpio_port_write_logic@port^0,c
+   425   0011EE                     
+   426                           ;MCAL_Layer/GPIO/hal_gpio.c: 192:     Std_ReturnType ret = (Std_ReturnType)0x01 ;
+   427   0011EE  0E01               	movlw	1
+   428   0011F0  6E2E               	movwf	gpio_port_write_logic@ret^0,c
+   429   0011F2                     
+   430                           ;MCAL_Layer/GPIO/hal_gpio.c: 193:     if(port > 5 -1){
+   431   0011F2  0E04               	movlw	4
+   432   0011F4  642F               	cpfsgt	gpio_port_write_logic@port^0,c
+   433   0011F6  EFFF  F008         	goto	u691
+   434   0011FA  EF01  F009         	goto	u690
+   435   0011FE                     u691:
+   436   0011FE  EF05  F009         	goto	l1384
+   437   001202                     u690:
+   438   001202                     
+   439                           ;MCAL_Layer/GPIO/hal_gpio.c: 194:         ret = (Std_ReturnType)0x00 ;
+   440   001202  0E00               	movlw	0
+   441   001204  6E2E               	movwf	gpio_port_write_logic@ret^0,c
+   442                           
+   443                           ;MCAL_Layer/GPIO/hal_gpio.c: 195:     }else{
+   444   001206  EF15  F009         	goto	l1386
+   445   00120A                     l1384:
+   446                           
+   447                           ;MCAL_Layer/GPIO/hal_gpio.c: 196:         * lat_registers[port]= logic;
+   448   00120A  502F               	movf	gpio_port_write_logic@port^0,w,c
+   449   00120C  0D02               	mullw	2
+   450   00120E  50F3               	movf	243,w,c
+   451   001210  0F0B               	addlw	low _lat_registers
+   452   001212  6ED9               	movwf	fsr2l,c
+   453   001214  6ADA               	clrf	fsr2h,c
+   454   001216  CFDE F02C          	movff	postinc2,??_gpio_port_write_logic
+   455   00121A  CFDD F02D          	movff	postdec2,??_gpio_port_write_logic+1
+   456   00121E  C02C  FFD9         	movff	??_gpio_port_write_logic,fsr2l
+   457   001222  C02D  FFDA         	movff	??_gpio_port_write_logic+1,fsr2h
+   458   001226  C02B  FFDF         	movff	gpio_port_write_logic@logic,indf2
+   459   00122A                     l1386:
+   460                           
+   461                           ;MCAL_Layer/GPIO/hal_gpio.c: 198:         return ret ;
+   462   00122A  502E               	movf	gpio_port_write_logic@ret^0,w,c
+   463   00122C  0012               	return		;funcret
+   464   00122E                     __end_of_gpio_port_write_logic:
+   465                           	callstack 0
+   466                           
+   467 ;; *************** function _application_intialize *****************
+   468 ;; Defined at:
+   469 ;;		line 30 in file "application.c"
+   470 ;; Parameters:    Size  Location     Type
+   471 ;;		None
+   472 ;; Auto vars:     Size  Location     Type
+   473 ;;		None
+   474 ;; Return value:  Size  Location     Type
+   475 ;;                  1    wreg      void 
+   476 ;; Registers used:
+   477 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+   478 ;; Tracked objects:
+   479 ;;		On entry : 0/0
+   480 ;;		On exit  : 0/0
+   481 ;;		Unchanged: 0/0
+   482 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   483 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   484 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   485 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   486 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   487 ;;Total ram usage:        0 bytes
+   488 ;; Hardware stack levels used: 1
+   489 ;; Hardware stack levels required when called: 1
+   490 ;; This function calls:
+   491 ;;		_gpio_port_direction_intialize
+   492 ;; This function is called by:
+   493 ;;		_main
+   494 ;; This function uses a non-reentrant model
+   495 ;;
+   496                           
+   497                           	psect	text2
+   498   0012C4                     __ptext2:
+   499                           	callstack 0
+   500   0012C4                     _application_intialize:
+   501                           	callstack 29
+   502   0012C4                     
+   503                           ;application.c: 31:     ret = gpio_port_direction_intialize(PORTC_INDEX,0x00);
+   504   0012C4  0E00               	movlw	0
+   505   0012C6  6E2B               	movwf	gpio_port_direction_intialize@direction^0,c
+   506   0012C8  0E02               	movlw	2
+   507   0012CA  EC17  F009         	call	_gpio_port_direction_intialize
+   508   0012CE  6E36               	movwf	_ret^0,c
+   509   0012D0  0012               	return		;funcret
+   510   0012D2                     __end_of_application_intialize:
+   511                           	callstack 0
+   512                           
+   513 ;; *************** function _gpio_port_direction_intialize *****************
+   514 ;; Defined at:
+   515 ;;		line 155 in file "MCAL_Layer/GPIO/hal_gpio.c"
+   516 ;; Parameters:    Size  Location     Type
+   517 ;;  port            1    wreg     enum E2512
+   518 ;;  direction       1    0[COMRAM] unsigned char 
+   519 ;; Auto vars:     Size  Location     Type
+   520 ;;  port            1    4[COMRAM] enum E2512
+   521 ;;  ret             1    3[COMRAM] unsigned char 
+   522 ;; Return value:  Size  Location     Type
+   523 ;;                  1    wreg      unsigned char 
+   524 ;; Registers used:
+   525 ;;		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+   526 ;; Tracked objects:
+   527 ;;		On entry : 0/0
+   528 ;;		On exit  : 0/0
+   529 ;;		Unchanged: 0/0
+   530 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   531 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   532 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   533 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   534 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   535 ;;Total ram usage:        5 bytes
+   536 ;; Hardware stack levels used: 1
+   537 ;; This function calls:
+   538 ;;		Nothing
+   539 ;; This function is called by:
+   540 ;;		_application_intialize
+   541 ;; This function uses a non-reentrant model
+   542 ;;
+   543                           
+   544                           	psect	text3
+   545   00122E                     __ptext3:
+   546                           	callstack 0
+   547   00122E                     _gpio_port_direction_intialize:
+   548                           	callstack 29
+   549                           
+   550                           ;incstack = 0
+   551                           ;gpio_port_direction_intialize@port stored from wreg
+   552   00122E  6E2F               	movwf	gpio_port_direction_intialize@port^0,c
+   553   001230                     
+   554                           ;MCAL_Layer/GPIO/hal_gpio.c: 156:     Std_ReturnType ret = (Std_ReturnType)0x01 ;
+   555   001230  0E01               	movlw	1
+   556   001232  6E2E               	movwf	gpio_port_direction_intialize@ret^0,c
+   557   001234                     
+   558                           ;MCAL_Layer/GPIO/hal_gpio.c: 157:     if(port > 5 -1){
+   559   001234  0E04               	movlw	4
+   560   001236  642F               	cpfsgt	gpio_port_direction_intialize@port^0,c
+   561   001238  EF20  F009         	goto	u681
+   562   00123C  EF22  F009         	goto	u680
+   563   001240                     u681:
+   564   001240  EF26  F009         	goto	l1372
+   565   001244                     u680:
+   566   001244                     
+   567                           ;MCAL_Layer/GPIO/hal_gpio.c: 158:         ret = (Std_ReturnType)0x00 ;
+   568   001244  0E00               	movlw	0
+   569   001246  6E2E               	movwf	gpio_port_direction_intialize@ret^0,c
+   570                           
+   571                           ;MCAL_Layer/GPIO/hal_gpio.c: 159:     }else{
+   572   001248  EF36  F009         	goto	l1374
+   573   00124C                     l1372:
+   574                           
+   575                           ;MCAL_Layer/GPIO/hal_gpio.c: 160:         * tris_registers[port]=direction;
+   576   00124C  502F               	movf	gpio_port_direction_intialize@port^0,w,c
+   577   00124E  0D02               	mullw	2
+   578   001250  50F3               	movf	243,w,c
+   579   001252  0F15               	addlw	low _tris_registers
+   580   001254  6ED9               	movwf	fsr2l,c
+   581   001256  6ADA               	clrf	fsr2h,c
+   582   001258  CFDE F02C          	movff	postinc2,??_gpio_port_direction_intialize
+   583   00125C  CFDD F02D          	movff	postdec2,??_gpio_port_direction_intialize+1
+   584   001260  C02C  FFD9         	movff	??_gpio_port_direction_intialize,fsr2l
+   585   001264  C02D  FFDA         	movff	??_gpio_port_direction_intialize+1,fsr2h
+   586   001268  C02B  FFDF         	movff	gpio_port_direction_intialize@direction,indf2
+   587   00126C                     l1374:
+   588                           
+   589                           ;MCAL_Layer/GPIO/hal_gpio.c: 162:         return ret ;
+   590   00126C  502E               	movf	gpio_port_direction_intialize@ret^0,w,c
+   591   00126E  0012               	return		;funcret
+   592   001270                     __end_of_gpio_port_direction_intialize:
+   593                           	callstack 0
+   594                           
+   595 ;; *************** function ___awmod *****************
+   596 ;; Defined at:
+   597 ;;		line 7 in file "C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\awmod.c"
+   598 ;; Parameters:    Size  Location     Type
+   599 ;;  dividend        2    0[COMRAM] int 
+   600 ;;  divisor         2    2[COMRAM] int 
+   601 ;; Auto vars:     Size  Location     Type
+   602 ;;  sign            1    5[COMRAM] unsigned char 
+   603 ;;  counter         1    4[COMRAM] unsigned char 
+   604 ;; Return value:  Size  Location     Type
+   605 ;;                  2    0[COMRAM] int 
+   606 ;; Registers used:
+   607 ;;		wreg, status,2, status,0
+   608 ;; Tracked objects:
+   609 ;;		On entry : 0/0
+   610 ;;		On exit  : 0/0
+   611 ;;		Unchanged: 0/0
+   612 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   613 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   614 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   615 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   616 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   617 ;;Total ram usage:        6 bytes
+   618 ;; Hardware stack levels used: 1
+   619 ;; This function calls:
+   620 ;;		Nothing
+   621 ;; This function is called by:
+   622 ;;		_main
+   623 ;; This function uses a non-reentrant model
+   624 ;;
+   625                           
+   626                           	psect	text4
+   627   0010C6                     __ptext4:
+   628                           	callstack 0
+   629   0010C6                     ___awmod:
+   630                           	callstack 30
+   631   0010C6  0E00               	movlw	0
+   632   0010C8  6E30               	movwf	___awmod@sign^0,c
+   633   0010CA  BE2C               	btfsc	(___awmod@dividend+1)^0,7,c
+   634   0010CC  EF6C  F008         	goto	u760
+   635   0010D0  EF6A  F008         	goto	u761
+   636   0010D4                     u761:
+   637   0010D4  EF72  F008         	goto	l1444
+   638   0010D8                     u760:
+   639   0010D8  6C2B               	negf	___awmod@dividend^0,c
+   640   0010DA  1E2C               	comf	(___awmod@dividend+1)^0,f,c
+   641   0010DC  B0D8               	btfsc	status,0,c
+   642   0010DE  2A2C               	incf	(___awmod@dividend+1)^0,f,c
+   643   0010E0  0E01               	movlw	1
+   644   0010E2  6E30               	movwf	___awmod@sign^0,c
+   645   0010E4                     l1444:
+   646   0010E4  BE2E               	btfsc	(___awmod@divisor+1)^0,7,c
+   647   0010E6  EF79  F008         	goto	u770
+   648   0010EA  EF77  F008         	goto	u771
+   649   0010EE                     u771:
+   650   0010EE  EF7D  F008         	goto	l1448
+   651   0010F2                     u770:
+   652   0010F2  6C2D               	negf	___awmod@divisor^0,c
+   653   0010F4  1E2E               	comf	(___awmod@divisor+1)^0,f,c
+   654   0010F6  B0D8               	btfsc	status,0,c
+   655   0010F8  2A2E               	incf	(___awmod@divisor+1)^0,f,c
+   656   0010FA                     l1448:
+   657   0010FA  502D               	movf	___awmod@divisor^0,w,c
+   658   0010FC  102E               	iorwf	(___awmod@divisor+1)^0,w,c
+   659   0010FE  B4D8               	btfsc	status,2,c
+   660   001100  EF84  F008         	goto	u781
+   661   001104  EF86  F008         	goto	u780
+   662   001108                     u781:
+   663   001108  EFAA  F008         	goto	l1464
+   664   00110C                     u780:
+   665   00110C  0E01               	movlw	1
+   666   00110E  6E2F               	movwf	___awmod@counter^0,c
+   667   001110  EF8E  F008         	goto	l1454
+   668   001114                     l1452:
+   669   001114  90D8               	bcf	status,0,c
+   670   001116  362D               	rlcf	___awmod@divisor^0,f,c
+   671   001118  362E               	rlcf	(___awmod@divisor+1)^0,f,c
+   672   00111A  2A2F               	incf	___awmod@counter^0,f,c
+   673   00111C                     l1454:
+   674   00111C  AE2E               	btfss	(___awmod@divisor+1)^0,7,c
+   675   00111E  EF93  F008         	goto	u791
+   676   001122  EF95  F008         	goto	u790
+   677   001126                     u791:
+   678   001126  EF8A  F008         	goto	l1452
+   679   00112A                     u790:
+   680   00112A                     l1456:
+   681   00112A  502D               	movf	___awmod@divisor^0,w,c
+   682   00112C  5C2B               	subwf	___awmod@dividend^0,w,c
+   683   00112E  502E               	movf	(___awmod@divisor+1)^0,w,c
+   684   001130  582C               	subwfb	(___awmod@dividend+1)^0,w,c
+   685   001132  A0D8               	btfss	status,0,c
+   686   001134  EF9E  F008         	goto	u801
+   687   001138  EFA0  F008         	goto	u800
+   688   00113C                     u801:
+   689   00113C  EFA4  F008         	goto	l1460
+   690   001140                     u800:
+   691   001140  502D               	movf	___awmod@divisor^0,w,c
+   692   001142  5E2B               	subwf	___awmod@dividend^0,f,c
+   693   001144  502E               	movf	(___awmod@divisor+1)^0,w,c
+   694   001146  5A2C               	subwfb	(___awmod@dividend+1)^0,f,c
+   695   001148                     l1460:
+   696   001148  90D8               	bcf	status,0,c
+   697   00114A  322E               	rrcf	(___awmod@divisor+1)^0,f,c
+   698   00114C  322D               	rrcf	___awmod@divisor^0,f,c
+   699   00114E  2E2F               	decfsz	___awmod@counter^0,f,c
+   700   001150  EF95  F008         	goto	l1456
+   701   001154                     l1464:
+   702   001154  5030               	movf	___awmod@sign^0,w,c
+   703   001156  B4D8               	btfsc	status,2,c
+   704   001158  EFB0  F008         	goto	u811
+   705   00115C  EFB2  F008         	goto	u810
+   706   001160                     u811:
+   707   001160  EFB6  F008         	goto	l1468
+   708   001164                     u810:
+   709   001164  6C2B               	negf	___awmod@dividend^0,c
+   710   001166  1E2C               	comf	(___awmod@dividend+1)^0,f,c
+   711   001168  B0D8               	btfsc	status,0,c
+   712   00116A  2A2C               	incf	(___awmod@dividend+1)^0,f,c
+   713   00116C                     l1468:
+   714   00116C  C02B  F02B         	movff	___awmod@dividend,?___awmod
+   715   001170  C02C  F02C         	movff	___awmod@dividend+1,?___awmod+1
+   716   001174  0012               	return		;funcret
+   717   001176                     __end_of___awmod:
+   718                           	callstack 0
+   719                           
+   720 ;; *************** function ___awdiv *****************
+   721 ;; Defined at:
+   722 ;;		line 7 in file "C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\awdiv.c"
+   723 ;; Parameters:    Size  Location     Type
+   724 ;;  dividend        2    0[COMRAM] int 
+   725 ;;  divisor         2    2[COMRAM] int 
+   726 ;; Auto vars:     Size  Location     Type
+   727 ;;  quotient        2    6[COMRAM] int 
+   728 ;;  sign            1    5[COMRAM] unsigned char 
+   729 ;;  counter         1    4[COMRAM] unsigned char 
+   730 ;; Return value:  Size  Location     Type
+   731 ;;                  2    0[COMRAM] int 
+   732 ;; Registers used:
+   733 ;;		wreg, status,2, status,0
+   734 ;; Tracked objects:
+   735 ;;		On entry : 0/0
+   736 ;;		On exit  : 0/0
+   737 ;;		Unchanged: 0/0
+   738 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   739 ;;      Params:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   740 ;;      Locals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   741 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   742 ;;      Totals:         8       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   743 ;;Total ram usage:        8 bytes
+   744 ;; Hardware stack levels used: 1
+   745 ;; This function calls:
+   746 ;;		Nothing
+   747 ;; This function is called by:
+   748 ;;		_main
+   749 ;; This function uses a non-reentrant model
+   750 ;;
+   751                           
+   752                           	psect	text5
+   753   001002                     __ptext5:
+   754                           	callstack 0
+   755   001002                     ___awdiv:
+   756                           	callstack 30
+   757   001002  0E00               	movlw	0
+   758   001004  6E30               	movwf	___awdiv@sign^0,c
+   759   001006  BE2E               	btfsc	(___awdiv@divisor+1)^0,7,c
+   760   001008  EF0A  F008         	goto	u700
+   761   00100C  EF08  F008         	goto	u701
+   762   001010                     u701:
+   763   001010  EF10  F008         	goto	l1400
+   764   001014                     u700:
+   765   001014  6C2D               	negf	___awdiv@divisor^0,c
+   766   001016  1E2E               	comf	(___awdiv@divisor+1)^0,f,c
+   767   001018  B0D8               	btfsc	status,0,c
+   768   00101A  2A2E               	incf	(___awdiv@divisor+1)^0,f,c
+   769   00101C  0E01               	movlw	1
+   770   00101E  6E30               	movwf	___awdiv@sign^0,c
+   771   001020                     l1400:
+   772   001020  BE2C               	btfsc	(___awdiv@dividend+1)^0,7,c
+   773   001022  EF17  F008         	goto	u710
+   774   001026  EF15  F008         	goto	u711
+   775   00102A                     u711:
+   776   00102A  EF1D  F008         	goto	l1406
+   777   00102E                     u710:
+   778   00102E  6C2B               	negf	___awdiv@dividend^0,c
+   779   001030  1E2C               	comf	(___awdiv@dividend+1)^0,f,c
+   780   001032  B0D8               	btfsc	status,0,c
+   781   001034  2A2C               	incf	(___awdiv@dividend+1)^0,f,c
+   782   001036  0E01               	movlw	1
+   783   001038  1A30               	xorwf	___awdiv@sign^0,f,c
+   784   00103A                     l1406:
+   785   00103A  0E00               	movlw	0
+   786   00103C  6E32               	movwf	(___awdiv@quotient+1)^0,c
+   787   00103E  0E00               	movlw	0
+   788   001040  6E31               	movwf	___awdiv@quotient^0,c
+   789   001042  502D               	movf	___awdiv@divisor^0,w,c
+   790   001044  102E               	iorwf	(___awdiv@divisor+1)^0,w,c
+   791   001046  B4D8               	btfsc	status,2,c
+   792   001048  EF28  F008         	goto	u721
+   793   00104C  EF2A  F008         	goto	u720
+   794   001050                     u721:
+   795   001050  EF52  F008         	goto	l1428
+   796   001054                     u720:
+   797   001054  0E01               	movlw	1
+   798   001056  6E2F               	movwf	___awdiv@counter^0,c
+   799   001058  EF32  F008         	goto	l1414
+   800   00105C                     l1412:
+   801   00105C  90D8               	bcf	status,0,c
+   802   00105E  362D               	rlcf	___awdiv@divisor^0,f,c
+   803   001060  362E               	rlcf	(___awdiv@divisor+1)^0,f,c
+   804   001062  2A2F               	incf	___awdiv@counter^0,f,c
+   805   001064                     l1414:
+   806   001064  AE2E               	btfss	(___awdiv@divisor+1)^0,7,c
+   807   001066  EF37  F008         	goto	u731
+   808   00106A  EF39  F008         	goto	u730
+   809   00106E                     u731:
+   810   00106E  EF2E  F008         	goto	l1412
+   811   001072                     u730:
+   812   001072                     l1416:
+   813   001072  90D8               	bcf	status,0,c
+   814   001074  3631               	rlcf	___awdiv@quotient^0,f,c
+   815   001076  3632               	rlcf	(___awdiv@quotient+1)^0,f,c
+   816   001078  502D               	movf	___awdiv@divisor^0,w,c
+   817   00107A  5C2B               	subwf	___awdiv@dividend^0,w,c
+   818   00107C  502E               	movf	(___awdiv@divisor+1)^0,w,c
+   819   00107E  582C               	subwfb	(___awdiv@dividend+1)^0,w,c
+   820   001080  A0D8               	btfss	status,0,c
+   821   001082  EF45  F008         	goto	u741
+   822   001086  EF47  F008         	goto	u740
+   823   00108A                     u741:
+   824   00108A  EF4C  F008         	goto	l1424
+   825   00108E                     u740:
+   826   00108E  502D               	movf	___awdiv@divisor^0,w,c
+   827   001090  5E2B               	subwf	___awdiv@dividend^0,f,c
+   828   001092  502E               	movf	(___awdiv@divisor+1)^0,w,c
+   829   001094  5A2C               	subwfb	(___awdiv@dividend+1)^0,f,c
+   830   001096  8031               	bsf	___awdiv@quotient^0,0,c
+   831   001098                     l1424:
+   832   001098  90D8               	bcf	status,0,c
+   833   00109A  322E               	rrcf	(___awdiv@divisor+1)^0,f,c
+   834   00109C  322D               	rrcf	___awdiv@divisor^0,f,c
+   835   00109E  2E2F               	decfsz	___awdiv@counter^0,f,c
+   836   0010A0  EF39  F008         	goto	l1416
+   837   0010A4                     l1428:
+   838   0010A4  5030               	movf	___awdiv@sign^0,w,c
+   839   0010A6  B4D8               	btfsc	status,2,c
+   840   0010A8  EF58  F008         	goto	u751
+   841   0010AC  EF5A  F008         	goto	u750
+   842   0010B0                     u751:
+   843   0010B0  EF5E  F008         	goto	l1432
+   844   0010B4                     u750:
+   845   0010B4  6C31               	negf	___awdiv@quotient^0,c
+   846   0010B6  1E32               	comf	(___awdiv@quotient+1)^0,f,c
+   847   0010B8  B0D8               	btfsc	status,0,c
+   848   0010BA  2A32               	incf	(___awdiv@quotient+1)^0,f,c
+   849   0010BC                     l1432:
+   850   0010BC  C031  F02B         	movff	___awdiv@quotient,?___awdiv
+   851   0010C0  C032  F02C         	movff	___awdiv@quotient+1,?___awdiv+1
+   852   0010C4  0012               	return		;funcret
+   853   0010C6                     __end_of___awdiv:
+   854                           	callstack 0
+   855                           
+   856                           	psect	smallconst
+   857   001000                     __psmallconst:
+   858                           	callstack 0
+   859   001000  00                 	db	0
+   860   001001  00                 	db	0	; dummy byte at the end
+   861   000000                     
+   862                           	psect	rparam
+   863   000000                     
+   864                           	psect	config
+   865                           
+   866                           ; Padding undefined space
+   867   300000                     	org	3145728
+   868   300000  FF                 	db	255
+   869                           
+   870                           ;Config register CONFIG1H @ 0x300001
+   871                           ;	Oscillator Selection bits
+   872                           ;	OSC = HS, HS oscillator
+   873                           ;	Fail-Safe Clock Monitor Enable bit
+   874                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+   875                           ;	Internal/External Oscillator Switchover bit
+   876                           ;	IESO = OFF, Oscillator Switchover mode disabled
+   877   300001                     	org	3145729
+   878   300001  02                 	db	2
+   879                           
+   880                           ;Config register CONFIG2L @ 0x300002
+   881                           ;	Power-up Timer Enable bit
+   882                           ;	PWRT = OFF, PWRT disabled
+   883                           ;	Brown-out Reset Enable bits
+   884                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
+   885                           ;	Brown Out Reset Voltage bits
+   886                           ;	BORV = 1, 
+   887   300002                     	org	3145730
+   888   300002  09                 	db	9
+   889                           
+   890                           ;Config register CONFIG2H @ 0x300003
+   891                           ;	Watchdog Timer Enable bit
+   892                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+   893                           ;	Watchdog Timer Postscale Select bits
+   894                           ;	WDTPS = 32768, 1:32768
+   895   300003                     	org	3145731
+   896   300003  1E                 	db	30
+   897                           
+   898                           ; Padding undefined space
+   899   300004                     	org	3145732
+   900   300004  FF                 	db	255
+   901                           
+   902                           ;Config register CONFIG3H @ 0x300005
+   903                           ;	CCP2 MUX bit
+   904                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+   905                           ;	PORTB A/D Enable bit
+   906                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+   907                           ;	Low-Power Timer1 Oscillator Enable bit
+   908                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+   909                           ;	MCLR Pin Enable bit
+   910                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+   911   300005                     	org	3145733
+   912   300005  81                 	db	129
+   913                           
+   914                           ;Config register CONFIG4L @ 0x300006
+   915                           ;	Stack Full/Underflow Reset Enable bit
+   916                           ;	STVREN = ON, Stack full/underflow will cause Reset
+   917                           ;	Single-Supply ICSP Enable bit
+   918                           ;	LVP = OFF, Single-Supply ICSP disabled
+   919                           ;	Extended Instruction Set Enable bit
+   920                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+   921                           ;	Background Debugger Enable bit
+   922                           ;	DEBUG = 0x1, unprogrammed default
+   923   300006                     	org	3145734
+   924   300006  81                 	db	129
+   925                           
+   926                           ; Padding undefined space
+   927   300007                     	org	3145735
+   928   300007  FF                 	db	255
+   929                           
+   930                           ;Config register CONFIG5L @ 0x300008
+   931                           ;	Code Protection bit
+   932                           ;	CP0 = OFF, Block 0 (000800-003FFFh) not code-protected
+   933                           ;	Code Protection bit
+   934                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
+   935                           ;	Code Protection bit
+   936                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
+   937                           ;	Code Protection bit
+   938                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
+   939   300008                     	org	3145736
+   940   300008  0F                 	db	15
+   941                           
+   942                           ;Config register CONFIG5H @ 0x300009
+   943                           ;	Boot Block Code Protection bit
+   944                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+   945                           ;	Data EEPROM Code Protection bit
+   946                           ;	CPD = OFF, Data EEPROM not code-protected
+   947   300009                     	org	3145737
+   948   300009  C0                 	db	192
+   949                           
+   950                           ;Config register CONFIG6L @ 0x30000A
+   951                           ;	Write Protection bit
+   952                           ;	WRT0 = OFF, Block 0 (000800-003FFFh) not write-protected
+   953                           ;	Write Protection bit
+   954                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
+   955                           ;	Write Protection bit
+   956                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
+   957                           ;	Write Protection bit
+   958                           ;	WRT3 = OFF, Block 3 (00C000-00FFFFh) not write-protected
+   959   30000A                     	org	3145738
+   960   30000A  0F                 	db	15
+   961                           
+   962                           ;Config register CONFIG6H @ 0x30000B
+   963                           ;	Configuration Register Write Protection bit
+   964                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+   965                           ;	Boot Block Write Protection bit
+   966                           ;	WRTB = OFF, Boot Block (000000-0007FFh) not write-protected
+   967                           ;	Data EEPROM Write Protection bit
+   968                           ;	WRTD = OFF, Data EEPROM not write-protected
+   969   30000B                     	org	3145739
+   970   30000B  E0                 	db	224
+   971                           
+   972                           ;Config register CONFIG7L @ 0x30000C
+   973                           ;	Table Read Protection bit
+   974                           ;	EBTR0 = OFF, Block 0 (000800-003FFFh) not protected from table reads executed in other
+      +                           blocks
+   975                           ;	Table Read Protection bit
+   976                           ;	EBTR1 = OFF, Block 1 (004000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+   977                           ;	Table Read Protection bit
+   978                           ;	EBTR2 = OFF, Block 2 (008000-00BFFFh) not protected from table reads executed in other
+      +                           blocks
+   979                           ;	Table Read Protection bit
+   980                           ;	EBTR3 = OFF, Block 3 (00C000-00FFFFh) not protected from table reads executed in other
+      +                           blocks
+   981   30000C                     	org	3145740
+   982   30000C  0F                 	db	15
+   983                           
+   984                           ;Config register CONFIG7H @ 0x30000D
+   985                           ;	Boot Block Table Read Protection bit
+   986                           ;	EBTRB = OFF, Boot Block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+   987   30000D                     	org	3145741
+   988   30000D  40                 	db	64
+   989                           tosu	equ	0xFFF
+   990                           tosh	equ	0xFFE
+   991                           tosl	equ	0xFFD
+   992                           stkptr	equ	0xFFC
+   993                           pclatu	equ	0xFFB
+   994                           pclath	equ	0xFFA
+   995                           pcl	equ	0xFF9
+   996                           tblptru	equ	0xFF8
+   997                           tblptrh	equ	0xFF7
+   998                           tblptrl	equ	0xFF6
+   999                           tablat	equ	0xFF5
+  1000                           prodh	equ	0xFF4
+  1001                           prodl	equ	0xFF3
+  1002                           indf0	equ	0xFEF
+  1003                           postinc0	equ	0xFEE
+  1004                           postdec0	equ	0xFED
+  1005                           preinc0	equ	0xFEC
+  1006                           plusw0	equ	0xFEB
+  1007                           fsr0h	equ	0xFEA
+  1008                           fsr0l	equ	0xFE9
+  1009                           wreg	equ	0xFE8
+  1010                           indf1	equ	0xFE7
+  1011                           postinc1	equ	0xFE6
+  1012                           postdec1	equ	0xFE5
+  1013                           preinc1	equ	0xFE4
+  1014                           plusw1	equ	0xFE3
+  1015                           fsr1h	equ	0xFE2
+  1016                           fsr1l	equ	0xFE1
+  1017                           bsr	equ	0xFE0
+  1018                           indf2	equ	0xFDF
+  1019                           postinc2	equ	0xFDE
+  1020                           postdec2	equ	0xFDD
+  1021                           preinc2	equ	0xFDC
+  1022                           plusw2	equ	0xFDB
+  1023                           fsr2h	equ	0xFDA
+  1024                           fsr2l	equ	0xFD9
+  1025                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        30
+    BSS         12
+    Persistent  2
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          127     10      54
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          256      0       0
+    BANK15          128      0       0
+
+Pointer List with Targets:
+
+    lat_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> LATA(BITBIGSFRll[1]), LATB(BITBIGSFRlh[1]), LATC(BITBIGSFRlh[1]), LATD(BITBIGSFRlh[1]), 
+		 -> LATE(BITBIGSFRlh[1]), 
+
+    port_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> PORTA(BITBIGSFRll[1]), PORTB(BITBIGSFRll[1]), PORTC(BITBIGSFRll[1]), PORTD(BITBIGSFRll[1]), 
+		 -> PORTE(BITBIGSFRll[1]), 
+
+    tris_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> TRISA(BITBIGSFRll[1]), TRISB(BITBIGSFRh[1]), TRISC(BITBIGSFRh[1]), TRISD(BITBIGSFRh[1]), 
+		 -> TRISE(BITBIGSFRh[1]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->___awdiv
+    _application_intialize->_gpio_port_direction_intialize
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0    1232
+                                              8 COMRAM     2     2      0
+                            ___awdiv
+                            ___awmod
+              _application_intialize
+              _gpio_port_write_logic
+ ---------------------------------------------------------------------------------
+ (1) _gpio_port_write_logic                                5     4      1     166
+                                              0 COMRAM     5     4      1
+ ---------------------------------------------------------------------------------
+ (1) _application_intialize                                0     0      0     166
+      _gpio_port_direction_intialize
+ ---------------------------------------------------------------------------------
+ (2) _gpio_port_direction_intialize                        5     4      1     166
+                                              0 COMRAM     5     4      1
+ ---------------------------------------------------------------------------------
+ (1) ___awmod                                              6     2      4     448
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ (1) ___awdiv                                              8     4      4     452
+                                              0 COMRAM     8     4      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___awdiv
+   ___awmod
+   _application_intialize
+     _gpio_port_direction_intialize
+   _gpio_port_write_logic
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             F7F      0       0      40        0.0%
+EEDATA             400      0       0       0        0.0%
+BITBANK14          100      0       0      32        0.0%
+BANK14             100      0       0      33        0.0%
+BITBANK13          100      0       0      30        0.0%
+BANK13             100      0       0      31        0.0%
+BITBANK12          100      0       0      28        0.0%
+BANK12             100      0       0      29        0.0%
+BITBANK11          100      0       0      26        0.0%
+BANK11             100      0       0      27        0.0%
+BITBANK10          100      0       0      24        0.0%
+BANK10             100      0       0      25        0.0%
+BITBANK9           100      0       0      22        0.0%
+BANK9              100      0       0      23        0.0%
+BITBANK8           100      0       0      20        0.0%
+BANK8              100      0       0      21        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK15           80      0       0      34        0.0%
+BANK15              80      0       0      35        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7F      0       0       0        0.0%
+COMRAM              7F      A      36       1       42.5%
+BITBIGSFRh          69      0       0      36        0.0%
+BITBIGSFRlh          4      0       0      37        0.0%
+BITBIGSFRll          4      0       0      38        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      36      39        0.0%
+DATA                 0      0      36       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Thu May 09 21:41:46 2024
+
+                          ___awdiv@sign 0030                                     l230 12D0  
+                                   l176 126E                                     l505 1174  
+                                   l188 122C                                     l492 10C4  
+                                   u700 1014                                     u701 1010  
+                                   u710 102E                                     u711 102A  
+                                   u720 1054                                     u800 1140  
+                                   u721 1050                                     u801 113C  
+                                   u730 1072                                     u810 1164  
+                                   u731 106E                                     u811 1160  
+                                   u740 108E                                     u820 11E0  
+                                   u741 108A                                     u821 11DC  
+                                   u750 10B4                                     u751 10B0  
+                                   u760 10D8                                     u680 1244  
+                                   u761 10D4                                     u681 1240  
+                                   u770 10F2                                     u690 1202  
+                                   u771 10EE                                     u691 11FE  
+                                   u780 110C                                     u781 1108  
+                                   u837 11C6                                     u790 112A  
+                                   u791 1126                                     _ret 0036  
+                          ___awmod@sign 0030                                     wreg 0FE8  
+                                  l1400 1020                                    l1410 1054  
+                                  l1402 102E                                    l1420 108E  
+                                  l1412 105C                                    l1404 1036  
+                                  l1430 10B4                                    l1422 1096  
+                                  l1414 1064                                    l1406 103A  
+                                  l1432 10BC                                    l1424 1098  
+                                  l1416 1072                                    l1408 1042  
+                                  l1440 10D8                                    l1426 109E  
+                                  l1418 1078                                    l1450 110C  
+                                  l1442 10E0                                    l1370 1244  
+                                  l1428 10A4                                    l1460 1148  
+                                  l1452 1114                                    l1444 10E4  
+                                  l1436 10C6                                    l1372 124C  
+                                  l1380 11F2                                    l1462 114E  
+                                  l1454 111C                                    l1446 10F2  
+                                  l1438 10CA                                    l1374 126C  
+                                  l1366 1230                                    l1390 12C4  
+                                  l1382 1202                                    l1392 1002  
+                                  l1456 112A                                    l1464 1154  
+                                  l1448 10FA                                    l1368 1234  
+                                  l1384 120A                                    l1480 11C0  
+                                  l1472 1176                                    l1394 1006  
+                                  l1466 1164                                    l1458 1140  
+                                  l1386 122A                                    l1378 11EE  
+                                  l1482 11D0                                    l1474 117A  
+                                  l1396 1014                                    l1468 116C  
+                                  l1484 11E0                                    l1476 11B2  
+                                  l1398 101C                                    l1478 11BE  
+                                  _LATA 0F89                                    _LATB 0F8A  
+                                  _LATC 0F8B                                    _LATD 0F8C  
+                                  _LATE 0F8D                 ??_application_intialize 0030  
+                                  _main 1176                                    _ones 0022  
+                                  _tens 0021                                    fsr2h 0FDA  
+                                  indf2 0FDF                                    fsr1l 0FE1  
+                                  fsr2l 0FD9                                    prodl 0FF3  
+                                  start 0000                            ___param_bank 0000  
+                 _gpio_port_write_logic 11EC                                   ?_main 002B  
+                       __end_of___awdiv 10C6                         __end_of___awmod 1176  
+                       ___awdiv@divisor 002D                         ___awdiv@counter 002F  
+                   relay_turn_off@F2578 0024                                   _PORTA 0F80  
+                                 _PORTB 0F81                                   _PORTC 0F82  
+                                 _PORTD 0F83                                   _PORTE 0F84  
+                                 _TRISA 0F92                                   _TRISB 0F93  
+                                 _TRISC 0F94                                   _TRISD 0F95  
+                                 _TRISE 0F96                                   tablat 0FF5  
+                                 status 0FD8  gpio_port_direction_intialize@direction 002B  
+                       __initialization 1270                            __end_of_main 11EC  
+                         _lat_registers 000B                                  ??_main 0033  
+                         __activetblptr 0002                        led_turn_on@F2579 0029  
+        ?_gpio_port_direction_intialize 002B                        ___awdiv@dividend 002B  
+             gpio_port_write_logic@port 002F                  ?_gpio_port_write_logic 002B  
+                             ??___awdiv 002F                               ??___awmod 002F  
+                                clear_0 1296                        ___awdiv@quotient 0031  
+                       ___awmod@divisor 002D                                  isa$std 0001  
+                                _number 0023                         ___awmod@counter 002F  
+                          __pdataCOMRAM 0001                            __mediumconst 0000  
+                                tblptrh 0FF7                                  tblptrl 0FF6  
+                                tblptru 0FF8                              __accesstop 0080  
+               __end_of__initialization 129C                           ___rparam_used 0001  
+                        __pcstackCOMRAM 002B                gpio_port_write_logic@ret 002E  
+                            __pnvCOMRAM 0035           __end_of_application_intialize 12D2  
+                  relay_intialize@F2568 0026                       led_turn_off@F2584 0028  
+                  led_turn_toggle@F2589 0027                          _tris_registers 0015  
+                               __Hparam 0000                                 __Lparam 0000  
+                               ___awdiv 1002                                 ___awmod 10C6  
+                          __psmallconst 1000                                 __pcinit 1270  
+                               __ramtop 1000                                 __ptext0 1176  
+                               __ptext1 11EC                                 __ptext2 12C4  
+                               __ptext3 122E                                 __ptext4 10C6  
+                               __ptext5 1002                        ___awmod@dividend 002B  
+                  end_of_initialization 129C                           __Lmediumconst 0000  
+       ??_gpio_port_direction_intialize 002C                 ??_gpio_port_write_logic 002C  
+                               postdec1 0FE5                                 postdec2 0FDD  
+                               postinc0 0FEE                                 postinc2 0FDE  
+                            _motor_pin1 0020                              _motor_pin2 001F  
+                            _number_bcd 0035                      relay_turn_on@F2573 0025  
+                         __pidataCOMRAM 12A6                     start_initialization 1270  
+ __end_of_gpio_port_direction_intialize 1270           _gpio_port_direction_intialize 122E  
+     gpio_port_direction_intialize@port 002F                             __pbssCOMRAM 001F  
+                 _application_intialize 12C4                                ?___awdiv 002B  
+                              ?___awmod 002B                             __smallconst 1000  
+         __end_of_gpio_port_write_logic 122E                               copy_data0 1284  
+                ?_application_intialize 002B                                __Hrparam 0000  
+                              __Lrparam 0000        gpio_port_direction_intialize@ret 002E  
+                    led_intialize@F2574 002A                                isa$xinst 0000  
+                        _port_registers 0001              gpio_port_write_logic@logic 002B  
