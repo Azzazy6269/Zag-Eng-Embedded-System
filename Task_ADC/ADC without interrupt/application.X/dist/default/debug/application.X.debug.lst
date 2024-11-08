@@ -1,0 +1,3042 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Fri Nov 08 20:58:27 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4620
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	idataCOMRAM,global,class=CODE,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	bssCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	dataCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     9                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+    10                           	psect	text0,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text3,global,reloc=2,class=CODE,delta=1,inline
+    14                           	psect	text4,global,reloc=2,class=CODE,delta=1,inline
+    15                           	psect	text5,global,reloc=2,class=CODE,delta=1
+    16                           	psect	text6,global,reloc=2,class=CODE,delta=1
+    17                           	psect	text7,global,reloc=2,class=CODE,delta=1
+    18                           	psect	text8,global,reloc=2,class=CODE,delta=1,inline
+    19                           	psect	text9,global,reloc=2,class=CODE,delta=1
+    20                           	psect	intcode,global,reloc=2,class=CODE,delta=1
+    21                           	psect	intcode_body,global,reloc=2,class=CODE,delta=1
+    22                           	psect	text11,global,reloc=2,class=CODE,delta=1
+    23                           	psect	text12,global,reloc=2,class=CODE,delta=1
+    24                           	psect	text13,global,reloc=2,class=CODE,delta=1
+    25                           	psect	text14,global,reloc=2,class=CODE,delta=1
+    26                           	psect	text15,global,reloc=2,class=CODE,delta=1
+    27                           	psect	text16,global,reloc=2,class=CODE,delta=1
+    28                           	psect	text17,global,reloc=2,class=CODE,delta=1
+    29                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+    30                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    31                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    32                           	psect	temp,global,ovrld,common,class=COMRAM,space=1,delta=1,lowdata
+    33                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=1,noexec
+    34   000000                     
+    35                           ; Generated 17/10/2023 GMT
+    36                           ; 
+    37                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    38                           ; All rights reserved.
+    39                           ; 
+    40                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    41                           ; 
+    42                           ; Redistribution and use in source and binary forms, with or without modification, are
+    43                           ; permitted provided that the following conditions are met:
+    44                           ; 
+    45                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    46                           ;        conditions and the following disclaimer.
+    47                           ; 
+    48                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    49                           ;        of conditions and the following disclaimer in the documentation and/or other
+    50                           ;        materials provided with the distribution. Publication is not required when
+    51                           ;        this file is used in an embedded application.
+    52                           ; 
+    53                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    54                           ;        software without specific prior written permission.
+    55                           ; 
+    56                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    57                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    58                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    59                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    60                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    61                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    62                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    63                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    64                           ; 
+    65                           ; 
+    66                           ; Code-generator required, PIC18F4620 Definitions
+    67                           ; 
+    68                           ; SFR Addresses
+    69   000000                     
+    70                           	psect	idataCOMRAM
+    71   001644                     __pidataCOMRAM:
+    72                           	callstack 0
+    73                           
+    74                           ;initializer for _port_registers
+    75   001644  80                 	db	128
+    76   001645  0F                 	db	15
+    77   001646  81                 	db	129
+    78   001647  0F                 	db	15
+    79   001648  82                 	db	130
+    80   001649  0F                 	db	15
+    81   00164A  83                 	db	131
+    82   00164B  0F                 	db	15
+    83   00164C  84                 	db	132
+    84   00164D  0F                 	db	15
+    85                           
+    86                           ;initializer for _lat_registers
+    87   00164E  89                 	db	137
+    88   00164F  0F                 	db	15
+    89   001650  8A                 	db	138
+    90   001651  0F                 	db	15
+    91   001652  8B                 	db	139
+    92   001653  0F                 	db	15
+    93   001654  8C                 	db	140
+    94   001655  0F                 	db	15
+    95   001656  8D                 	db	141
+    96   001657  0F                 	db	15
+    97                           
+    98                           ;initializer for _tris_registers
+    99   001658  92                 	db	146
+   100   001659  0F                 	db	15
+   101   00165A  93                 	db	147
+   102   00165B  0F                 	db	15
+   103   00165C  94                 	db	148
+   104   00165D  0F                 	db	15
+   105   00165E  95                 	db	149
+   106   00165F  0F                 	db	15
+   107   001660  96                 	db	150
+   108   001661  0F                 	db	15
+   109                           
+   110                           ;initializer for _RB7_Flag
+   111   001662  01                 	db	1
+   112                           
+   113                           ;initializer for _RB6_Flag
+   114   001663  01                 	db	1
+   115                           
+   116                           ;initializer for _RB5_Flag
+   117   001664  01                 	db	1
+   118                           
+   119                           ;initializer for _RB4_Flag
+   120   001665  01                 	db	1
+   121                           
+   122                           ;initializer for _adc1
+   123   001666  05                 	db	5
+   124   001667  05                 	db	5
+   125   001668  00                 	db	0
+   126   001669  02                 	db	2
+   127   000000                     _INTCON2bits	set	4081
+   128   000000                     _EECON2	set	4007
+   129   000000                     _ADCON1bits	set	4033
+   130   000000                     _ADRESL	set	4035
+   131   000000                     _ADRESH	set	4036
+   132   000000                     _TRISD	set	3989
+   133   000000                     _TRISC	set	3988
+   134   000000                     _TRISB	set	3987
+   135   000000                     _TRISE	set	3990
+   136   000000                     _PORTBbits	set	3969
+   137   000000                     _ADCON2bits	set	4032
+   138   000000                     _ADCON0bits	set	4034
+   139   000000                     _PORTE	set	3972
+   140   000000                     _PORTD	set	3971
+   141   000000                     _PORTC	set	3970
+   142   000000                     _PORTB	set	3969
+   143   000000                     _PORTA	set	3968
+   144   000000                     _LATA	set	3977
+   145   000000                     _TRISA	set	3986
+   146   000000                     _INTCON3bits	set	4080
+   147   000000                     _INTCONbits	set	4082
+   148   000000                     _EECON1bits	set	4006
+   149   000000                     _EEDATA	set	4008
+   150   000000                     _EEADR	set	4009
+   151   000000                     _EEADRH	set	4010
+   152   000000                     _LATE	set	3981
+   153   000000                     _LATD	set	3980
+   154   000000                     _LATC	set	3979
+   155   000000                     _LATB	set	3978
+   156                           
+   157                           ; #config settings
+   158                           
+   159                           	psect	cinit
+   160   001598                     __pcinit:
+   161                           	callstack 0
+   162   001598                     start_initialization:
+   163                           	callstack 0
+   164   001598                     __initialization:
+   165                           	callstack 0
+   166                           
+   167                           ; Initialize objects allocated to COMRAM (38 bytes)
+   168                           ; load TBLPTR registers with __pidataCOMRAM
+   169   001598  0E44               	movlw	low __pidataCOMRAM
+   170   00159A  6EF6               	movwf	tblptrl,c
+   171   00159C  0E16               	movlw	high __pidataCOMRAM
+   172   00159E  6EF7               	movwf	tblptrh,c
+   173   0015A0  0E00               	movlw	low (__pidataCOMRAM shr (0+16))
+   174   0015A2  6EF8               	movwf	tblptru,c
+   175   0015A4  EE00  F001         	lfsr	0,__pdataCOMRAM
+   176   0015A8  EE10 F026          	lfsr	1,38
+   177   0015AC                     copy_data0:
+   178   0015AC  0009               	tblrd		*+
+   179   0015AE  CFF5 FFEE          	movff	tablat,postinc0
+   180   0015B2  50E5               	movf	postdec1,w,c
+   181   0015B4  50E1               	movf	fsr1l,w,c
+   182   0015B6  E1FA               	bnz	copy_data0
+   183                           
+   184                           ; Clear objects allocated to COMRAM (30 bytes)
+   185   0015B8  EE00  F027         	lfsr	0,__pbssCOMRAM
+   186   0015BC  0E1E               	movlw	30
+   187   0015BE                     clear_0:
+   188   0015BE  6AEE               	clrf	postinc0,c
+   189   0015C0  06E8               	decf	wreg,f,c
+   190   0015C2  E1FD               	bnz	clear_0
+   191   0015C4                     end_of_initialization:
+   192                           	callstack 0
+   193   0015C4                     __end_of__initialization:
+   194                           	callstack 0
+   195   0015C4  9052               	bcf	int$flags,0,c	;clear compiler interrupt flag (level 1)
+   196   0015C6  9252               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+   197   0015C8  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   198   0015CA  6EF8               	movwf	tblptru,c
+   199   0015CC  0100               	movlb	0
+   200   0015CE  EF87  F00A         	goto	_main	;jump to C main() function
+   201                           
+   202                           	psect	bssCOMRAM
+   203   000027                     __pbssCOMRAM:
+   204                           	callstack 0
+   205   000027                     _RB7_InterruptHandlerLow:
+   206                           	callstack 0
+   207   000027                     	ds	2
+   208   000029                     _RB7_InterruptHandlerHigh:
+   209                           	callstack 0
+   210   000029                     	ds	2
+   211   00002B                     _RB6_InterruptHandlerLow:
+   212                           	callstack 0
+   213   00002B                     	ds	2
+   214   00002D                     _RB6_InterruptHandlerHigh:
+   215                           	callstack 0
+   216   00002D                     	ds	2
+   217   00002F                     _RB5_InterruptHandlerLow:
+   218                           	callstack 0
+   219   00002F                     	ds	2
+   220   000031                     _RB5_InterruptHandlerHigh:
+   221                           	callstack 0
+   222   000031                     	ds	2
+   223   000033                     _RB4_InterruptHandlerLow:
+   224                           	callstack 0
+   225   000033                     	ds	2
+   226   000035                     _RB4_InterruptHandlerHigh:
+   227                           	callstack 0
+   228   000035                     	ds	2
+   229   000037                     _INT2_InterruptHandler:
+   230                           	callstack 0
+   231   000037                     	ds	2
+   232   000039                     _INT1_InterruptHandler:
+   233                           	callstack 0
+   234   000039                     	ds	2
+   235   00003B                     _INT0_InterruptHandler:
+   236                           	callstack 0
+   237   00003B                     	ds	2
+   238   00003D                     _adc_res_3:
+   239                           	callstack 0
+   240   00003D                     	ds	2
+   241   00003F                     _adc_res_2:
+   242                           	callstack 0
+   243   00003F                     	ds	2
+   244   000041                     _adc_res_1:
+   245                           	callstack 0
+   246   000041                     	ds	2
+   247   000043                     _adc_res_0:
+   248                           	callstack 0
+   249   000043                     	ds	2
+   250                           
+   251                           	psect	dataCOMRAM
+   252   000001                     __pdataCOMRAM:
+   253                           	callstack 0
+   254   000001                     _port_registers:
+   255                           	callstack 0
+   256   000001                     	ds	10
+   257   00000B                     _lat_registers:
+   258                           	callstack 0
+   259   00000B                     	ds	10
+   260   000015                     _tris_registers:
+   261                           	callstack 0
+   262   000015                     	ds	10
+   263   00001F                     _RB7_Flag:
+   264                           	callstack 0
+   265   00001F                     	ds	1
+   266   000020                     _RB6_Flag:
+   267                           	callstack 0
+   268   000020                     	ds	1
+   269   000021                     _RB5_Flag:
+   270                           	callstack 0
+   271   000021                     	ds	1
+   272   000022                     _RB4_Flag:
+   273                           	callstack 0
+   274   000022                     	ds	1
+   275   000023                     _adc1:
+   276                           	callstack 0
+   277   000023                     	ds	4
+   278                           
+   279                           	psect	cstackCOMRAM
+   280   000045                     __pcstackCOMRAM:
+   281                           	callstack 0
+   282   000045                     RB4_ISR@RB4_source:
+   283                           	callstack 0
+   284   000045                     RB5_ISR@RB5_source:
+   285                           	callstack 0
+   286   000045                     RB6_ISR@RB6_source:
+   287                           	callstack 0
+   288   000045                     RB7_ISR@RB7_source:
+   289                           	callstack 0
+   290                           
+   291                           ; 1 bytes @ 0x0
+   292   000045                     	ds	1
+   293   000046                     ??_adc_input_channel_pin_configure:
+   294   000046                     ADC_StartConversion@_adc:
+   295                           	callstack 0
+   296   000046                     ADC_GetConversionResult@_adc:
+   297                           	callstack 0
+   298   000046                     select_result_format@_adc:
+   299                           	callstack 0
+   300   000046                     configure_voltage_reference@_adc:
+   301                           	callstack 0
+   302                           
+   303                           ; 1 bytes @ 0x1
+   304   000046                     	ds	1
+   305   000047                     ADC_StartConversion@ret:
+   306                           	callstack 0
+   307   000047                     ADC_GetConversionResult@Conversion_result:
+   308                           	callstack 0
+   309                           
+   310                           ; 1 bytes @ 0x2
+   311   000047                     	ds	1
+   312   000048                     ??_ADC_GetConversionResult:
+   313   000048                     adc_input_channel_pin_configure@channel:
+   314                           	callstack 0
+   315                           
+   316                           ; 1 bytes @ 0x3
+   317   000048                     	ds	1
+   318   000049                     ADC_Init@_adc:
+   319                           	callstack 0
+   320   000049                     ADC_SelectChannel@_adc:
+   321                           	callstack 0
+   322                           
+   323                           ; 1 bytes @ 0x4
+   324   000049                     	ds	1
+   325   00004A                     ??_ADC_Init:
+   326   00004A                     ADC_SelectChannel@channel:
+   327                           	callstack 0
+   328                           
+   329                           ; 1 bytes @ 0x5
+   330   00004A                     	ds	1
+   331   00004B                     ??_ADC_SelectChannel:
+   332   00004B                     ADC_Init@ret:
+   333                           	callstack 0
+   334   00004B                     ADC_GetConversionResult@ret:
+   335                           	callstack 0
+   336                           
+   337                           ; 1 bytes @ 0x6
+   338   00004B                     	ds	1
+   339   00004C                     ADC_SelectChannel@ret:
+   340                           	callstack 0
+   341                           
+   342                           ; 1 bytes @ 0x7
+   343   00004C                     	ds	1
+   344   00004D                     ADC_GetConversion_Blocking@_adc:
+   345                           	callstack 0
+   346                           
+   347                           ; 1 bytes @ 0x8
+   348   00004D                     	ds	1
+   349   00004E                     ADC_GetConversion_Blocking@Conversion_result:
+   350                           	callstack 0
+   351                           
+   352                           ; 1 bytes @ 0x9
+   353   00004E                     	ds	1
+   354   00004F                     ADC_GetConversion_Blocking@channel:
+   355                           	callstack 0
+   356                           
+   357                           ; 1 bytes @ 0xA
+   358   00004F                     	ds	1
+   359   000050                     ADC_GetConversion_Blocking@l_conversion_status:
+   360                           	callstack 0
+   361                           
+   362                           ; 1 bytes @ 0xB
+   363   000050                     	ds	1
+   364   000051                     ADC_GetConversion_Blocking@ret:
+   365                           	callstack 0
+   366                           
+   367                           ; 1 bytes @ 0xC
+   368   000051                     	ds	1
+   369   000052                     
+   370                           ; 1 bytes @ 0xD
+   371 ;;
+   372 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   373 ;;
+   374 ;; *************** function _main *****************
+   375 ;; Defined at:
+   376 ;;		line 20 in file "application.c"
+   377 ;; Parameters:    Size  Location     Type
+   378 ;;		None
+   379 ;; Auto vars:     Size  Location     Type
+   380 ;;  ret             1    0        unsigned char 
+   381 ;; Return value:  Size  Location     Type
+   382 ;;                  2  525[None  ] int 
+   383 ;; Registers used:
+   384 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   385 ;; Tracked objects:
+   386 ;;		On entry : 0/0
+   387 ;;		On exit  : 0/0
+   388 ;;		Unchanged: 0/0
+   389 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   390 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   391 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   392 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   393 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   394 ;;Total ram usage:        0 bytes
+   395 ;; Hardware stack levels required when called: 5
+   396 ;; This function calls:
+   397 ;;		_ADC_GetConversion_Blocking
+   398 ;;		_application_intialize
+   399 ;; This function is called by:
+   400 ;;		Startup code after reset
+   401 ;; This function uses a non-reentrant model
+   402 ;;
+   403                           
+   404                           	psect	text0
+   405   00150E                     __ptext0:
+   406                           	callstack 0
+   407   00150E                     _main:
+   408                           	callstack 26
+   409   00150E                     
+   410                           ;application.c: 22:     application_intialize();
+   411   00150E  EC7A  F00B         	call	_application_intialize	;wreg free
+   412   001512                     l2030:
+   413   001512  0E23               	movlw	low _adc1
+   414   001514  6E4D               	movwf	ADC_GetConversion_Blocking@_adc^0,c
+   415   001516  0E43               	movlw	low _adc_res_0
+   416   001518  6E4E               	movwf	ADC_GetConversion_Blocking@Conversion_result^0,c
+   417   00151A  0E00               	movlw	0
+   418   00151C  6E4F               	movwf	ADC_GetConversion_Blocking@channel^0,c
+   419   00151E  EC55  F00A         	call	_ADC_GetConversion_Blocking	;wreg free
+   420   001522  0E23               	movlw	low _adc1
+   421   001524  6E4D               	movwf	ADC_GetConversion_Blocking@_adc^0,c
+   422   001526  0E41               	movlw	low _adc_res_1
+   423   001528  6E4E               	movwf	ADC_GetConversion_Blocking@Conversion_result^0,c
+   424   00152A  0E01               	movlw	1
+   425   00152C  6E4F               	movwf	ADC_GetConversion_Blocking@channel^0,c
+   426   00152E  EC55  F00A         	call	_ADC_GetConversion_Blocking	;wreg free
+   427   001532  0E23               	movlw	low _adc1
+   428   001534  6E4D               	movwf	ADC_GetConversion_Blocking@_adc^0,c
+   429   001536  0E3F               	movlw	low _adc_res_2
+   430   001538  6E4E               	movwf	ADC_GetConversion_Blocking@Conversion_result^0,c
+   431   00153A  0E02               	movlw	2
+   432   00153C  6E4F               	movwf	ADC_GetConversion_Blocking@channel^0,c
+   433   00153E  EC55  F00A         	call	_ADC_GetConversion_Blocking	;wreg free
+   434   001542  0E23               	movlw	low _adc1
+   435   001544  6E4D               	movwf	ADC_GetConversion_Blocking@_adc^0,c
+   436   001546  0E3D               	movlw	low _adc_res_3
+   437   001548  6E4E               	movwf	ADC_GetConversion_Blocking@Conversion_result^0,c
+   438   00154A  0E03               	movlw	3
+   439   00154C  6E4F               	movwf	ADC_GetConversion_Blocking@channel^0,c
+   440   00154E  EC55  F00A         	call	_ADC_GetConversion_Blocking	;wreg free
+   441   001552  EF89  F00A         	goto	l2030
+   442   001556  EF07  F000         	goto	start
+   443   00155A                     __end_of_main:
+   444                           	callstack 0
+   445                           
+   446 ;; *************** function _application_intialize *****************
+   447 ;; Defined at:
+   448 ;;		line 35 in file "application.c"
+   449 ;; Parameters:    Size  Location     Type
+   450 ;;		None
+   451 ;; Auto vars:     Size  Location     Type
+   452 ;;  ret             1    0        unsigned char 
+   453 ;; Return value:  Size  Location     Type
+   454 ;;                  1    wreg      void 
+   455 ;; Registers used:
+   456 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   457 ;; Tracked objects:
+   458 ;;		On entry : 0/0
+   459 ;;		On exit  : 0/0
+   460 ;;		Unchanged: 0/0
+   461 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   462 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   463 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   464 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   465 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   466 ;;Total ram usage:        0 bytes
+   467 ;; Hardware stack levels used: 1
+   468 ;; Hardware stack levels required when called: 4
+   469 ;; This function calls:
+   470 ;;		_ADC_Init
+   471 ;; This function is called by:
+   472 ;;		_main
+   473 ;; This function uses a non-reentrant model
+   474 ;;
+   475                           
+   476                           	psect	text1
+   477   0016F4                     __ptext1:
+   478                           	callstack 0
+   479   0016F4                     _application_intialize:
+   480                           	callstack 26
+   481   0016F4  0E23               	movlw	low _adc1
+   482   0016F6  6E49               	movwf	ADC_Init@_adc^0,c
+   483   0016F8  EC0C  F00A         	call	_ADC_Init	;wreg free
+   484   0016FC  0012               	return		;funcret
+   485   0016FE                     __end_of_application_intialize:
+   486                           	callstack 0
+   487                           
+   488 ;; *************** function _ADC_Init *****************
+   489 ;; Defined at:
+   490 ;;		line 26 in file "MCAL_Layer/ADC/adc.c"
+   491 ;; Parameters:    Size  Location     Type
+   492 ;;  _adc            1    4[COMRAM] PTR const struct .
+   493 ;;		 -> adc1(4), 
+   494 ;; Auto vars:     Size  Location     Type
+   495 ;;  ret             1    6[COMRAM] unsigned char 
+   496 ;; Return value:  Size  Location     Type
+   497 ;;                  1    wreg      unsigned char 
+   498 ;; Registers used:
+   499 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   500 ;; Tracked objects:
+   501 ;;		On entry : 0/0
+   502 ;;		On exit  : 0/0
+   503 ;;		Unchanged: 0/0
+   504 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   505 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   506 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   507 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   508 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   509 ;;Total ram usage:        3 bytes
+   510 ;; Hardware stack levels used: 1
+   511 ;; Hardware stack levels required when called: 3
+   512 ;; This function calls:
+   513 ;;		_adc_input_channel_pin_configure
+   514 ;;		_configure_voltage_reference
+   515 ;;		_select_result_format
+   516 ;; This function is called by:
+   517 ;;		_application_intialize
+   518 ;; This function uses a non-reentrant model
+   519 ;;
+   520                           
+   521                           	psect	text2
+   522   001418                     __ptext2:
+   523                           	callstack 0
+   524   001418                     _ADC_Init:
+   525                           	callstack 26
+   526   001418                     
+   527                           ;MCAL_Layer/ADC/adc.c: 27:     Std_ReturnType ret =(Std_ReturnType)0x01 ;
+   528   001418  0E01               	movlw	1
+   529   00141A  6E4B               	movwf	ADC_Init@ret^0,c
+   530                           
+   531                           ;MCAL_Layer/ADC/adc.c: 28:     if(((void*)0) == _adc){
+   532   00141C  5049               	movf	ADC_Init@_adc^0,w,c
+   533   00141E  A4D8               	btfss	status,2,c
+   534   001420  EF14  F00A         	goto	u1191
+   535   001424  EF16  F00A         	goto	u1190
+   536   001428                     u1191:
+   537   001428  EF1A  F00A         	goto	l25
+   538   00142C                     u1190:
+   539   00142C                     
+   540                           ;MCAL_Layer/ADC/adc.c: 29:         ret = (Std_ReturnType)0x00;
+   541   00142C  0E00               	movlw	0
+   542   00142E  6E4B               	movwf	ADC_Init@ret^0,c
+   543                           
+   544                           ;MCAL_Layer/ADC/adc.c: 30:     }else{
+   545   001430  EF53  F00A         	goto	l1966
+   546   001434                     l25:
+   547                           
+   548                           ;MCAL_Layer/ADC/adc.c: 32:         (ADCON0bits.ADON =0);
+   549   001434  90C2               	bcf	194,0,c	;volatile
+   550   001436                     
+   551                           ;MCAL_Layer/ADC/adc.c: 34:         ADCON2bits.ACQT=_adc->acquisition_time;
+   552   001436  5049               	movf	ADC_Init@_adc^0,w,c
+   553   001438  6ED9               	movwf	fsr2l,c
+   554   00143A  6ADA               	clrf	fsr2h,c
+   555   00143C  50DF               	movf	indf2,w,c
+   556   00143E  6E4A               	movwf	??_ADC_Init^0,c
+   557   001440  464A               	rlncf	??_ADC_Init^0,f,c
+   558   001442  464A               	rlncf	??_ADC_Init^0,f,c
+   559   001444  464A               	rlncf	??_ADC_Init^0,f,c
+   560   001446  50C0               	movf	192,w,c	;volatile
+   561   001448  184A               	xorwf	??_ADC_Init^0,w,c
+   562   00144A  0BC7               	andlw	-57
+   563   00144C  184A               	xorwf	??_ADC_Init^0,w,c
+   564   00144E  6EC0               	movwf	192,c	;volatile
+   565                           
+   566                           ;MCAL_Layer/ADC/adc.c: 36:         ADCON2bits.ADCS=_adc->conversion_clock;
+   567   001450  5049               	movf	ADC_Init@_adc^0,w,c
+   568   001452  6ED9               	movwf	fsr2l,c
+   569   001454  6ADA               	clrf	fsr2h,c
+   570   001456  0E01               	movlw	1
+   571   001458  26D9               	addwf	fsr2l,f,c
+   572   00145A  50DF               	movf	indf2,w,c
+   573   00145C  6E4A               	movwf	??_ADC_Init^0,c
+   574   00145E  50C0               	movf	192,w,c	;volatile
+   575   001460  184A               	xorwf	??_ADC_Init^0,w,c
+   576   001462  0BF8               	andlw	-8
+   577   001464  184A               	xorwf	??_ADC_Init^0,w,c
+   578   001466  6EC0               	movwf	192,c	;volatile
+   579                           
+   580                           ;MCAL_Layer/ADC/adc.c: 38:         ADCON0bits.CHS=_adc ->adc_channel;
+   581   001468  5049               	movf	ADC_Init@_adc^0,w,c
+   582   00146A  6ED9               	movwf	fsr2l,c
+   583   00146C  6ADA               	clrf	fsr2h,c
+   584   00146E  0E02               	movlw	2
+   585   001470  26D9               	addwf	fsr2l,f,c
+   586   001472  50DF               	movf	indf2,w,c
+   587   001474  6E4A               	movwf	??_ADC_Init^0,c
+   588   001476  464A               	rlncf	??_ADC_Init^0,f,c
+   589   001478  464A               	rlncf	??_ADC_Init^0,f,c
+   590   00147A  50C2               	movf	194,w,c	;volatile
+   591   00147C  184A               	xorwf	??_ADC_Init^0,w,c
+   592   00147E  0BC3               	andlw	-61
+   593   001480  184A               	xorwf	??_ADC_Init^0,w,c
+   594   001482  6EC2               	movwf	194,c	;volatile
+   595   001484                     
+   596                           ;MCAL_Layer/ADC/adc.c: 39:         adc_input_channel_pin_configure(_adc->adc_channel);
+   597   001484  5049               	movf	ADC_Init@_adc^0,w,c
+   598   001486  6ED9               	movwf	fsr2l,c
+   599   001488  6ADA               	clrf	fsr2h,c
+   600   00148A  0E02               	movlw	2
+   601   00148C  26D9               	addwf	fsr2l,f,c
+   602   00148E  50DF               	movf	indf2,w,c
+   603   001490  EC44  F009         	call	_adc_input_channel_pin_configure
+   604   001494                     
+   605                           ;MCAL_Layer/ADC/adc.c: 45:         select_result_format(_adc);
+   606   001494  C049  F046         	movff	ADC_Init@_adc,select_result_format@_adc
+   607   001498  ECE9  F00A         	call	_select_result_format	;wreg free
+   608   00149C                     
+   609                           ;MCAL_Layer/ADC/adc.c: 47:         configure_voltage_reference(_adc);
+   610   00149C  C049  F046         	movff	ADC_Init@_adc,configure_voltage_reference@_adc
+   611   0014A0  ECAD  F00A         	call	_configure_voltage_reference	;wreg free
+   612   0014A4                     
+   613                           ;MCAL_Layer/ADC/adc.c: 49:         (ADCON0bits.ADON =1);
+   614   0014A4  80C2               	bsf	194,0,c	;volatile
+   615   0014A6                     l1966:
+   616                           
+   617                           ;MCAL_Layer/ADC/adc.c: 51:     return ret ;
+   618   0014A6  504B               	movf	ADC_Init@ret^0,w,c
+   619   0014A8  0012               	return		;funcret
+   620   0014AA                     __end_of_ADC_Init:
+   621                           	callstack 0
+   622                           
+   623 ;; *************** function _select_result_format *****************
+   624 ;; Defined at:
+   625 ;;		line 190 in file "MCAL_Layer/ADC/adc.c"
+   626 ;; Parameters:    Size  Location     Type
+   627 ;;  _adc            1    1[COMRAM] PTR const struct .
+   628 ;;		 -> adc1(4), 
+   629 ;; Auto vars:     Size  Location     Type
+   630 ;;		None
+   631 ;; Return value:  Size  Location     Type
+   632 ;;                  1    wreg      void 
+   633 ;; Registers used:
+   634 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   635 ;; Tracked objects:
+   636 ;;		On entry : 0/0
+   637 ;;		On exit  : 0/0
+   638 ;;		Unchanged: 0/0
+   639 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   640 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   641 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   642 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   643 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   644 ;;Total ram usage:        1 bytes
+   645 ;; Hardware stack levels used: 1
+   646 ;; Hardware stack levels required when called: 2
+   647 ;; This function calls:
+   648 ;;		Nothing
+   649 ;; This function is called by:
+   650 ;;		_ADC_Init
+   651 ;; This function uses a non-reentrant model
+   652 ;;
+   653                           
+   654                           	psect	text3
+   655   0015D2                     __ptext3:
+   656                           	callstack 0
+   657   0015D2                     _select_result_format:
+   658                           	callstack 26
+   659   0015D2                     
+   660                           ;MCAL_Layer/ADC/adc.c: 191:     if(0x01U == _adc->result_format){
+   661   0015D2  5046               	movf	select_result_format@_adc^0,w,c
+   662   0015D4  6ED9               	movwf	fsr2l,c
+   663   0015D6  6ADA               	clrf	fsr2h,c
+   664   0015D8  0E03               	movlw	3
+   665   0015DA  26D9               	addwf	fsr2l,f,c
+   666   0015DC  A2DF               	btfss	indf2,1,c
+   667   0015DE  EFF3  F00A         	goto	u1151
+   668   0015E2  EFF5  F00A         	goto	u1150
+   669   0015E6                     u1151:
+   670   0015E6  EFF8  F00A         	goto	l1944
+   671   0015EA                     u1150:
+   672   0015EA                     
+   673                           ;MCAL_Layer/ADC/adc.c: 192:         (ADCON2bits.ADFM=1);
+   674   0015EA  8EC0               	bsf	192,7,c	;volatile
+   675                           
+   676                           ;MCAL_Layer/ADC/adc.c: 193:     }
+   677   0015EC  EF05  F00B         	goto	l93
+   678   0015F0                     l1944:
+   679   0015F0  5046               	movf	select_result_format@_adc^0,w,c
+   680   0015F2  6ED9               	movwf	fsr2l,c
+   681   0015F4  6ADA               	clrf	fsr2h,c
+   682   0015F6  0E03               	movlw	3
+   683   0015F8  26D9               	addwf	fsr2l,f,c
+   684   0015FA  B2DF               	btfsc	indf2,1,c
+   685   0015FC  EF02  F00B         	goto	u1161
+   686   001600  EF04  F00B         	goto	u1160
+   687   001604                     u1161:
+   688   001604  EF05  F00B         	goto	l93
+   689   001608                     u1160:
+   690   001608                     
+   691                           ;MCAL_Layer/ADC/adc.c: 195:         (ADCON2bits.ADFM=0);
+   692   001608  9EC0               	bcf	192,7,c	;volatile
+   693   00160A                     l93:
+   694   00160A  0012               	return		;funcret
+   695   00160C                     __end_of_select_result_format:
+   696                           	callstack 0
+   697                           
+   698 ;; *************** function _configure_voltage_reference *****************
+   699 ;; Defined at:
+   700 ;;		line 200 in file "MCAL_Layer/ADC/adc.c"
+   701 ;; Parameters:    Size  Location     Type
+   702 ;;  _adc            1    1[COMRAM] PTR const struct .
+   703 ;;		 -> adc1(4), 
+   704 ;; Auto vars:     Size  Location     Type
+   705 ;;		None
+   706 ;; Return value:  Size  Location     Type
+   707 ;;                  1    wreg      void 
+   708 ;; Registers used:
+   709 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+   710 ;; Tracked objects:
+   711 ;;		On entry : 0/0
+   712 ;;		On exit  : 0/0
+   713 ;;		Unchanged: 0/0
+   714 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   715 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   716 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   717 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   718 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   719 ;;Total ram usage:        1 bytes
+   720 ;; Hardware stack levels used: 1
+   721 ;; Hardware stack levels required when called: 2
+   722 ;; This function calls:
+   723 ;;		Nothing
+   724 ;; This function is called by:
+   725 ;;		_ADC_Init
+   726 ;; This function uses a non-reentrant model
+   727 ;;
+   728                           
+   729                           	psect	text4
+   730   00155A                     __ptext4:
+   731                           	callstack 0
+   732   00155A                     _configure_voltage_reference:
+   733                           	callstack 26
+   734   00155A                     
+   735                           ;MCAL_Layer/ADC/adc.c: 201:     if(0x01U==_adc->voltage_reference){
+   736   00155A  5046               	movf	configure_voltage_reference@_adc^0,w,c
+   737   00155C  6ED9               	movwf	fsr2l,c
+   738   00155E  6ADA               	clrf	fsr2h,c
+   739   001560  0E03               	movlw	3
+   740   001562  26D9               	addwf	fsr2l,f,c
+   741   001564  A0DF               	btfss	indf2,0,c
+   742   001566  EFB7  F00A         	goto	u1171
+   743   00156A  EFB9  F00A         	goto	u1170
+   744   00156E                     u1171:
+   745   00156E  EFBD  F00A         	goto	l1950
+   746   001572                     u1170:
+   747   001572  8AC1               	bsf	193,5,c	;volatile
+   748   001574  88C1               	bsf	193,4,c	;volatile
+   749   001576  EFCB  F00A         	goto	l103
+   750   00157A                     l1950:
+   751   00157A  5046               	movf	configure_voltage_reference@_adc^0,w,c
+   752   00157C  6ED9               	movwf	fsr2l,c
+   753   00157E  6ADA               	clrf	fsr2h,c
+   754   001580  0E03               	movlw	3
+   755   001582  26D9               	addwf	fsr2l,f,c
+   756   001584  B0DF               	btfsc	indf2,0,c
+   757   001586  EFC7  F00A         	goto	u1181
+   758   00158A  EFC9  F00A         	goto	u1180
+   759   00158E                     u1181:
+   760   00158E  EFCB  F00A         	goto	l103
+   761   001592                     u1180:
+   762   001592  9AC1               	bcf	193,5,c	;volatile
+   763   001594  98C1               	bcf	193,4,c	;volatile
+   764   001596                     l103:
+   765   001596  0012               	return		;funcret
+   766   001598                     __end_of_configure_voltage_reference:
+   767                           	callstack 0
+   768                           
+   769 ;; *************** function _ADC_GetConversion_Blocking *****************
+   770 ;; Defined at:
+   771 ;;		line 150 in file "MCAL_Layer/ADC/adc.c"
+   772 ;; Parameters:    Size  Location     Type
+   773 ;;  _adc            1    8[COMRAM] PTR const struct .
+   774 ;;		 -> adc1(4), 
+   775 ;;  Conversion_r    1    9[COMRAM] PTR unsigned short 
+   776 ;;		 -> adc_res_3(2), adc_res_2(2), adc_res_1(2), adc_res_0(2), 
+   777 ;;  channel         1   10[COMRAM] enum E3046
+   778 ;; Auto vars:     Size  Location     Type
+   779 ;;  ret             1   12[COMRAM] unsigned char 
+   780 ;;  l_conversion    1   11[COMRAM] unsigned char 
+   781 ;; Return value:  Size  Location     Type
+   782 ;;                  1    wreg      unsigned char 
+   783 ;; Registers used:
+   784 ;;		wreg, fsr2l, fsr2h, status,2, status,0, cstack
+   785 ;; Tracked objects:
+   786 ;;		On entry : 0/0
+   787 ;;		On exit  : 0/0
+   788 ;;		Unchanged: 0/0
+   789 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   790 ;;      Params:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   791 ;;      Locals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   792 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   793 ;;      Totals:         5       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   794 ;;Total ram usage:        5 bytes
+   795 ;; Hardware stack levels used: 1
+   796 ;; Hardware stack levels required when called: 4
+   797 ;; This function calls:
+   798 ;;		_ADC_GetConversionResult
+   799 ;;		_ADC_SelectChannel
+   800 ;;		_ADC_StartConversion
+   801 ;; This function is called by:
+   802 ;;		_main
+   803 ;; This function uses a non-reentrant model
+   804 ;;
+   805                           
+   806                           	psect	text5
+   807   0014AA                     __ptext5:
+   808                           	callstack 0
+   809   0014AA                     _ADC_GetConversion_Blocking:
+   810                           	callstack 26
+   811   0014AA                     
+   812                           ;MCAL_Layer/ADC/adc.c: 152:   uint8 l_conversion_status = 0;
+   813   0014AA  0E00               	movlw	0
+   814   0014AC  6E50               	movwf	ADC_GetConversion_Blocking@l_conversion_status^0,c
+   815                           
+   816                           ;MCAL_Layer/ADC/adc.c: 153:   if((((void*)0) == _adc) || (((void*)0) == Conversion_resul
+      +                          t)){
+   817   0014AE  504D               	movf	ADC_GetConversion_Blocking@_adc^0,w,c
+   818   0014B0  B4D8               	btfsc	status,2,c
+   819   0014B2  EF5D  F00A         	goto	u1271
+   820   0014B6  EF5F  F00A         	goto	u1270
+   821   0014BA                     u1271:
+   822   0014BA  EF67  F00A         	goto	l2012
+   823   0014BE                     u1270:
+   824   0014BE  504E               	movf	ADC_GetConversion_Blocking@Conversion_result^0,w,c
+   825   0014C0  A4D8               	btfss	status,2,c
+   826   0014C2  EF65  F00A         	goto	u1281
+   827   0014C6  EF67  F00A         	goto	u1280
+   828   0014CA                     u1281:
+   829   0014CA  EF6B  F00A         	goto	l2014
+   830   0014CE                     u1280:
+   831   0014CE                     l2012:
+   832                           
+   833                           ;MCAL_Layer/ADC/adc.c: 154:       ret = (Std_ReturnType)0x00;
+   834   0014CE  0E00               	movlw	0
+   835   0014D0  6E51               	movwf	ADC_GetConversion_Blocking@ret^0,c
+   836                           
+   837                           ;MCAL_Layer/ADC/adc.c: 155:   }
+   838   0014D2  EF85  F00A         	goto	l2018
+   839   0014D6                     l2014:
+   840                           
+   841                           ;MCAL_Layer/ADC/adc.c: 158:       ret = ADC_SelectChannel(_adc,channel);
+   842   0014D6  C04D  F049         	movff	ADC_GetConversion_Blocking@_adc,ADC_SelectChannel@_adc
+   843   0014DA  C04F  F04A         	movff	ADC_GetConversion_Blocking@channel,ADC_SelectChannel@channel
+   844   0014DE  EC06  F00B         	call	_ADC_SelectChannel	;wreg free
+   845   0014E2  6E51               	movwf	ADC_GetConversion_Blocking@ret^0,c
+   846                           
+   847                           ;MCAL_Layer/ADC/adc.c: 160:       ret = ADC_StartConversion(_adc);
+   848   0014E4  C04D  F046         	movff	ADC_GetConversion_Blocking@_adc,ADC_StartConversion@_adc
+   849   0014E8  EC35  F00B         	call	_ADC_StartConversion	;wreg free
+   850   0014EC  6E51               	movwf	ADC_GetConversion_Blocking@ret^0,c
+   851   0014EE                     l66:
+   852   0014EE  B2C2               	btfsc	194,1,c	;volatile
+   853   0014F0  EF7C  F00A         	goto	u1291
+   854   0014F4  EF7E  F00A         	goto	u1290
+   855   0014F8                     u1291:
+   856   0014F8  EF77  F00A         	goto	l66
+   857   0014FC                     u1290:
+   858   0014FC                     
+   859                           ;MCAL_Layer/ADC/adc.c: 163:       ret = ADC_GetConversionResult(_adc,Conversion_result);
+   860   0014FC  C04D  F046         	movff	ADC_GetConversion_Blocking@_adc,ADC_GetConversionResult@_adc
+   861   001500  C04E  F047         	movff	ADC_GetConversion_Blocking@Conversion_result,ADC_GetConversionResult@Conversion_r
+      +                          esult
+   862   001504  ECB0  F009         	call	_ADC_GetConversionResult	;wreg free
+   863   001508  6E51               	movwf	ADC_GetConversion_Blocking@ret^0,c
+   864   00150A                     l2018:
+   865                           
+   866                           ;MCAL_Layer/ADC/adc.c: 165:   return ret;
+   867   00150A  5051               	movf	ADC_GetConversion_Blocking@ret^0,w,c
+   868   00150C  0012               	return		;funcret
+   869   00150E                     __end_of_ADC_GetConversion_Blocking:
+   870                           	callstack 0
+   871                           
+   872 ;; *************** function _ADC_StartConversion *****************
+   873 ;; Defined at:
+   874 ;;		line 101 in file "MCAL_Layer/ADC/adc.c"
+   875 ;; Parameters:    Size  Location     Type
+   876 ;;  _adc            1    1[COMRAM] PTR const struct .
+   877 ;;		 -> adc1(4), 
+   878 ;; Auto vars:     Size  Location     Type
+   879 ;;  ret             1    2[COMRAM] unsigned char 
+   880 ;; Return value:  Size  Location     Type
+   881 ;;                  1    wreg      unsigned char 
+   882 ;; Registers used:
+   883 ;;		wreg, status,2
+   884 ;; Tracked objects:
+   885 ;;		On entry : 0/0
+   886 ;;		On exit  : 0/0
+   887 ;;		Unchanged: 0/0
+   888 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   889 ;;      Params:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   890 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   891 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   892 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   893 ;;Total ram usage:        2 bytes
+   894 ;; Hardware stack levels used: 1
+   895 ;; Hardware stack levels required when called: 2
+   896 ;; This function calls:
+   897 ;;		Nothing
+   898 ;; This function is called by:
+   899 ;;		_ADC_GetConversion_Blocking
+   900 ;; This function uses a non-reentrant model
+   901 ;;
+   902                           
+   903                           	psect	text6
+   904   00166A                     __ptext6:
+   905                           	callstack 0
+   906   00166A                     _ADC_StartConversion:
+   907                           	callstack 27
+   908   00166A                     
+   909                           ;MCAL_Layer/ADC/adc.c: 102:     Std_ReturnType ret =(Std_ReturnType)0x01 ;
+   910   00166A  0E01               	movlw	1
+   911   00166C  6E47               	movwf	ADC_StartConversion@ret^0,c
+   912                           
+   913                           ;MCAL_Layer/ADC/adc.c: 103:     if(((void*)0) == _adc){
+   914   00166E  5046               	movf	ADC_StartConversion@_adc^0,w,c
+   915   001670  A4D8               	btfss	status,2,c
+   916   001672  EF3D  F00B         	goto	u1211
+   917   001676  EF3F  F00B         	goto	u1210
+   918   00167A                     u1211:
+   919   00167A  EF43  F00B         	goto	l40
+   920   00167E                     u1210:
+   921   00167E                     
+   922                           ;MCAL_Layer/ADC/adc.c: 104:         ret = (Std_ReturnType)0x00;
+   923   00167E  0E00               	movlw	0
+   924   001680  6E47               	movwf	ADC_StartConversion@ret^0,c
+   925                           
+   926                           ;MCAL_Layer/ADC/adc.c: 105:     }else{
+   927   001682  EF44  F00B         	goto	l1986
+   928   001686                     l40:
+   929                           
+   930                           ;MCAL_Layer/ADC/adc.c: 106:         (ADCON0bits.GO_nDONE =1);
+   931   001686  82C2               	bsf	194,1,c	;volatile
+   932   001688                     l1986:
+   933                           
+   934                           ;MCAL_Layer/ADC/adc.c: 108:     return ret ;
+   935   001688  5047               	movf	ADC_StartConversion@ret^0,w,c
+   936   00168A  0012               	return		;funcret
+   937   00168C                     __end_of_ADC_StartConversion:
+   938                           	callstack 0
+   939                           
+   940 ;; *************** function _ADC_SelectChannel *****************
+   941 ;; Defined at:
+   942 ;;		line 81 in file "MCAL_Layer/ADC/adc.c"
+   943 ;; Parameters:    Size  Location     Type
+   944 ;;  _adc            1    4[COMRAM] PTR const struct .
+   945 ;;		 -> adc1(4), 
+   946 ;;  channel         1    5[COMRAM] enum E3046
+   947 ;; Auto vars:     Size  Location     Type
+   948 ;;  ret             1    7[COMRAM] unsigned char 
+   949 ;; Return value:  Size  Location     Type
+   950 ;;                  1    wreg      unsigned char 
+   951 ;; Registers used:
+   952 ;;		wreg, status,2, status,0, cstack
+   953 ;; Tracked objects:
+   954 ;;		On entry : 0/0
+   955 ;;		On exit  : 0/0
+   956 ;;		Unchanged: 0/0
+   957 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+   958 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   959 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   960 ;;      Temps:          1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   961 ;;      Totals:         4       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+   962 ;;Total ram usage:        4 bytes
+   963 ;; Hardware stack levels used: 1
+   964 ;; Hardware stack levels required when called: 3
+   965 ;; This function calls:
+   966 ;;		_adc_input_channel_pin_configure
+   967 ;; This function is called by:
+   968 ;;		_ADC_GetConversion_Blocking
+   969 ;; This function uses a non-reentrant model
+   970 ;;
+   971                           
+   972                           	psect	text7
+   973   00160C                     __ptext7:
+   974                           	callstack 0
+   975   00160C                     _ADC_SelectChannel:
+   976                           	callstack 26
+   977   00160C                     
+   978                           ;MCAL_Layer/ADC/adc.c: 82:     Std_ReturnType ret =(Std_ReturnType)0x01 ;
+   979   00160C  0E01               	movlw	1
+   980   00160E  6E4C               	movwf	ADC_SelectChannel@ret^0,c
+   981                           
+   982                           ;MCAL_Layer/ADC/adc.c: 83:     if(((void*)0) == _adc){
+   983   001610  5049               	movf	ADC_SelectChannel@_adc^0,w,c
+   984   001612  A4D8               	btfss	status,2,c
+   985   001614  EF0E  F00B         	goto	u1201
+   986   001618  EF10  F00B         	goto	u1200
+   987   00161C                     u1201:
+   988   00161C  EF14  F00B         	goto	l1974
+   989   001620                     u1200:
+   990   001620                     
+   991                           ;MCAL_Layer/ADC/adc.c: 84:         ret = (Std_ReturnType)0x00;
+   992   001620  0E00               	movlw	0
+   993   001622  6E4C               	movwf	ADC_SelectChannel@ret^0,c
+   994                           
+   995                           ;MCAL_Layer/ADC/adc.c: 85:     }else{
+   996   001624  EF20  F00B         	goto	l1978
+   997   001628                     l1974:
+   998                           
+   999                           ;MCAL_Layer/ADC/adc.c: 86:         ADCON0bits.CHS=channel;
+  1000   001628  C04A  F04B         	movff	ADC_SelectChannel@channel,??_ADC_SelectChannel
+  1001   00162C  464B               	rlncf	??_ADC_SelectChannel^0,f,c
+  1002   00162E  464B               	rlncf	??_ADC_SelectChannel^0,f,c
+  1003   001630  50C2               	movf	194,w,c	;volatile
+  1004   001632  184B               	xorwf	??_ADC_SelectChannel^0,w,c
+  1005   001634  0BC3               	andlw	-61
+  1006   001636  184B               	xorwf	??_ADC_SelectChannel^0,w,c
+  1007   001638  6EC2               	movwf	194,c	;volatile
+  1008   00163A                     
+  1009                           ;MCAL_Layer/ADC/adc.c: 87:         adc_input_channel_pin_configure(channel);
+  1010   00163A  504A               	movf	ADC_SelectChannel@channel^0,w,c
+  1011   00163C  EC44  F009         	call	_adc_input_channel_pin_configure
+  1012   001640                     l1978:
+  1013                           
+  1014                           ;MCAL_Layer/ADC/adc.c: 89:     return ret ;
+  1015   001640  504C               	movf	ADC_SelectChannel@ret^0,w,c
+  1016   001642  0012               	return		;funcret
+  1017   001644                     __end_of_ADC_SelectChannel:
+  1018                           	callstack 0
+  1019                           
+  1020 ;; *************** function _adc_input_channel_pin_configure *****************
+  1021 ;; Defined at:
+  1022 ;;		line 171 in file "MCAL_Layer/ADC/adc.c"
+  1023 ;; Parameters:    Size  Location     Type
+  1024 ;;  channel         1    wreg     enum E3046
+  1025 ;; Auto vars:     Size  Location     Type
+  1026 ;;  channel         1    3[COMRAM] enum E3046
+  1027 ;; Return value:  Size  Location     Type
+  1028 ;;                  1    wreg      void 
+  1029 ;; Registers used:
+  1030 ;;		wreg, status,2, status,0
+  1031 ;; Tracked objects:
+  1032 ;;		On entry : 0/0
+  1033 ;;		On exit  : 0/0
+  1034 ;;		Unchanged: 0/0
+  1035 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1036 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1037 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1038 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1039 ;;      Totals:         3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1040 ;;Total ram usage:        3 bytes
+  1041 ;; Hardware stack levels used: 1
+  1042 ;; Hardware stack levels required when called: 2
+  1043 ;; This function calls:
+  1044 ;;		Nothing
+  1045 ;; This function is called by:
+  1046 ;;		_ADC_Init
+  1047 ;;		_ADC_SelectChannel
+  1048 ;; This function uses a non-reentrant model
+  1049 ;;
+  1050                           
+  1051                           	psect	text8
+  1052   001288                     __ptext8:
+  1053                           	callstack 0
+  1054   001288                     _adc_input_channel_pin_configure:
+  1055                           	callstack 26
+  1056                           
+  1057                           ;incstack = 0
+  1058                           ;adc_input_channel_pin_configure@channel stored from wreg
+  1059   001288  6E48               	movwf	adc_input_channel_pin_configure@channel^0,c
+  1060   00128A                     
+  1061                           ;MCAL_Layer/ADC/adc.c: 172:     switch(channel){
+  1062   00128A  EF6E  F009         	goto	l1238
+  1063   00128E                     l1210:
+  1064   00128E  8092               	bsf	146,0,c	;volatile
+  1065   001290  EFAF  F009         	goto	l87
+  1066   001294                     l1212:
+  1067   001294  8292               	bsf	146,1,c	;volatile
+  1068   001296  EFAF  F009         	goto	l87
+  1069   00129A                     l1214:
+  1070   00129A  8492               	bsf	146,2,c	;volatile
+  1071   00129C  EFAF  F009         	goto	l87
+  1072   0012A0                     l1216:
+  1073   0012A0  8692               	bsf	146,3,c	;volatile
+  1074   0012A2  EFAF  F009         	goto	l87
+  1075   0012A6                     l1218:
+  1076   0012A6  8A92               	bsf	146,5,c	;volatile
+  1077   0012A8  EFAF  F009         	goto	l87
+  1078   0012AC                     l1220:
+  1079   0012AC  8096               	bsf	150,0,c	;volatile
+  1080   0012AE  EFAF  F009         	goto	l87
+  1081   0012B2                     l1222:
+  1082   0012B2  8296               	bsf	150,1,c	;volatile
+  1083   0012B4  EFAF  F009         	goto	l87
+  1084   0012B8                     l1224:
+  1085   0012B8  8496               	bsf	150,2,c	;volatile
+  1086   0012BA  EFAF  F009         	goto	l87
+  1087   0012BE                     l1226:
+  1088   0012BE  8493               	bsf	147,2,c	;volatile
+  1089   0012C0  EFAF  F009         	goto	l87
+  1090   0012C4                     l1228:
+  1091   0012C4  8693               	bsf	147,3,c	;volatile
+  1092   0012C6  EFAF  F009         	goto	l87
+  1093   0012CA                     l1230:
+  1094   0012CA  8293               	bsf	147,1,c	;volatile
+  1095   0012CC  EFAF  F009         	goto	l87
+  1096   0012D0                     l1232:
+  1097   0012D0  8893               	bsf	147,4,c	;volatile
+  1098   0012D2  EFAF  F009         	goto	l87
+  1099   0012D6                     l1234:
+  1100   0012D6  8093               	bsf	147,0,c	;volatile
+  1101   0012D8  EFAF  F009         	goto	l87
+  1102   0012DC                     l1238:
+  1103   0012DC  5048               	movf	adc_input_channel_pin_configure@channel^0,w,c
+  1104   0012DE  6E46               	movwf	??_adc_input_channel_pin_configure^0,c
+  1105   0012E0  6A47               	clrf	(??_adc_input_channel_pin_configure+1)^0,c
+  1106                           
+  1107                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+      +                          itches
+  1108                           ; Switch size 1, requested type "simple"
+  1109                           ; Number of cases is 1, Range of values is 0 to 0
+  1110                           ; switch strategies available:
+  1111                           ; Name         Instructions Cycles
+  1112                           ; simple_byte            4     3 (average)
+  1113                           ;	Chosen strategy is simple_byte
+  1114   0012E2  5047               	movf	(??_adc_input_channel_pin_configure+1)^0,w,c
+  1115   0012E4  0A00               	xorlw	0	; case 0
+  1116   0012E6  B4D8               	btfsc	status,2,c
+  1117   0012E8  EF78  F009         	goto	l2042
+  1118   0012EC  EFAF  F009         	goto	l87
+  1119   0012F0                     l2042:
+  1120                           
+  1121                           ; Switch size 1, requested type "simple"
+  1122                           ; Number of cases is 13, Range of values is 0 to 12
+  1123                           ; switch strategies available:
+  1124                           ; Name         Instructions Cycles
+  1125                           ; simple_byte           40    21 (average)
+  1126                           ;	Chosen strategy is simple_byte
+  1127   0012F0  5046               	movf	??_adc_input_channel_pin_configure^0,w,c
+  1128   0012F2  0A00               	xorlw	0	; case 0
+  1129   0012F4  B4D8               	btfsc	status,2,c
+  1130   0012F6  EF47  F009         	goto	l1210
+  1131   0012FA  0A01               	xorlw	1	; case 1
+  1132   0012FC  B4D8               	btfsc	status,2,c
+  1133   0012FE  EF4A  F009         	goto	l1212
+  1134   001302  0A03               	xorlw	3	; case 2
+  1135   001304  B4D8               	btfsc	status,2,c
+  1136   001306  EF4D  F009         	goto	l1214
+  1137   00130A  0A01               	xorlw	1	; case 3
+  1138   00130C  B4D8               	btfsc	status,2,c
+  1139   00130E  EF50  F009         	goto	l1216
+  1140   001312  0A07               	xorlw	7	; case 4
+  1141   001314  B4D8               	btfsc	status,2,c
+  1142   001316  EF53  F009         	goto	l1218
+  1143   00131A  0A01               	xorlw	1	; case 5
+  1144   00131C  B4D8               	btfsc	status,2,c
+  1145   00131E  EF56  F009         	goto	l1220
+  1146   001322  0A03               	xorlw	3	; case 6
+  1147   001324  B4D8               	btfsc	status,2,c
+  1148   001326  EF59  F009         	goto	l1222
+  1149   00132A  0A01               	xorlw	1	; case 7
+  1150   00132C  B4D8               	btfsc	status,2,c
+  1151   00132E  EF5C  F009         	goto	l1224
+  1152   001332  0A0F               	xorlw	15	; case 8
+  1153   001334  B4D8               	btfsc	status,2,c
+  1154   001336  EF5F  F009         	goto	l1226
+  1155   00133A  0A01               	xorlw	1	; case 9
+  1156   00133C  B4D8               	btfsc	status,2,c
+  1157   00133E  EF62  F009         	goto	l1228
+  1158   001342  0A03               	xorlw	3	; case 10
+  1159   001344  B4D8               	btfsc	status,2,c
+  1160   001346  EF65  F009         	goto	l1230
+  1161   00134A  0A01               	xorlw	1	; case 11
+  1162   00134C  B4D8               	btfsc	status,2,c
+  1163   00134E  EF68  F009         	goto	l1232
+  1164   001352  0A07               	xorlw	7	; case 12
+  1165   001354  B4D8               	btfsc	status,2,c
+  1166   001356  EF6B  F009         	goto	l1234
+  1167   00135A  EFAF  F009         	goto	l87
+  1168   00135E                     l87:
+  1169   00135E  0012               	return		;funcret
+  1170   001360                     __end_of_adc_input_channel_pin_configure:
+  1171                           	callstack 0
+  1172                           
+  1173 ;; *************** function _ADC_GetConversionResult *****************
+  1174 ;; Defined at:
+  1175 ;;		line 135 in file "MCAL_Layer/ADC/adc.c"
+  1176 ;; Parameters:    Size  Location     Type
+  1177 ;;  _adc            1    1[COMRAM] PTR const struct .
+  1178 ;;		 -> adc1(4), 
+  1179 ;;  Conversion_r    1    2[COMRAM] PTR unsigned short 
+  1180 ;;		 -> adc_res_3(2), adc_res_2(2), adc_res_1(2), adc_res_0(2), 
+  1181 ;; Auto vars:     Size  Location     Type
+  1182 ;;  ret             1    6[COMRAM] unsigned char 
+  1183 ;; Return value:  Size  Location     Type
+  1184 ;;                  1    wreg      unsigned char 
+  1185 ;; Registers used:
+  1186 ;;		wreg, fsr2l, fsr2h, status,2, status,0
+  1187 ;; Tracked objects:
+  1188 ;;		On entry : 0/0
+  1189 ;;		On exit  : 0/0
+  1190 ;;		Unchanged: 0/0
+  1191 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1192 ;;      Params:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1193 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1194 ;;      Temps:          3       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1195 ;;      Totals:         6       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1196 ;;Total ram usage:        6 bytes
+  1197 ;; Hardware stack levels used: 1
+  1198 ;; Hardware stack levels required when called: 2
+  1199 ;; This function calls:
+  1200 ;;		Nothing
+  1201 ;; This function is called by:
+  1202 ;;		_ADC_GetConversion_Blocking
+  1203 ;; This function uses a non-reentrant model
+  1204 ;;
+  1205                           
+  1206                           	psect	text9
+  1207   001360                     __ptext9:
+  1208                           	callstack 0
+  1209   001360                     _ADC_GetConversionResult:
+  1210                           	callstack 27
+  1211   001360                     
+  1212                           ;MCAL_Layer/ADC/adc.c: 136:     Std_ReturnType ret =(Std_ReturnType)0x01 ;
+  1213   001360  0E01               	movlw	1
+  1214   001362  6E4B               	movwf	ADC_GetConversionResult@ret^0,c
+  1215                           
+  1216                           ;MCAL_Layer/ADC/adc.c: 137:     if(((void*)0) == _adc || ((void*)0)==Conversion_result){
+  1217   001364  5046               	movf	ADC_GetConversionResult@_adc^0,w,c
+  1218   001366  B4D8               	btfsc	status,2,c
+  1219   001368  EFB8  F009         	goto	u1221
+  1220   00136C  EFBA  F009         	goto	u1220
+  1221   001370                     u1221:
+  1222   001370  EFC2  F009         	goto	l1994
+  1223   001374                     u1220:
+  1224   001374  5047               	movf	ADC_GetConversionResult@Conversion_result^0,w,c
+  1225   001376  A4D8               	btfss	status,2,c
+  1226   001378  EFC0  F009         	goto	u1231
+  1227   00137C  EFC2  F009         	goto	u1230
+  1228   001380                     u1231:
+  1229   001380  EFC6  F009         	goto	l1996
+  1230   001384                     u1230:
+  1231   001384                     l1994:
+  1232                           
+  1233                           ;MCAL_Layer/ADC/adc.c: 138:         ret = (Std_ReturnType)0x00;
+  1234   001384  0E00               	movlw	0
+  1235   001386  6E4B               	movwf	ADC_GetConversionResult@ret^0,c
+  1236                           
+  1237                           ;MCAL_Layer/ADC/adc.c: 139:     }else{
+  1238   001388  EF0A  F00A         	goto	l2004
+  1239   00138C                     l1996:
+  1240                           
+  1241                           ;MCAL_Layer/ADC/adc.c: 140:        if(0x01U == _adc->result_format){
+  1242   00138C  5046               	movf	ADC_GetConversionResult@_adc^0,w,c
+  1243   00138E  6ED9               	movwf	fsr2l,c
+  1244   001390  6ADA               	clrf	fsr2h,c
+  1245   001392  0E03               	movlw	3
+  1246   001394  26D9               	addwf	fsr2l,f,c
+  1247   001396  A2DF               	btfss	indf2,1,c
+  1248   001398  EFD0  F009         	goto	u1241
+  1249   00139C  EFD2  F009         	goto	u1240
+  1250   0013A0                     u1241:
+  1251   0013A0  EFE5  F009         	goto	l2000
+  1252   0013A4                     u1240:
+  1253   0013A4                     
+  1254                           ;MCAL_Layer/ADC/adc.c: 141:           *Conversion_result = (uint16)((ADRESH << 8 )+ ADRE
+      +                          SL) ;
+  1255   0013A4  50C3               	movf	195,w,c	;volatile
+  1256   0013A6  CFC4 F048          	movff	4036,??_ADC_GetConversionResult	;volatile
+  1257   0013AA  6A49               	clrf	(??_ADC_GetConversionResult+1)^0,c
+  1258   0013AC  C048  F049         	movff	??_ADC_GetConversionResult,??_ADC_GetConversionResult+1
+  1259   0013B0  6A48               	clrf	??_ADC_GetConversionResult^0,c
+  1260   0013B2  2648               	addwf	??_ADC_GetConversionResult^0,f,c
+  1261   0013B4  0E00               	movlw	0
+  1262   0013B6  2249               	addwfc	(??_ADC_GetConversionResult+1)^0,f,c
+  1263   0013B8  5047               	movf	ADC_GetConversionResult@Conversion_result^0,w,c
+  1264   0013BA  6ED9               	movwf	fsr2l,c
+  1265   0013BC  6ADA               	clrf	fsr2h,c
+  1266   0013BE  C048  FFDE         	movff	??_ADC_GetConversionResult,postinc2
+  1267   0013C2  C049  FFDD         	movff	??_ADC_GetConversionResult+1,postdec2
+  1268                           
+  1269                           ;MCAL_Layer/ADC/adc.c: 142:        }
+  1270   0013C6  EF0A  F00A         	goto	l2004
+  1271   0013CA                     l2000:
+  1272   0013CA  5046               	movf	ADC_GetConversionResult@_adc^0,w,c
+  1273   0013CC  6ED9               	movwf	fsr2l,c
+  1274   0013CE  6ADA               	clrf	fsr2h,c
+  1275   0013D0  0E03               	movlw	3
+  1276   0013D2  26D9               	addwf	fsr2l,f,c
+  1277   0013D4  B2DF               	btfsc	indf2,1,c
+  1278   0013D6  EFEF  F009         	goto	u1251
+  1279   0013DA  EFF1  F009         	goto	u1250
+  1280   0013DE                     u1251:
+  1281   0013DE  EF0A  F00A         	goto	l2004
+  1282   0013E2                     u1250:
+  1283   0013E2                     
+  1284                           ;MCAL_Layer/ADC/adc.c: 144:           *Conversion_result = (uint16)(((ADRESH << 8 )+ ADR
+      +                          ESL)>>6) ;
+  1285   0013E2  50C3               	movf	195,w,c	;volatile
+  1286   0013E4  CFC4 F048          	movff	4036,??_ADC_GetConversionResult	;volatile
+  1287   0013E8  6A49               	clrf	(??_ADC_GetConversionResult+1)^0,c
+  1288   0013EA  C048  F049         	movff	??_ADC_GetConversionResult,??_ADC_GetConversionResult+1
+  1289   0013EE  6A48               	clrf	??_ADC_GetConversionResult^0,c
+  1290   0013F0  2648               	addwf	??_ADC_GetConversionResult^0,f,c
+  1291   0013F2  0E00               	movlw	0
+  1292   0013F4  2249               	addwfc	(??_ADC_GetConversionResult+1)^0,f,c
+  1293   0013F6  0E06               	movlw	6
+  1294   0013F8  6E4A               	movwf	(??_ADC_GetConversionResult+2)^0,c
+  1295   0013FA                     u1265:
+  1296   0013FA  3449               	rlcf	(??_ADC_GetConversionResult+1)^0,w,c
+  1297   0013FC  3249               	rrcf	(??_ADC_GetConversionResult+1)^0,f,c
+  1298   0013FE  3248               	rrcf	??_ADC_GetConversionResult^0,f,c
+  1299   001400  2E4A               	decfsz	(??_ADC_GetConversionResult+2)^0,f,c
+  1300   001402  EFFD  F009         	goto	u1265
+  1301   001406  5047               	movf	ADC_GetConversionResult@Conversion_result^0,w,c
+  1302   001408  6ED9               	movwf	fsr2l,c
+  1303   00140A  6ADA               	clrf	fsr2h,c
+  1304   00140C  C048  FFDE         	movff	??_ADC_GetConversionResult,postinc2
+  1305   001410  C049  FFDD         	movff	??_ADC_GetConversionResult+1,postdec2
+  1306   001414                     l2004:
+  1307                           
+  1308                           ;MCAL_Layer/ADC/adc.c: 147:     return ret ;
+  1309   001414  504B               	movf	ADC_GetConversionResult@ret^0,w,c
+  1310   001416  0012               	return		;funcret
+  1311   001418                     __end_of_ADC_GetConversionResult:
+  1312                           	callstack 0
+  1313                           
+  1314 ;; *************** function _InterruptManager *****************
+  1315 ;; Defined at:
+  1316 ;;		line 27 in file "MCAL_Layer/Interrupt/Interrupt_manager.c"
+  1317 ;; Parameters:    Size  Location     Type
+  1318 ;;		None
+  1319 ;; Auto vars:     Size  Location     Type
+  1320 ;;		None
+  1321 ;; Return value:  Size  Location     Type
+  1322 ;;                  1    wreg      void 
+  1323 ;; Registers used:
+  1324 ;;		wreg, status,2, status,0, cstack
+  1325 ;; Tracked objects:
+  1326 ;;		On entry : 0/0
+  1327 ;;		On exit  : 0/0
+  1328 ;;		Unchanged: 0/0
+  1329 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1330 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1331 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1332 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1333 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1334 ;;Total ram usage:        0 bytes
+  1335 ;; Hardware stack levels used: 1
+  1336 ;; Hardware stack levels required when called: 1
+  1337 ;; This function calls:
+  1338 ;;		_INT0_ISR
+  1339 ;;		_INT1_ISR
+  1340 ;;		_INT2_ISR
+  1341 ;;		_RB4_ISR
+  1342 ;;		_RB5_ISR
+  1343 ;;		_RB6_ISR
+  1344 ;;		_RB7_ISR
+  1345 ;; This function is called by:
+  1346 ;;		Interrupt level 2
+  1347 ;; This function uses a non-reentrant model
+  1348 ;;
+  1349                           
+  1350                           	psect	intcode
+  1351   000008                     __pintcode:
+  1352                           	callstack 0
+  1353   000008                     _InterruptManager:
+  1354                           	callstack 26
+  1355                           
+  1356                           ;incstack = 0
+  1357   000008  8252               	bsf	int$flags,1,c	;set compiler interrupt flag (level 2)
+  1358   00000A  ED01  F008         	call	int_func,f	;refresh shadow registers
+  1359                           
+  1360                           	psect	intcode_body
+  1361   001002                     __pintcode_body:
+  1362                           	callstack 26
+  1363   001002                     int_func:
+  1364                           	callstack 26
+  1365   001002  0006               	pop		; remove dummy address from shadow register refresh
+  1366   001004                     
+  1367                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 28:     if((INTCONbits.INT0IE == 1) && (INTCO
+      +                          Nbits.INT0IF == 1) ){
+  1368   001004  A8F2               	btfss	242,4,c	;volatile
+  1369   001006  EF07  F008         	goto	i2u60_41
+  1370   00100A  EF09  F008         	goto	i2u60_40
+  1371   00100E                     i2u60_41:
+  1372   00100E  EF12  F008         	goto	i2l277
+  1373   001012                     i2u60_40:
+  1374   001012  A2F2               	btfss	242,1,c	;volatile
+  1375   001014  EF0E  F008         	goto	i2u61_41
+  1376   001018  EF10  F008         	goto	i2u61_40
+  1377   00101C                     i2u61_41:
+  1378   00101C  EF12  F008         	goto	i2l277
+  1379   001020                     i2u61_40:
+  1380   001020                     
+  1381                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 29:        INT0_ISR();
+  1382   001020  EC83  F00B         	call	_INT0_ISR	;wreg free
+  1383   001024                     i2l277:
+  1384                           
+  1385                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 31:     if((INTCON3bits.INT1IE == 1) && (INTC
+      +                          ON3bits.INT1IF == 1) ){
+  1386   001024  A6F0               	btfss	240,3,c	;volatile
+  1387   001026  EF17  F008         	goto	i2u62_41
+  1388   00102A  EF19  F008         	goto	i2u62_40
+  1389   00102E                     i2u62_41:
+  1390   00102E  EF22  F008         	goto	i2l279
+  1391   001032                     i2u62_40:
+  1392   001032  A0F0               	btfss	240,0,c	;volatile
+  1393   001034  EF1E  F008         	goto	i2u63_41
+  1394   001038  EF20  F008         	goto	i2u63_40
+  1395   00103C                     i2u63_41:
+  1396   00103C  EF22  F008         	goto	i2l279
+  1397   001040                     i2u63_40:
+  1398   001040                     
+  1399                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 32:        INT1_ISR();
+  1400   001040  EC81  F00B         	call	_INT1_ISR	;wreg free
+  1401   001044                     i2l279:
+  1402                           
+  1403                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 34:     if((INTCON3bits.INT2IE == 1) && (INTC
+      +                          ON3bits.INT2IF == 1) ){
+  1404   001044  A8F0               	btfss	240,4,c	;volatile
+  1405   001046  EF27  F008         	goto	i2u64_41
+  1406   00104A  EF29  F008         	goto	i2u64_40
+  1407   00104E                     i2u64_41:
+  1408   00104E  EF32  F008         	goto	i2l281
+  1409   001052                     i2u64_40:
+  1410   001052  A2F0               	btfss	240,1,c	;volatile
+  1411   001054  EF2E  F008         	goto	i2u65_41
+  1412   001058  EF30  F008         	goto	i2u65_40
+  1413   00105C                     i2u65_41:
+  1414   00105C  EF32  F008         	goto	i2l281
+  1415   001060                     i2u65_40:
+  1416   001060                     
+  1417                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 35:        INT2_ISR();
+  1418   001060  EC7F  F00B         	call	_INT2_ISR	;wreg free
+  1419   001064                     i2l281:
+  1420                           
+  1421                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 37:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB4 == GPIO_HIGH) && (RB4_Flag == 1)){
+  1422   001064  A6F2               	btfss	242,3,c	;volatile
+  1423   001066  EF37  F008         	goto	i2u66_41
+  1424   00106A  EF39  F008         	goto	i2u66_40
+  1425   00106E                     i2u66_41:
+  1426   00106E  EF54  F008         	goto	i2l283
+  1427   001072                     i2u66_40:
+  1428   001072  A0F2               	btfss	242,0,c	;volatile
+  1429   001074  EF3E  F008         	goto	i2u67_41
+  1430   001078  EF40  F008         	goto	i2u67_40
+  1431   00107C                     i2u67_41:
+  1432   00107C  EF54  F008         	goto	i2l283
+  1433   001080                     i2u67_40:
+  1434   001080  A881               	btfss	129,4,c	;volatile
+  1435   001082  EF45  F008         	goto	i2u68_41
+  1436   001086  EF47  F008         	goto	i2u68_40
+  1437   00108A                     i2u68_41:
+  1438   00108A  EF54  F008         	goto	i2l283
+  1439   00108E                     i2u68_40:
+  1440   00108E  0422               	decf	_RB4_Flag^0,w,c	;volatile
+  1441   001090  A4D8               	btfss	status,2,c
+  1442   001092  EF4D  F008         	goto	i2u69_41
+  1443   001096  EF4F  F008         	goto	i2u69_40
+  1444   00109A                     i2u69_41:
+  1445   00109A  EF54  F008         	goto	i2l283
+  1446   00109E                     i2u69_40:
+  1447   00109E                     
+  1448                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 38:        RB4_Flag = 0;
+  1449   00109E  0E00               	movlw	0
+  1450   0010A0  6E22               	movwf	_RB4_Flag^0,c	;volatile
+  1451   0010A2                     
+  1452                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 39:        RB4_ISR(1);
+  1453   0010A2  0E01               	movlw	1
+  1454   0010A4  EC6D  F00B         	call	_RB4_ISR
+  1455   0010A8                     i2l283:
+  1456                           
+  1457                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 41:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB4 == GPIO_LOW) && (RB4_Flag == 0)){
+  1458   0010A8  A6F2               	btfss	242,3,c	;volatile
+  1459   0010AA  EF59  F008         	goto	i2u70_41
+  1460   0010AE  EF5B  F008         	goto	i2u70_40
+  1461   0010B2                     i2u70_41:
+  1462   0010B2  EF76  F008         	goto	i2l285
+  1463   0010B6                     i2u70_40:
+  1464   0010B6  A0F2               	btfss	242,0,c	;volatile
+  1465   0010B8  EF60  F008         	goto	i2u71_41
+  1466   0010BC  EF62  F008         	goto	i2u71_40
+  1467   0010C0                     i2u71_41:
+  1468   0010C0  EF76  F008         	goto	i2l285
+  1469   0010C4                     i2u71_40:
+  1470   0010C4  B881               	btfsc	129,4,c	;volatile
+  1471   0010C6  EF67  F008         	goto	i2u72_41
+  1472   0010CA  EF69  F008         	goto	i2u72_40
+  1473   0010CE                     i2u72_41:
+  1474   0010CE  EF76  F008         	goto	i2l285
+  1475   0010D2                     i2u72_40:
+  1476   0010D2  5022               	movf	_RB4_Flag^0,w,c	;volatile
+  1477   0010D4  A4D8               	btfss	status,2,c
+  1478   0010D6  EF6F  F008         	goto	i2u73_41
+  1479   0010DA  EF71  F008         	goto	i2u73_40
+  1480   0010DE                     i2u73_41:
+  1481   0010DE  EF76  F008         	goto	i2l285
+  1482   0010E2                     i2u73_40:
+  1483   0010E2                     
+  1484                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 42:         RB4_Flag = 1;
+  1485   0010E2  0E01               	movlw	1
+  1486   0010E4  6E22               	movwf	_RB4_Flag^0,c	;volatile
+  1487   0010E6                     
+  1488                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 43:         RB4_ISR(0);
+  1489   0010E6  0E00               	movlw	0
+  1490   0010E8  EC6D  F00B         	call	_RB4_ISR
+  1491   0010EC                     i2l285:
+  1492                           
+  1493                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 45:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB5 == GPIO_HIGH) && (RB5_Flag == 1)){
+  1494   0010EC  A6F2               	btfss	242,3,c	;volatile
+  1495   0010EE  EF7B  F008         	goto	i2u74_41
+  1496   0010F2  EF7D  F008         	goto	i2u74_40
+  1497   0010F6                     i2u74_41:
+  1498   0010F6  EF98  F008         	goto	i2l287
+  1499   0010FA                     i2u74_40:
+  1500   0010FA  A0F2               	btfss	242,0,c	;volatile
+  1501   0010FC  EF82  F008         	goto	i2u75_41
+  1502   001100  EF84  F008         	goto	i2u75_40
+  1503   001104                     i2u75_41:
+  1504   001104  EF98  F008         	goto	i2l287
+  1505   001108                     i2u75_40:
+  1506   001108  AA81               	btfss	129,5,c	;volatile
+  1507   00110A  EF89  F008         	goto	i2u76_41
+  1508   00110E  EF8B  F008         	goto	i2u76_40
+  1509   001112                     i2u76_41:
+  1510   001112  EF98  F008         	goto	i2l287
+  1511   001116                     i2u76_40:
+  1512   001116  0421               	decf	_RB5_Flag^0,w,c	;volatile
+  1513   001118  A4D8               	btfss	status,2,c
+  1514   00111A  EF91  F008         	goto	i2u77_41
+  1515   00111E  EF93  F008         	goto	i2u77_40
+  1516   001122                     i2u77_41:
+  1517   001122  EF98  F008         	goto	i2l287
+  1518   001126                     i2u77_40:
+  1519   001126                     
+  1520                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 46:         RB5_Flag = 0;
+  1521   001126  0E00               	movlw	0
+  1522   001128  6E21               	movwf	_RB5_Flag^0,c	;volatile
+  1523   00112A                     
+  1524                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 47:         RB5_ISR(1);
+  1525   00112A  0E01               	movlw	1
+  1526   00112C  EC60  F00B         	call	_RB5_ISR
+  1527   001130                     i2l287:
+  1528                           
+  1529                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 49:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB5 == GPIO_LOW) && (RB5_Flag == 0)){
+  1530   001130  A6F2               	btfss	242,3,c	;volatile
+  1531   001132  EF9D  F008         	goto	i2u78_41
+  1532   001136  EF9F  F008         	goto	i2u78_40
+  1533   00113A                     i2u78_41:
+  1534   00113A  EFBA  F008         	goto	i2l289
+  1535   00113E                     i2u78_40:
+  1536   00113E  A0F2               	btfss	242,0,c	;volatile
+  1537   001140  EFA4  F008         	goto	i2u79_41
+  1538   001144  EFA6  F008         	goto	i2u79_40
+  1539   001148                     i2u79_41:
+  1540   001148  EFBA  F008         	goto	i2l289
+  1541   00114C                     i2u79_40:
+  1542   00114C  BA81               	btfsc	129,5,c	;volatile
+  1543   00114E  EFAB  F008         	goto	i2u80_41
+  1544   001152  EFAD  F008         	goto	i2u80_40
+  1545   001156                     i2u80_41:
+  1546   001156  EFBA  F008         	goto	i2l289
+  1547   00115A                     i2u80_40:
+  1548   00115A  5021               	movf	_RB5_Flag^0,w,c	;volatile
+  1549   00115C  A4D8               	btfss	status,2,c
+  1550   00115E  EFB3  F008         	goto	i2u81_41
+  1551   001162  EFB5  F008         	goto	i2u81_40
+  1552   001166                     i2u81_41:
+  1553   001166  EFBA  F008         	goto	i2l289
+  1554   00116A                     i2u81_40:
+  1555   00116A                     
+  1556                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 50:         RB5_Flag = 1;
+  1557   00116A  0E01               	movlw	1
+  1558   00116C  6E21               	movwf	_RB5_Flag^0,c	;volatile
+  1559   00116E                     
+  1560                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 51:         RB5_ISR(0);
+  1561   00116E  0E00               	movlw	0
+  1562   001170  EC60  F00B         	call	_RB5_ISR
+  1563   001174                     i2l289:
+  1564                           
+  1565                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 53:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB6 == GPIO_HIGH) && (RB6_Flag == 1)){
+  1566   001174  A6F2               	btfss	242,3,c	;volatile
+  1567   001176  EFBF  F008         	goto	i2u82_41
+  1568   00117A  EFC1  F008         	goto	i2u82_40
+  1569   00117E                     i2u82_41:
+  1570   00117E  EFDC  F008         	goto	i2l291
+  1571   001182                     i2u82_40:
+  1572   001182  A0F2               	btfss	242,0,c	;volatile
+  1573   001184  EFC6  F008         	goto	i2u83_41
+  1574   001188  EFC8  F008         	goto	i2u83_40
+  1575   00118C                     i2u83_41:
+  1576   00118C  EFDC  F008         	goto	i2l291
+  1577   001190                     i2u83_40:
+  1578   001190  AC81               	btfss	129,6,c	;volatile
+  1579   001192  EFCD  F008         	goto	i2u84_41
+  1580   001196  EFCF  F008         	goto	i2u84_40
+  1581   00119A                     i2u84_41:
+  1582   00119A  EFDC  F008         	goto	i2l291
+  1583   00119E                     i2u84_40:
+  1584   00119E  0420               	decf	_RB6_Flag^0,w,c	;volatile
+  1585   0011A0  A4D8               	btfss	status,2,c
+  1586   0011A2  EFD5  F008         	goto	i2u85_41
+  1587   0011A6  EFD7  F008         	goto	i2u85_40
+  1588   0011AA                     i2u85_41:
+  1589   0011AA  EFDC  F008         	goto	i2l291
+  1590   0011AE                     i2u85_40:
+  1591   0011AE                     
+  1592                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 54:        RB6_Flag = 0;
+  1593   0011AE  0E00               	movlw	0
+  1594   0011B0  6E20               	movwf	_RB6_Flag^0,c	;volatile
+  1595   0011B2                     
+  1596                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 55:        RB6_ISR(1);
+  1597   0011B2  0E01               	movlw	1
+  1598   0011B4  EC53  F00B         	call	_RB6_ISR
+  1599   0011B8                     i2l291:
+  1600                           
+  1601                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 57:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB6 == GPIO_LOW) && (RB6_Flag == 0)){
+  1602   0011B8  A6F2               	btfss	242,3,c	;volatile
+  1603   0011BA  EFE1  F008         	goto	i2u86_41
+  1604   0011BE  EFE3  F008         	goto	i2u86_40
+  1605   0011C2                     i2u86_41:
+  1606   0011C2  EFFE  F008         	goto	i2l293
+  1607   0011C6                     i2u86_40:
+  1608   0011C6  A0F2               	btfss	242,0,c	;volatile
+  1609   0011C8  EFE8  F008         	goto	i2u87_41
+  1610   0011CC  EFEA  F008         	goto	i2u87_40
+  1611   0011D0                     i2u87_41:
+  1612   0011D0  EFFE  F008         	goto	i2l293
+  1613   0011D4                     i2u87_40:
+  1614   0011D4  BC81               	btfsc	129,6,c	;volatile
+  1615   0011D6  EFEF  F008         	goto	i2u88_41
+  1616   0011DA  EFF1  F008         	goto	i2u88_40
+  1617   0011DE                     i2u88_41:
+  1618   0011DE  EFFE  F008         	goto	i2l293
+  1619   0011E2                     i2u88_40:
+  1620   0011E2  5020               	movf	_RB6_Flag^0,w,c	;volatile
+  1621   0011E4  A4D8               	btfss	status,2,c
+  1622   0011E6  EFF7  F008         	goto	i2u89_41
+  1623   0011EA  EFF9  F008         	goto	i2u89_40
+  1624   0011EE                     i2u89_41:
+  1625   0011EE  EFFE  F008         	goto	i2l293
+  1626   0011F2                     i2u89_40:
+  1627   0011F2                     
+  1628                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 58:         RB6_Flag = 1;
+  1629   0011F2  0E01               	movlw	1
+  1630   0011F4  6E20               	movwf	_RB6_Flag^0,c	;volatile
+  1631   0011F6                     
+  1632                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 59:         RB6_ISR(0);
+  1633   0011F6  0E00               	movlw	0
+  1634   0011F8  EC53  F00B         	call	_RB6_ISR
+  1635   0011FC                     i2l293:
+  1636                           
+  1637                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 61:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB7 == GPIO_HIGH) && (RB7_Flag == 1)){
+  1638   0011FC  A6F2               	btfss	242,3,c	;volatile
+  1639   0011FE  EF03  F009         	goto	i2u90_41
+  1640   001202  EF05  F009         	goto	i2u90_40
+  1641   001206                     i2u90_41:
+  1642   001206  EF20  F009         	goto	i2l295
+  1643   00120A                     i2u90_40:
+  1644   00120A  A0F2               	btfss	242,0,c	;volatile
+  1645   00120C  EF0A  F009         	goto	i2u91_41
+  1646   001210  EF0C  F009         	goto	i2u91_40
+  1647   001214                     i2u91_41:
+  1648   001214  EF20  F009         	goto	i2l295
+  1649   001218                     i2u91_40:
+  1650   001218  AE81               	btfss	129,7,c	;volatile
+  1651   00121A  EF11  F009         	goto	i2u92_41
+  1652   00121E  EF13  F009         	goto	i2u92_40
+  1653   001222                     i2u92_41:
+  1654   001222  EF20  F009         	goto	i2l295
+  1655   001226                     i2u92_40:
+  1656   001226  041F               	decf	_RB7_Flag^0,w,c	;volatile
+  1657   001228  A4D8               	btfss	status,2,c
+  1658   00122A  EF19  F009         	goto	i2u93_41
+  1659   00122E  EF1B  F009         	goto	i2u93_40
+  1660   001232                     i2u93_41:
+  1661   001232  EF20  F009         	goto	i2l295
+  1662   001236                     i2u93_40:
+  1663   001236                     
+  1664                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 62:        RB7_Flag = 0;
+  1665   001236  0E00               	movlw	0
+  1666   001238  6E1F               	movwf	_RB7_Flag^0,c	;volatile
+  1667   00123A                     
+  1668                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 63:        RB7_ISR(1);
+  1669   00123A  0E01               	movlw	1
+  1670   00123C  EC46  F00B         	call	_RB7_ISR
+  1671   001240                     i2l295:
+  1672                           
+  1673                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 65:     if((INTCONbits.RBIE == 1) && (INTCONb
+      +                          its.RBIF == 1) && (PORTBbits.RB7 == GPIO_LOW) && (RB7_Flag == 0)){
+  1674   001240  A6F2               	btfss	242,3,c	;volatile
+  1675   001242  EF25  F009         	goto	i2u94_41
+  1676   001246  EF27  F009         	goto	i2u94_40
+  1677   00124A                     i2u94_41:
+  1678   00124A  EF42  F009         	goto	i2l298
+  1679   00124E                     i2u94_40:
+  1680   00124E  A0F2               	btfss	242,0,c	;volatile
+  1681   001250  EF2C  F009         	goto	i2u95_41
+  1682   001254  EF2E  F009         	goto	i2u95_40
+  1683   001258                     i2u95_41:
+  1684   001258  EF42  F009         	goto	i2l298
+  1685   00125C                     i2u95_40:
+  1686   00125C  BE81               	btfsc	129,7,c	;volatile
+  1687   00125E  EF33  F009         	goto	i2u96_41
+  1688   001262  EF35  F009         	goto	i2u96_40
+  1689   001266                     i2u96_41:
+  1690   001266  EF42  F009         	goto	i2l298
+  1691   00126A                     i2u96_40:
+  1692   00126A  501F               	movf	_RB7_Flag^0,w,c	;volatile
+  1693   00126C  A4D8               	btfss	status,2,c
+  1694   00126E  EF3B  F009         	goto	i2u97_41
+  1695   001272  EF3D  F009         	goto	i2u97_40
+  1696   001276                     i2u97_41:
+  1697   001276  EF42  F009         	goto	i2l298
+  1698   00127A                     i2u97_40:
+  1699   00127A                     
+  1700                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 66:        RB7_Flag = 1;
+  1701   00127A  0E01               	movlw	1
+  1702   00127C  6E1F               	movwf	_RB7_Flag^0,c	;volatile
+  1703   00127E                     
+  1704                           ;MCAL_Layer/Interrupt/Interrupt_manager.c: 67:        RB7_ISR(0);
+  1705   00127E  0E00               	movlw	0
+  1706   001280  EC46  F00B         	call	_RB7_ISR
+  1707   001284                     i2l298:
+  1708   001284  9252               	bcf	int$flags,1,c	;clear compiler interrupt flag (level 2)
+  1709   001286  0011               	retfie		f
+  1710   001288                     __end_of_InterruptManager:
+  1711                           	callstack 0
+  1712                           
+  1713 ;; *************** function _RB7_ISR *****************
+  1714 ;; Defined at:
+  1715 ;;		line 395 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1716 ;; Parameters:    Size  Location     Type
+  1717 ;;  RB7_source      1    wreg     unsigned char 
+  1718 ;; Auto vars:     Size  Location     Type
+  1719 ;;  RB7_source      1    0[COMRAM] unsigned char 
+  1720 ;; Return value:  Size  Location     Type
+  1721 ;;                  1    wreg      void 
+  1722 ;; Registers used:
+  1723 ;;		wreg, status,2, status,0
+  1724 ;; Tracked objects:
+  1725 ;;		On entry : 0/0
+  1726 ;;		On exit  : 0/0
+  1727 ;;		Unchanged: 0/0
+  1728 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1729 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1730 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1731 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1732 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1733 ;;Total ram usage:        1 bytes
+  1734 ;; Hardware stack levels used: 1
+  1735 ;; This function calls:
+  1736 ;;		Nothing
+  1737 ;; This function is called by:
+  1738 ;;		_InterruptManager
+  1739 ;; This function uses a non-reentrant model
+  1740 ;;
+  1741                           
+  1742                           	psect	text11
+  1743   00168C                     __ptext11:
+  1744                           	callstack 0
+  1745   00168C                     _RB7_ISR:
+  1746                           	callstack 26
+  1747                           
+  1748                           ;incstack = 0
+  1749                           ;RB7_ISR@RB7_source stored from wreg
+  1750   00168C  6E45               	movwf	RB7_ISR@RB7_source^0,c
+  1751   00168E                     
+  1752                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 397:     (INTCONbits.RBIF = 0);
+  1753   00168E  90F2               	bcf	242,0,c	;volatile
+  1754   001690                     
+  1755                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 399:     if (0==RB7_source){
+  1756   001690  5045               	movf	RB7_ISR@RB7_source^0,w,c
+  1757   001692  A4D8               	btfss	status,2,c
+  1758   001694  EF4E  F00B         	goto	i2u28_41
+  1759   001698  EF50  F00B         	goto	i2u28_40
+  1760   00169C                     i2u28_41:
+  1761   00169C  EF52  F00B         	goto	i2l1418
+  1762   0016A0                     i2u28_40:
+  1763   0016A0  EF52  F00B         	goto	i2l500
+  1764   0016A4                     i2l1418:
+  1765   0016A4                     i2l500:
+  1766   0016A4  0012               	return		;funcret
+  1767   0016A6                     __end_of_RB7_ISR:
+  1768                           	callstack 0
+  1769                           
+  1770 ;; *************** function _RB6_ISR *****************
+  1771 ;; Defined at:
+  1772 ;;		line 384 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1773 ;; Parameters:    Size  Location     Type
+  1774 ;;  RB6_source      1    wreg     unsigned char 
+  1775 ;; Auto vars:     Size  Location     Type
+  1776 ;;  RB6_source      1    0[COMRAM] unsigned char 
+  1777 ;; Return value:  Size  Location     Type
+  1778 ;;                  1    wreg      void 
+  1779 ;; Registers used:
+  1780 ;;		wreg, status,2, status,0
+  1781 ;; Tracked objects:
+  1782 ;;		On entry : 0/0
+  1783 ;;		On exit  : 0/0
+  1784 ;;		Unchanged: 0/0
+  1785 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1786 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1787 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1788 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1789 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1790 ;;Total ram usage:        1 bytes
+  1791 ;; Hardware stack levels used: 1
+  1792 ;; This function calls:
+  1793 ;;		Nothing
+  1794 ;; This function is called by:
+  1795 ;;		_InterruptManager
+  1796 ;; This function uses a non-reentrant model
+  1797 ;;
+  1798                           
+  1799                           	psect	text12
+  1800   0016A6                     __ptext12:
+  1801                           	callstack 0
+  1802   0016A6                     _RB6_ISR:
+  1803                           	callstack 26
+  1804                           
+  1805                           ;incstack = 0
+  1806                           ;RB6_ISR@RB6_source stored from wreg
+  1807   0016A6  6E45               	movwf	RB6_ISR@RB6_source^0,c
+  1808   0016A8                     
+  1809                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 386:     (INTCONbits.RBIF = 0);
+  1810   0016A8  90F2               	bcf	242,0,c	;volatile
+  1811   0016AA                     
+  1812                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 388:     if (0==RB6_source){
+  1813   0016AA  5045               	movf	RB6_ISR@RB6_source^0,w,c
+  1814   0016AC  A4D8               	btfss	status,2,c
+  1815   0016AE  EF5B  F00B         	goto	i2u27_41
+  1816   0016B2  EF5D  F00B         	goto	i2u27_40
+  1817   0016B6                     i2u27_41:
+  1818   0016B6  EF5F  F00B         	goto	i2l1408
+  1819   0016BA                     i2u27_40:
+  1820   0016BA  EF5F  F00B         	goto	i2l491
+  1821   0016BE                     i2l1408:
+  1822   0016BE                     i2l491:
+  1823   0016BE  0012               	return		;funcret
+  1824   0016C0                     __end_of_RB6_ISR:
+  1825                           	callstack 0
+  1826                           
+  1827 ;; *************** function _RB5_ISR *****************
+  1828 ;; Defined at:
+  1829 ;;		line 373 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1830 ;; Parameters:    Size  Location     Type
+  1831 ;;  RB5_source      1    wreg     unsigned char 
+  1832 ;; Auto vars:     Size  Location     Type
+  1833 ;;  RB5_source      1    0[COMRAM] unsigned char 
+  1834 ;; Return value:  Size  Location     Type
+  1835 ;;                  1    wreg      void 
+  1836 ;; Registers used:
+  1837 ;;		wreg, status,2, status,0
+  1838 ;; Tracked objects:
+  1839 ;;		On entry : 0/0
+  1840 ;;		On exit  : 0/0
+  1841 ;;		Unchanged: 0/0
+  1842 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1843 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1844 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1845 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1846 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1847 ;;Total ram usage:        1 bytes
+  1848 ;; Hardware stack levels used: 1
+  1849 ;; This function calls:
+  1850 ;;		Nothing
+  1851 ;; This function is called by:
+  1852 ;;		_InterruptManager
+  1853 ;; This function uses a non-reentrant model
+  1854 ;;
+  1855                           
+  1856                           	psect	text13
+  1857   0016C0                     __ptext13:
+  1858                           	callstack 0
+  1859   0016C0                     _RB5_ISR:
+  1860                           	callstack 26
+  1861                           
+  1862                           ;incstack = 0
+  1863                           ;RB5_ISR@RB5_source stored from wreg
+  1864   0016C0  6E45               	movwf	RB5_ISR@RB5_source^0,c
+  1865   0016C2                     
+  1866                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 375:     (INTCONbits.RBIF = 0);
+  1867   0016C2  90F2               	bcf	242,0,c	;volatile
+  1868   0016C4                     
+  1869                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 377:     if (0==RB5_source){
+  1870   0016C4  5045               	movf	RB5_ISR@RB5_source^0,w,c
+  1871   0016C6  A4D8               	btfss	status,2,c
+  1872   0016C8  EF68  F00B         	goto	i2u26_41
+  1873   0016CC  EF6A  F00B         	goto	i2u26_40
+  1874   0016D0                     i2u26_41:
+  1875   0016D0  EF6C  F00B         	goto	i2l1398
+  1876   0016D4                     i2u26_40:
+  1877   0016D4  EF6C  F00B         	goto	i2l482
+  1878   0016D8                     i2l1398:
+  1879   0016D8                     i2l482:
+  1880   0016D8  0012               	return		;funcret
+  1881   0016DA                     __end_of_RB5_ISR:
+  1882                           	callstack 0
+  1883                           
+  1884 ;; *************** function _RB4_ISR *****************
+  1885 ;; Defined at:
+  1886 ;;		line 362 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1887 ;; Parameters:    Size  Location     Type
+  1888 ;;  RB4_source      1    wreg     unsigned char 
+  1889 ;; Auto vars:     Size  Location     Type
+  1890 ;;  RB4_source      1    0[COMRAM] unsigned char 
+  1891 ;; Return value:  Size  Location     Type
+  1892 ;;                  1    wreg      void 
+  1893 ;; Registers used:
+  1894 ;;		wreg, status,2, status,0
+  1895 ;; Tracked objects:
+  1896 ;;		On entry : 0/0
+  1897 ;;		On exit  : 0/0
+  1898 ;;		Unchanged: 0/0
+  1899 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1900 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1901 ;;      Locals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1902 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1903 ;;      Totals:         1       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1904 ;;Total ram usage:        1 bytes
+  1905 ;; Hardware stack levels used: 1
+  1906 ;; This function calls:
+  1907 ;;		Nothing
+  1908 ;; This function is called by:
+  1909 ;;		_InterruptManager
+  1910 ;; This function uses a non-reentrant model
+  1911 ;;
+  1912                           
+  1913                           	psect	text14
+  1914   0016DA                     __ptext14:
+  1915                           	callstack 0
+  1916   0016DA                     _RB4_ISR:
+  1917                           	callstack 26
+  1918                           
+  1919                           ;incstack = 0
+  1920                           ;RB4_ISR@RB4_source stored from wreg
+  1921   0016DA  6E45               	movwf	RB4_ISR@RB4_source^0,c
+  1922   0016DC                     
+  1923                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 364:     (INTCONbits.RBIF = 0);
+  1924   0016DC  90F2               	bcf	242,0,c	;volatile
+  1925   0016DE                     
+  1926                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 366:     if (0==RB4_source){
+  1927   0016DE  5045               	movf	RB4_ISR@RB4_source^0,w,c
+  1928   0016E0  A4D8               	btfss	status,2,c
+  1929   0016E2  EF75  F00B         	goto	i2u25_41
+  1930   0016E6  EF77  F00B         	goto	i2u25_40
+  1931   0016EA                     i2u25_41:
+  1932   0016EA  EF79  F00B         	goto	i2l1388
+  1933   0016EE                     i2u25_40:
+  1934   0016EE  EF79  F00B         	goto	i2l473
+  1935   0016F2                     i2l1388:
+  1936   0016F2                     i2l473:
+  1937   0016F2  0012               	return		;funcret
+  1938   0016F4                     __end_of_RB4_ISR:
+  1939                           	callstack 0
+  1940                           
+  1941 ;; *************** function _INT2_ISR *****************
+  1942 ;; Defined at:
+  1943 ;;		line 354 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1944 ;; Parameters:    Size  Location     Type
+  1945 ;;		None
+  1946 ;; Auto vars:     Size  Location     Type
+  1947 ;;		None
+  1948 ;; Return value:  Size  Location     Type
+  1949 ;;                  1    wreg      void 
+  1950 ;; Registers used:
+  1951 ;;		None
+  1952 ;; Tracked objects:
+  1953 ;;		On entry : 0/0
+  1954 ;;		On exit  : 0/0
+  1955 ;;		Unchanged: 0/0
+  1956 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1957 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1958 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1959 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1960 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1961 ;;Total ram usage:        0 bytes
+  1962 ;; Hardware stack levels used: 1
+  1963 ;; This function calls:
+  1964 ;;		Nothing
+  1965 ;; This function is called by:
+  1966 ;;		_InterruptManager
+  1967 ;; This function uses a non-reentrant model
+  1968 ;;
+  1969                           
+  1970                           	psect	text15
+  1971   0016FE                     __ptext15:
+  1972                           	callstack 0
+  1973   0016FE                     _INT2_ISR:
+  1974                           	callstack 26
+  1975   0016FE                     
+  1976                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 356:     (INTCON3bits.INT2IF = 0);
+  1977   0016FE  92F0               	bcf	240,1,c	;volatile
+  1978   001700  0012               	return		;funcret
+  1979   001702                     __end_of_INT2_ISR:
+  1980                           	callstack 0
+  1981                           
+  1982 ;; *************** function _INT1_ISR *****************
+  1983 ;; Defined at:
+  1984 ;;		line 346 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  1985 ;; Parameters:    Size  Location     Type
+  1986 ;;		None
+  1987 ;; Auto vars:     Size  Location     Type
+  1988 ;;		None
+  1989 ;; Return value:  Size  Location     Type
+  1990 ;;                  1    wreg      void 
+  1991 ;; Registers used:
+  1992 ;;		None
+  1993 ;; Tracked objects:
+  1994 ;;		On entry : 0/0
+  1995 ;;		On exit  : 0/0
+  1996 ;;		Unchanged: 0/0
+  1997 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  1998 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  1999 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2000 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2001 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2002 ;;Total ram usage:        0 bytes
+  2003 ;; Hardware stack levels used: 1
+  2004 ;; This function calls:
+  2005 ;;		Nothing
+  2006 ;; This function is called by:
+  2007 ;;		_InterruptManager
+  2008 ;; This function uses a non-reentrant model
+  2009 ;;
+  2010                           
+  2011                           	psect	text16
+  2012   001702                     __ptext16:
+  2013                           	callstack 0
+  2014   001702                     _INT1_ISR:
+  2015                           	callstack 26
+  2016   001702                     
+  2017                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 348:     (INTCON3bits.INT1IF = 0);
+  2018   001702  90F0               	bcf	240,0,c	;volatile
+  2019   001704  0012               	return		;funcret
+  2020   001706                     __end_of_INT1_ISR:
+  2021                           	callstack 0
+  2022                           
+  2023 ;; *************** function _INT0_ISR *****************
+  2024 ;; Defined at:
+  2025 ;;		line 338 in file "MCAL_Layer/Interrupt/External_Interrupt.c"
+  2026 ;; Parameters:    Size  Location     Type
+  2027 ;;		None
+  2028 ;; Auto vars:     Size  Location     Type
+  2029 ;;		None
+  2030 ;; Return value:  Size  Location     Type
+  2031 ;;                  1    wreg      void 
+  2032 ;; Registers used:
+  2033 ;;		None
+  2034 ;; Tracked objects:
+  2035 ;;		On entry : 0/0
+  2036 ;;		On exit  : 0/0
+  2037 ;;		Unchanged: 0/0
+  2038 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12  BANK13  BANK14  BANK15
+  2039 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2040 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2041 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2042 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0       0       0       0
+  2043 ;;Total ram usage:        0 bytes
+  2044 ;; Hardware stack levels used: 1
+  2045 ;; This function calls:
+  2046 ;;		Nothing
+  2047 ;; This function is called by:
+  2048 ;;		_InterruptManager
+  2049 ;; This function uses a non-reentrant model
+  2050 ;;
+  2051                           
+  2052                           	psect	text17
+  2053   001706                     __ptext17:
+  2054                           	callstack 0
+  2055   001706                     _INT0_ISR:
+  2056                           	callstack 26
+  2057   001706                     
+  2058                           ;MCAL_Layer/Interrupt/External_Interrupt.c: 340:     (INTCONbits.INT0IF = 0);
+  2059   001706  92F2               	bcf	242,1,c	;volatile
+  2060   001708  0012               	return		;funcret
+  2061   00170A                     __end_of_INT0_ISR:
+  2062                           	callstack 0
+  2063                           
+  2064                           	psect	smallconst
+  2065   001000                     __psmallconst:
+  2066                           	callstack 0
+  2067   001000  00                 	db	0
+  2068   001001  00                 	db	0	; dummy byte at the end
+  2069   000000                     
+  2070                           	psect	rparam
+  2071   000000                     
+  2072                           	psect	temp
+  2073   000052                     btemp:
+  2074                           	callstack 0
+  2075   000052                     	ds	1
+  2076   000000                     int$flags	set	btemp
+  2077   000000                     wtemp8	set	btemp+1
+  2078   000000                     ttemp5	set	btemp+1
+  2079   000000                     ttemp6	set	btemp+4
+  2080   000000                     ttemp7	set	btemp+8
+  2081                           
+  2082                           	psect	config
+  2083                           
+  2084                           ; Padding undefined space
+  2085   300000                     	org	3145728
+  2086   300000  FF                 	db	255
+  2087                           
+  2088                           ;Config register CONFIG1H @ 0x300001
+  2089                           ;	Oscillator Selection bits
+  2090                           ;	OSC = HS, HS oscillator
+  2091                           ;	Fail-Safe Clock Monitor Enable bit
+  2092                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+  2093                           ;	Internal/External Oscillator Switchover bit
+  2094                           ;	IESO = OFF, Oscillator Switchover mode disabled
+  2095   300001                     	org	3145729
+  2096   300001  02                 	db	2
+  2097                           
+  2098                           ;Config register CONFIG2L @ 0x300002
+  2099                           ;	Power-up Timer Enable bit
+  2100                           ;	PWRT = OFF, PWRT disabled
+  2101                           ;	Brown-out Reset Enable bits
+  2102                           ;	BOREN = OFF, Brown-out Reset disabled in hardware and software
+  2103                           ;	Brown Out Reset Voltage bits
+  2104                           ;	BORV = 1, 
+  2105   300002                     	org	3145730
+  2106   300002  09                 	db	9
+  2107                           
+  2108                           ;Config register CONFIG2H @ 0x300003
+  2109                           ;	Watchdog Timer Enable bit
+  2110                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+  2111                           ;	Watchdog Timer Postscale Select bits
+  2112                           ;	WDTPS = 32768, 1:32768
+  2113   300003                     	org	3145731
+  2114   300003  1E                 	db	30
+  2115                           
+  2116                           ; Padding undefined space
+  2117   300004                     	org	3145732
+  2118   300004  FF                 	db	255
+  2119                           
+  2120                           ;Config register CONFIG3H @ 0x300005
+  2121                           ;	CCP2 MUX bit
+  2122                           ;	CCP2MX = PORTC, CCP2 input/output is multiplexed with RC1
+  2123                           ;	PORTB A/D Enable bit
+  2124                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
+  2125                           ;	Low-Power Timer1 Oscillator Enable bit
+  2126                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+  2127                           ;	MCLR Pin Enable bit
+  2128                           ;	MCLRE = ON, MCLR pin enabled; RE3 input pin disabled
+  2129   300005                     	org	3145733
+  2130   300005  81                 	db	129
+  2131                           
+  2132                           ;Config register CONFIG4L @ 0x300006
+  2133                           ;	Stack Full/Underflow Reset Enable bit
+  2134                           ;	STVREN = ON, Stack full/underflow will cause Reset
+  2135                           ;	Single-Supply ICSP Enable bit
+  2136                           ;	LVP = OFF, Single-Supply ICSP disabled
+  2137                           ;	Extended Instruction Set Enable bit
+  2138                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mo
+      +                          de)
+  2139                           ;	Background Debugger Enable bit
+  2140                           ;	DEBUG = 0x1, unprogrammed default
+  2141   300006                     	org	3145734
+  2142   300006  81                 	db	129
+  2143                           
+  2144                           ; Padding undefined space
+  2145   300007                     	org	3145735
+  2146   300007  FF                 	db	255
+  2147                           
+  2148                           ;Config register CONFIG5L @ 0x300008
+  2149                           ;	Code Protection bit
+  2150                           ;	CP0 = OFF, Block 0 (000800-003FFFh) not code-protected
+  2151                           ;	Code Protection bit
+  2152                           ;	CP1 = OFF, Block 1 (004000-007FFFh) not code-protected
+  2153                           ;	Code Protection bit
+  2154                           ;	CP2 = OFF, Block 2 (008000-00BFFFh) not code-protected
+  2155                           ;	Code Protection bit
+  2156                           ;	CP3 = OFF, Block 3 (00C000-00FFFFh) not code-protected
+  2157   300008                     	org	3145736
+  2158   300008  0F                 	db	15
+  2159                           
+  2160                           ;Config register CONFIG5H @ 0x300009
+  2161                           ;	Boot Block Code Protection bit
+  2162                           ;	CPB = OFF, Boot block (000000-0007FFh) not code-protected
+  2163                           ;	Data EEPROM Code Protection bit
+  2164                           ;	CPD = OFF, Data EEPROM not code-protected
+  2165   300009                     	org	3145737
+  2166   300009  C0                 	db	192
+  2167                           
+  2168                           ;Config register CONFIG6L @ 0x30000A
+  2169                           ;	Write Protection bit
+  2170                           ;	WRT0 = OFF, Block 0 (000800-003FFFh) not write-protected
+  2171                           ;	Write Protection bit
+  2172                           ;	WRT1 = OFF, Block 1 (004000-007FFFh) not write-protected
+  2173                           ;	Write Protection bit
+  2174                           ;	WRT2 = OFF, Block 2 (008000-00BFFFh) not write-protected
+  2175                           ;	Write Protection bit
+  2176                           ;	WRT3 = OFF, Block 3 (00C000-00FFFFh) not write-protected
+  2177   30000A                     	org	3145738
+  2178   30000A  0F                 	db	15
+  2179                           
+  2180                           ;Config register CONFIG6H @ 0x30000B
+  2181                           ;	Configuration Register Write Protection bit
+  2182                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) not write-protected
+  2183                           ;	Boot Block Write Protection bit
+  2184                           ;	WRTB = OFF, Boot Block (000000-0007FFh) not write-protected
+  2185                           ;	Data EEPROM Write Protection bit
+  2186                           ;	WRTD = OFF, Data EEPROM not write-protected
+  2187   30000B                     	org	3145739
+  2188   30000B  E0                 	db	224
+  2189                           
+  2190                           ;Config register CONFIG7L @ 0x30000C
+  2191                           ;	Table Read Protection bit
+  2192                           ;	EBTR0 = OFF, Block 0 (000800-003FFFh) not protected from table reads executed in other
+      +                           blocks
+  2193                           ;	Table Read Protection bit
+  2194                           ;	EBTR1 = OFF, Block 1 (004000-007FFFh) not protected from table reads executed in other
+      +                           blocks
+  2195                           ;	Table Read Protection bit
+  2196                           ;	EBTR2 = OFF, Block 2 (008000-00BFFFh) not protected from table reads executed in other
+      +                           blocks
+  2197                           ;	Table Read Protection bit
+  2198                           ;	EBTR3 = OFF, Block 3 (00C000-00FFFFh) not protected from table reads executed in other
+      +                           blocks
+  2199   30000C                     	org	3145740
+  2200   30000C  0F                 	db	15
+  2201                           
+  2202                           ;Config register CONFIG7H @ 0x30000D
+  2203                           ;	Boot Block Table Read Protection bit
+  2204                           ;	EBTRB = OFF, Boot Block (000000-0007FFh) not protected from table reads executed in ot
+      +                          her blocks
+  2205   30000D                     	org	3145741
+  2206   30000D  40                 	db	64
+  2207                           tosu	equ	0xFFF
+  2208                           tosh	equ	0xFFE
+  2209                           tosl	equ	0xFFD
+  2210                           stkptr	equ	0xFFC
+  2211                           pclatu	equ	0xFFB
+  2212                           pclath	equ	0xFFA
+  2213                           pcl	equ	0xFF9
+  2214                           tblptru	equ	0xFF8
+  2215                           tblptrh	equ	0xFF7
+  2216                           tblptrl	equ	0xFF6
+  2217                           tablat	equ	0xFF5
+  2218                           prodh	equ	0xFF4
+  2219                           prodl	equ	0xFF3
+  2220                           indf0	equ	0xFEF
+  2221                           postinc0	equ	0xFEE
+  2222                           postdec0	equ	0xFED
+  2223                           preinc0	equ	0xFEC
+  2224                           plusw0	equ	0xFEB
+  2225                           fsr0h	equ	0xFEA
+  2226                           fsr0l	equ	0xFE9
+  2227                           wreg	equ	0xFE8
+  2228                           indf1	equ	0xFE7
+  2229                           postinc1	equ	0xFE6
+  2230                           postdec1	equ	0xFE5
+  2231                           preinc1	equ	0xFE4
+  2232                           plusw1	equ	0xFE3
+  2233                           fsr1h	equ	0xFE2
+  2234                           fsr1l	equ	0xFE1
+  2235                           bsr	equ	0xFE0
+  2236                           indf2	equ	0xFDF
+  2237                           postinc2	equ	0xFDE
+  2238                           postdec2	equ	0xFDD
+  2239                           preinc2	equ	0xFDC
+  2240                           plusw2	equ	0xFDB
+  2241                           fsr2h	equ	0xFDA
+  2242                           fsr2l	equ	0xFD9
+  2243                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        38
+    BSS         30
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM          126     13      81
+    BANK0           128      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+    BANK6           256      0       0
+    BANK7           256      0       0
+    BANK8           256      0       0
+    BANK9           256      0       0
+    BANK10          256      0       0
+    BANK11          256      0       0
+    BANK12          256      0       0
+    BANK13          256      0       0
+    BANK14          256      0       0
+    BANK15          128      0       0
+
+Pointer List with Targets:
+
+    ADC_GetConversion_Blocking@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    ADC_GetConversion_Blocking@Conversion_result	PTR unsigned short  size(1) Largest target is 2
+		 -> adc_res_0(COMRAM[2]), adc_res_1(COMRAM[2]), adc_res_2(COMRAM[2]), adc_res_3(COMRAM[2]), 
+
+    ADC_GetConversionResult@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    ADC_GetConversionResult@Conversion_result	PTR unsigned short  size(1) Largest target is 2
+		 -> adc_res_0(COMRAM[2]), adc_res_1(COMRAM[2]), adc_res_2(COMRAM[2]), adc_res_3(COMRAM[2]), 
+
+    ADC_Init@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    ADC_SelectChannel@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    ADC_StartConversion@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    configure_voltage_reference@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    INT0_InterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    INT1_InterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    INT2_InterruptHandler	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    Interrupt_INTx_Clear_Flag@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_DeInit@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_Disable@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_Edge_Init@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_Enable@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_Pin_Init@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_INTx_SetInterruptHandler@int_obj$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_RBx_Init@int_obj$EXT_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_RBx_Init@int_obj$EXT_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_RBx_Pin_Init@int_obj$EXT_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 0
+
+    Interrupt_RBx_Pin_Init@int_obj$EXT_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 0
+
+    lat_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> LATA(BITBIGSFRllll[1]), LATB(BITBIGSFRlllh[1]), LATC(BITBIGSFRlllh[1]), LATD(BITBIGSFRlllh[1]), 
+		 -> LATE(BITBIGSFRlllh[1]), 
+
+    port_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> PORTA(BITBIGSFRllll[1]), PORTB(BITBIGSFRllll[1]), PORTC(BITBIGSFRllll[1]), PORTD(BITBIGSFRllll[1]), 
+		 -> PORTE(BITBIGSFRllll[1]), 
+
+    RB4_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB4_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB5_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB5_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB6_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB6_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB7_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    RB7_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 1
+		 -> NULL(), 
+
+    S741$EXT_InterruptHandler	PTR FTN()void  size(2) Largest target is 0
+
+    S779$EXT_InterruptHandlerHigh	PTR FTN()void  size(2) Largest target is 0
+
+    S779$EXT_InterruptHandlerLow	PTR FTN()void  size(2) Largest target is 0
+
+    select_result_format@_adc	PTR const struct . size(1) Largest target is 4
+		 -> adc1(COMRAM[4]), 
+
+    tris_registers	PTR volatile unsigned char [5] size(2) Largest target is 1
+		 -> TRISA(BITBIGSFRllll[1]), TRISB(ABS[1]), TRISC(ABS[1]), TRISD(ABS[1]), 
+		 -> TRISE(ABS[1]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_ADC_GetConversion_Blocking
+    _application_intialize->_ADC_Init
+    _ADC_Init->_adc_input_channel_pin_configure
+    _ADC_GetConversion_Blocking->_ADC_SelectChannel
+    _ADC_SelectChannel->_adc_input_channel_pin_configure
+
+Critical Paths under _InterruptManager in COMRAM
+
+    _InterruptManager->_RB4_ISR
+    _InterruptManager->_RB5_ISR
+    _InterruptManager->_RB6_ISR
+    _InterruptManager->_RB7_ISR
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _InterruptManager in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _InterruptManager in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _InterruptManager in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _InterruptManager in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _InterruptManager in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _InterruptManager in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _InterruptManager in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _InterruptManager in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _InterruptManager in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _InterruptManager in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _InterruptManager in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _InterruptManager in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Critical Paths under _InterruptManager in BANK12
+
+    None.
+
+Critical Paths under _main in BANK13
+
+    None.
+
+Critical Paths under _InterruptManager in BANK13
+
+    None.
+
+Critical Paths under _main in BANK14
+
+    None.
+
+Critical Paths under _InterruptManager in BANK14
+
+    None.
+
+Critical Paths under _main in BANK15
+
+    None.
+
+Critical Paths under _InterruptManager in BANK15
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0    2297
+         _ADC_GetConversion_Blocking
+              _application_intialize
+ ---------------------------------------------------------------------------------
+ (1) _application_intialize                                1     1      0     511
+                           _ADC_Init
+ ---------------------------------------------------------------------------------
+ (2) _ADC_Init                                             3     2      1     509
+                                              4 COMRAM     3     2      1
+    _adc_input_channel_pin_configure
+        _configure_voltage_reference
+               _select_result_format
+ ---------------------------------------------------------------------------------
+ (3) _select_result_format                                 1     0      1     120
+                                              1 COMRAM     1     0      1
+ ---------------------------------------------------------------------------------
+ (3) _configure_voltage_reference                          1     0      1     120
+                                              1 COMRAM     1     0      1
+ ---------------------------------------------------------------------------------
+ (1) _ADC_GetConversion_Blocking                           5     2      3    1781
+                                              8 COMRAM     5     2      3
+            _ADC_GetConversionResult
+                  _ADC_SelectChannel
+                _ADC_StartConversion
+ ---------------------------------------------------------------------------------
+ (2) _ADC_StartConversion                                  2     1      1     122
+                                              1 COMRAM     2     1      1
+ ---------------------------------------------------------------------------------
+ (2) _ADC_SelectChannel                                    4     2      2     257
+                                              4 COMRAM     4     2      2
+    _adc_input_channel_pin_configure
+ ---------------------------------------------------------------------------------
+ (3) _adc_input_channel_pin_configure                      3     3      0      15
+                                              1 COMRAM     3     3      0
+ ---------------------------------------------------------------------------------
+ (2) _ADC_GetConversionResult                              6     4      2     308
+                                              1 COMRAM     6     4      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 3
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (4) _InterruptManager                                     0     0      0     120
+                           _INT0_ISR
+                           _INT1_ISR
+                           _INT2_ISR
+                            _RB4_ISR
+                            _RB5_ISR
+                            _RB6_ISR
+                            _RB7_ISR
+ ---------------------------------------------------------------------------------
+ (5) _RB7_ISR                                              1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (5) _RB6_ISR                                              1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (5) _RB5_ISR                                              1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (5) _RB4_ISR                                              1     1      0      30
+                                              0 COMRAM     1     1      0
+ ---------------------------------------------------------------------------------
+ (5) _INT2_ISR                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (5) _INT1_ISR                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (5) _INT0_ISR                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ADC_GetConversion_Blocking
+     _ADC_GetConversionResult
+     _ADC_SelectChannel
+       _adc_input_channel_pin_configure
+     _ADC_StartConversion
+   _application_intialize
+     _ADC_Init
+       _adc_input_channel_pin_configure
+       _configure_voltage_reference
+       _select_result_format
+
+ _InterruptManager (ROOT)
+   _INT0_ISR
+   _INT1_ISR
+   _INT2_ISR
+   _RB4_ISR
+   _RB5_ISR
+   _RB6_ISR
+   _RB7_ISR
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             F7F      0       0      43        0.0%
+EEDATA             400      0       0       0        0.0%
+BITBANK14          100      0       0      32        0.0%
+BANK14             100      0       0      33        0.0%
+BITBANK13          100      0       0      30        0.0%
+BANK13             100      0       0      31        0.0%
+BITBANK12          100      0       0      28        0.0%
+BANK12             100      0       0      29        0.0%
+BITBANK11          100      0       0      26        0.0%
+BANK11             100      0       0      27        0.0%
+BITBANK10          100      0       0      24        0.0%
+BANK10             100      0       0      25        0.0%
+BITBANK9           100      0       0      22        0.0%
+BANK9              100      0       0      23        0.0%
+BITBANK8           100      0       0      20        0.0%
+BANK8              100      0       0      21        0.0%
+BITBANK7           100      0       0      18        0.0%
+BANK7              100      0       0      19        0.0%
+BITBANK6           100      0       0      16        0.0%
+BANK6              100      0       0      17        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK15           80      0       0      34        0.0%
+BANK15              80      0       0      35        0.0%
+BITBANK0            80      0       0       4        0.0%
+BANK0               80      0       0       5        0.0%
+BITCOMRAM           7E      0       0       0        0.0%
+COMRAM              7E      D      51       1       64.3%
+BITBIGSFRhhll       2B      0       0      37        0.0%
+BITBIGSFRllhhh      15      0       0      38        0.0%
+BITBIGSFRllhhll      F      0       0      39        0.0%
+BITBIGSFRhhh         D      0       0      36        0.0%
+BITBIGSFRlllh        4      0       0      40        0.0%
+BITBIGSFRllll        4      0       0      41        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+STACK                0      0       0       2        0.0%
+NULL                 0      0       0       0        0.0%
+ABS                  0      0      51      42        0.0%
+DATA                 0      0      51       3        0.0%
+CODE                 0      0       0       0        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Fri Nov 08 20:58:27 2024
+
+                           ??_InterruptManager 0046                                             l40 1686  
+                                           l25 1434                                             l42 168A  
+                                           l27 14A8                                             l37 1642  
+                                           l66 14EE                                             l59 1416  
+                                           l69 150C                                             l93 160A  
+                                           l87 135E                                             l97 1572  
+                                          l101 1592                                            l103 1596  
+                                          l532 16FC            __end_of_configure_voltage_reference 1598  
+                  _configure_voltage_reference 155A                                            wreg 0FE8  
+                              __end_of_RB4_ISR 16F4                                __end_of_RB5_ISR 16DA  
+                              __end_of_RB6_ISR 16C0                                __end_of_RB7_ISR 16A6  
+                                         l2000 13CA                                           l2002 13E2  
+                                         l1210 128E                                           l2010 14BE  
+                                         l2004 1414                                           l1220 12AC  
+                                         l1212 1294                                           l2012 14CE  
+                                         l1230 12CA                                           l1222 12B2  
+                                         l1214 129A                                           l2014 14D6  
+                                         l2022 16F4                                           l2030 1512  
+                                         l1232 12D0                                           l1224 12B8  
+                                         l1216 12A0                                           l1208 128A  
+                                         l2016 14FC                                           l2008 14AA  
+                                         l2024 16F4                                           l2032 1522  
+                                         l2042 12F0                                           l1234 12D6  
+                                         l1226 12BE                                           l1218 12A6  
+                                         l2018 150A                                           l2034 1532  
+                                         l2026 150E                                           l1228 12C4  
+                                         l2036 1542                                           l2028 150E  
+                                         l1238 12DC                                           l1940 15D2  
+                                         l1950 157A                                           l1942 15EA  
+                                         l1944 15F0                                           l1960 1494  
+                                         l1952 1418                                           l1970 160C  
+                                         l1946 1608                                           l1962 149C  
+                                         l1954 142C                                           l1972 1620  
+                                         l1948 155A                                           l1964 14A4  
+                                         l1956 1436                                           l1990 1360  
+                                         l1974 1628                                           l1982 166A  
+                                         l1958 1484                                           l1966 14A6  
+                                         l1992 1374                                           l1976 163A  
+                                         l1984 167E                                           l1994 1384  
+                                         l1978 1640                                           l1986 1688  
+                                         l1996 138C                                           l1998 13A4  
+                                         u1200 1620                                           u1201 161C  
+                                         u1210 167E                                           u1211 167A  
+                                         u1220 1374                                           u1221 1370  
+                                         u1230 1384                                           u1150 15EA  
+                                         u1231 1380                                           u1151 15E6  
+                                         u1240 13A4                                           u1160 1608  
+                                         u1241 13A0                                           u1161 1604  
+                                         u1250 13E2                                           u1170 1572  
+                                         u1251 13DE                                           u1171 156E  
+                                         u1180 1592                                           u1181 158E  
+                                         _LATA 0F89                                           u1270 14BE  
+                                         u1190 142C                                           _LATB 0F8A  
+                                         u1271 14BA                                           u1191 1428  
+                                         _LATC 0F8B                                           u1280 14CE  
+                                         _LATD 0F8C                                           u1265 13FA  
+                                         u1281 14CA                                           _LATE 0F8D  
+                                         u1290 14FC                                           u1291 14F8  
+                      ??_application_intialize 004C                                           _adc1 0023  
+                     _RB4_InterruptHandlerHigh 0035                                           _main 150E  
+                     _RB7_InterruptHandlerHigh 0029                                           fsr2h 0FDA  
+                                         indf2 0FDF                                           fsr1l 0FE1  
+                                         fsr2l 0FD9                                           btemp 0052  
+                             __end_of_ADC_Init 14AA                                           start 000E  
+                                 ___param_bank 0000                               __end_of_INT0_ISR 170A  
+                             __end_of_INT1_ISR 1706                               __end_of_INT2_ISR 1702  
+                                        ?_main 0045                                          _EEADR 0FA9  
+                                        i2l500 16A4                                          i2l281 1064  
+                                        i2l291 11B8                                          i2l283 10A8  
+                                        i2l460 1704                                          i2l293 11FC  
+                                        i2l285 10EC                                          i2l277 1024  
+                                        i2l295 1240                                          i2l287 1130  
+                                        i2l279 1044                                          i2l456 1708  
+                                        i2l464 1700                                          i2l473 16F2  
+                                        i2l289 1174                                          i2l482 16D8  
+                                        i2l298 1284                                          i2l491 16BE  
+                                        _PORTA 0F80                                          _PORTB 0F81  
+                                        _PORTC 0F82                                          _PORTD 0F83  
+                                        _PORTE 0F84                                          _TRISA 0F92  
+                                        _TRISB 0F93                                          _TRISC 0F94  
+                                        _TRISD 0F95                                          _TRISE 0F96  
+                                        tablat 0FF5                                          ttemp5 0053  
+                                        ttemp6 0056                                          ttemp7 005A  
+                                        status 0FD8                                          wtemp8 0053  
+                              __initialization 1598                                   __end_of_main 155A  
+                                _lat_registers 000B                                         ??_main 0052  
+                                __activetblptr 0002                                      ??_RB4_ISR 0045  
+                                    ??_RB5_ISR 0045                                      ??_RB6_ISR 0045  
+                                    ??_RB7_ISR 0045         adc_input_channel_pin_configure@channel 0048  
+                                       _ADRESH 0FC4                                         _EEADRH 0FAA  
+                                       _ADRESL 0FC3                                         _EEDATA 0FA8  
+                                       _EECON2 0FA7                                         i2l1402 16A8  
+                                       i2l1404 16AA                                         i2l1412 168E  
+                                       i2l1414 1690                                         i2l1408 16BE  
+                                       i2l1370 1706                                         i2l1418 16A4  
+                                       i2l1700 1218                                         i2l1374 1702  
+                                       i2l1382 16DC                                         i2l1710 125C  
+                                       i2l1702 1226                                         i2l1630 1032  
+                                       i2l1384 16DE                                         i2l1392 16C2  
+                                       i2l1712 126A                                         i2l1704 1236  
+                                       i2l1640 1080                                         i2l1632 1040  
+                                       i2l1624 1004                                         i2l1378 16FE  
+                                       i2l1394 16C4                                         i2l1714 127A  
+                                       i2l1706 123A                                         i2l1650 10C4  
+                                       i2l1642 108E                                         i2l1634 1052  
+                                       i2l1626 1012                                         i2l1388 16F2  
+                                       i2l1716 127E                                         i2l1708 124E  
+                                       i2l1660 1108                                         i2l1652 10D2  
+                                       i2l1644 109E                                         i2l1636 1060  
+                                       i2l1628 1020                                         i2l1398 16D8  
+                                       i2l1670 114C                                         i2l1662 1116  
+                                       i2l1654 10E2                                         i2l1646 10A2  
+                                       i2l1638 1072                                         i2l1680 1190  
+                                       i2l1672 115A                                         i2l1664 1126  
+                                       i2l1656 10E6                                         i2l1648 10B6  
+                                       i2l1690 11D4                                         i2l1682 119E  
+                                       i2l1674 116A                                         i2l1666 112A  
+                                       i2l1658 10FA                                         i2l1692 11E2  
+                                       i2l1684 11AE                                         i2l1676 116E  
+                                       i2l1668 113E                                         i2l1694 11F2  
+                                       i2l1686 11B2                                         i2l1678 1182  
+                                       i2l1696 11F6                                         i2l1688 11C6  
+                                       i2l1698 120A              ADC_GetConversion_Blocking@channel 004F  
+                      _RB6_InterruptHandlerLow 002B                                         clear_0 15BE  
+                                       isa$std 0001                                   __pdataCOMRAM 0001  
+                                    ?_ADC_Init 0049                                   __mediumconst 0000  
+                                       tblptrh 0FF7                                         tblptrl 0FF6  
+                                       tblptru 0FF8                   __end_of_select_result_format 160C  
+                                   __accesstop 0080                        __end_of__initialization 15C4  
+                                    ?_INT0_ISR 0045                                      ?_INT1_ISR 0045  
+                                    ?_INT2_ISR 0045                                  ___rparam_used 0001  
+                               __pcstackCOMRAM 0045                   ??_ADC_GetConversion_Blocking 0050  
+                            RB5_ISR@RB5_source 0045                        _ADC_GetConversionResult 1360  
+                                   ??_ADC_Init 004A                           ADC_SelectChannel@ret 004C  
+                       ADC_StartConversion@ret 0047                          _INT0_InterruptHandler 003B  
+                                   ??_INT0_ISR 0045                                     ??_INT1_ISR 0045  
+                                   ??_INT2_ISR 0045                     ADC_GetConversionResult@ret 004B  
+                __end_of_application_intialize 16FE                 ADC_GetConversion_Blocking@_adc 004D  
+                                      _RB4_ISR 16DA                                        _RB5_ISR 16C0  
+                                      _RB6_ISR 16A6                                        _RB7_ISR 168C  
+                                      i2u25_40 16EE                                        i2u25_41 16EA  
+                                      i2u26_40 16D4                                        i2u26_41 16D0  
+                                      i2u27_40 16BA                                        i2u27_41 16B6  
+                                      i2u28_40 16A0                                        i2u60_40 1012  
+                                      i2u28_41 169C                                        i2u60_41 100E  
+                                      i2u61_40 1020                                        i2u61_41 101C  
+                                      i2u70_40 10B6                                        i2u62_40 1032  
+                                      i2u70_41 10B2                                        i2u62_41 102E  
+                                      i2u71_40 10C4                                        i2u63_40 1040  
+                                      i2u71_41 10C0                                        i2u63_41 103C  
+                                      i2u80_40 115A                                        i2u72_40 10D2  
+                                      i2u64_40 1052                                        i2u80_41 1156  
+                                      i2u72_41 10CE                                        i2u64_41 104E  
+                                      i2u81_40 116A                                        i2u73_40 10E2  
+                                      i2u65_40 1060                                        i2u81_41 1166  
+                                      i2u73_41 10DE                                        i2u65_41 105C  
+                                      i2u90_40 120A                                        i2u82_40 1182  
+                                      i2u74_40 10FA                                        i2u66_40 1072  
+                                      i2u90_41 1206                                        i2u82_41 117E  
+                                      i2u74_41 10F6                                        i2u66_41 106E  
+                                      i2u91_40 1218                                        i2u83_40 1190  
+                                      i2u75_40 1108                                        i2u67_40 1080  
+                                      i2u91_41 1214                                        i2u83_41 118C  
+                                      i2u75_41 1104                                        i2u67_41 107C  
+                                      i2u92_40 1226                                        i2u84_40 119E  
+                                      i2u76_40 1116                                        i2u68_40 108E  
+                                      i2u92_41 1222                                        i2u84_41 119A  
+                                      i2u76_41 1112                                        i2u68_41 108A  
+                                      i2u93_40 1236                                        i2u85_40 11AE  
+                                      i2u77_40 1126                                        i2u69_40 109E  
+                                      i2u93_41 1232                                        i2u85_41 11AA  
+                                      i2u77_41 1122                                        i2u69_41 109A  
+                                      i2u94_40 124E                                        i2u86_40 11C6  
+                                      i2u78_40 113E                                        i2u94_41 124A  
+                                      i2u86_41 11C2                                        i2u78_41 113A  
+                                      i2u95_40 125C                                        i2u87_40 11D4  
+                                      i2u79_40 114C                                        i2u95_41 1258  
+                                      i2u87_41 11D0                                        i2u79_41 1148  
+                                      i2u96_40 126A                                        i2u88_40 11E2  
+                                      i2u96_41 1266                                        i2u88_41 11DE  
+                                      i2u97_40 127A                                        i2u89_40 11F2  
+                                      i2u97_41 1276                                        i2u89_41 11EE  
+                            RB7_ISR@RB7_source 0045                                 _tris_registers 0015  
+                     _RB6_InterruptHandlerHigh 002D                                        __Hparam 0000  
+                                 ADC_Init@_adc 0049                                        __Lparam 0000  
+                                 __psmallconst 1000                      ??_ADC_GetConversionResult 0048  
+                                      __pcinit 1598                           _select_result_format 15D2  
+                                      __ramtop 1000                                        __ptext0 150E  
+                                      __ptext1 16F4                                        __ptext2 1418  
+                                      __ptext3 15D2                                        __ptext4 155A  
+                                      __ptext5 14AA                                        __ptext6 166A  
+                                      __ptext7 160C                                        __ptext8 1288  
+                                      __ptext9 1360                                 __pintcode_body 1002  
+                         end_of_initialization 15C4                       select_result_format@_adc 0046  
+                                __Lmediumconst 0000                                        int_func 1002  
+           __end_of_ADC_GetConversion_Blocking 150E                     _ADC_GetConversion_Blocking 14AA  
+                                      postdec1 0FE5                                        postdec2 0FDD  
+                                      postinc0 0FEE                                        postinc2 0FDE  
+                        ?_select_result_format 0046                          _INT1_InterruptHandler 0039  
+                                    _PORTBbits 0F81                               _InterruptManager 0008  
+                          _ADC_StartConversion 166A                        _RB4_InterruptHandlerLow 0033  
+                      _RB7_InterruptHandlerLow 0027                           ?_ADC_StartConversion 0046  
+                                __pidataCOMRAM 1644                   ?_configure_voltage_reference 0046  
+                          start_initialization 1598                          ADC_SelectChannel@_adc 0049  
+                        ??_ADC_StartConversion 0047                         ??_select_result_format 0047  
+                      ADC_StartConversion@_adc 0046                                       ?_RB4_ISR 0045  
+                                     ?_RB5_ISR 0045                                       ?_RB6_ISR 0045  
+                                     ?_RB7_ISR 0045                                    __pbssCOMRAM 0027  
+      __end_of_adc_input_channel_pin_configure 1360              ??_adc_input_channel_pin_configure 0046  
+             ?_adc_input_channel_pin_configure 0045                _adc_input_channel_pin_configure 1288  
+                ??_configure_voltage_reference 0047                                      _adc_res_0 0043  
+                                    _adc_res_1 0041                                      _adc_res_2 003F  
+                                    _adc_res_3 003D                    ADC_GetConversionResult@_adc 0046  
+                        _INT2_InterruptHandler 0037                          _application_intialize 16F4  
+                                    __pintcode 0008                              _ADC_SelectChannel 160C  
+                ADC_GetConversion_Blocking@ret 0051                             ?_ADC_SelectChannel 0049  
+                                  __smallconst 1000                            ??_ADC_SelectChannel 004B  
+                                     _ADC_Init 1418                                    ADC_Init@ret 004B  
+                     _RB5_InterruptHandlerHigh 0031                                       _INT0_ISR 1706  
+                                     _INT1_ISR 1702                                       _INT2_ISR 16FE  
+                                     _RB4_Flag 0022                                       _RB5_Flag 0021  
+                                     _RB6_Flag 0020                                       _RB7_Flag 001F  
+                     __end_of_InterruptManager 1288                      __end_of_ADC_SelectChannel 1644  
+                  ?_ADC_GetConversion_Blocking 004D                              RB4_ISR@RB4_source 0045  
+                                   _ADCON0bits 0FC2                                     _ADCON1bits 0FC1  
+                                   _ADCON2bits 0FC0                       ADC_SelectChannel@channel 004A  
+                                  _INTCON2bits 0FF1                                    _INTCON3bits 0FF0  
+                                    copy_data0 15AC    ADC_GetConversion_Blocking@Conversion_result 004E  
+                                   _EECON1bits 0FA6                         ?_application_intialize 0045  
+                                     __Hrparam 0000                                       __Lrparam 0000  
+                     ?_ADC_GetConversionResult 0046                              RB6_ISR@RB6_source 0045  
+ADC_GetConversion_Blocking@l_conversion_status 0050                                       __ptext11 168C  
+                                     __ptext12 16A6                                       __ptext13 16C0  
+                                     __ptext14 16DA                                       __ptext15 16FE  
+                                     __ptext16 1702                                       __ptext17 1706  
+              configure_voltage_reference@_adc 0046                        _RB5_InterruptHandlerLow 002F  
+                                     isa$xinst 0000                                       int$flags 0052  
+                                   _INTCONbits 0FF2       ADC_GetConversionResult@Conversion_result 0047  
+                                     intlevel2 0000                    __end_of_ADC_StartConversion 168C  
+              __end_of_ADC_GetConversionResult 1418                                 _port_registers 0001  
+                            ?_InterruptManager 0045  
